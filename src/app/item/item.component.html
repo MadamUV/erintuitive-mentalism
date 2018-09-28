@@ -1,0 +1,33 @@
+<script>
+$(document).ready(function(){
+    $("#header_panel").click(function(){
+        $("#items").slideToggle("slow");
+    });
+});
+</script>
+<div id="header_panel">Click to expand avatar {{ itemsArray[n] }}</div>
+<div id="items">
+    <!-- <div [ngSwitch]="itemsArray[n]">
+        <div *ngSwitchCase="'body'">
+            <body></body>
+        </div>
+        <div *ngSwitchCase="'hairs'">
+            <hairs></hairs>
+        </div>
+        <div *ngSwitchDefault>
+            <script>
+                document.getElementById("page").innerHTML = "<room></room>";
+            </script>
+        </div>
+    </div> -->
+</div>
+<div id="relativeContainer">
+</div>
+<div>
+    <!-- <button ng-click="if(n !== 0) { n = n - 1; }">
+        Back
+    </button>
+    <button ng-click="n = n + 1">
+        Next
+    </button> -->
+</div>

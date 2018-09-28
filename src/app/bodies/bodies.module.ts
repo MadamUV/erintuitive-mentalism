@@ -7,4 +7,6 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: []
 })
-export class HairModule { }
+export class BodiesModule {
+
+}
