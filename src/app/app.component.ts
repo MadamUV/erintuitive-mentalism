@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { delay } from '../../node_modules/@types/q';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,9 @@ export class AppComponent {
   title = 'Erintuitive\'s drawing interpretation app!';
   n=0;
   itemsArray = ['bodies', 'hairs'];
-  public insertMan() {
-    var man = document.getElementById("manly").innerHTML;
-    document.getElementById("relativeContainer").innerHTML = man;
-  }
-  public insertWoman() {
-    var woman = document.getElementById("womanly").innerHTML;
-    document.getElementById("relativeContainer").innerHTML = woman;
+  insertHairs () {
+    setTimeout(function(){
+      document.getElementById("myChoices").innerHTML = "<hairs></hairs>";
+    }, 1000);
   }
 }
