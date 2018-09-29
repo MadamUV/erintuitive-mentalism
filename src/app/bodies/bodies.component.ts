@@ -16,4 +16,5 @@ export class BodiesComponent {
     document.getElementById("relativeContainer").innerHTML = woman;
     document.getElementById("choices").innerHTML = '<hairs></hairs>';
   }
+  bodyColor : string = "tan";
 }

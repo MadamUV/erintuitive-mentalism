@@ -7,6 +7,8 @@ import { HairsComponent } from './hairs/hairs.component';
 import { BodiesModule } from './bodies/bodies.module';
 import { HairsModule } from './hairs/hairs.module';
 
+import { ColorPickerModule } from 'ngx-color-picker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import { HairsModule } from './hairs/hairs.module';
   imports: [
     BrowserModule,
     BodiesModule,
-    HairsModule
+    HairsModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
