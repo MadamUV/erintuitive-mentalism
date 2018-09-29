@@ -1,8 +1,7 @@
 import { BodiesModule } from './bodies.module';
 
-describe('Body2Module', () => {
+describe('BodiesModule', () => {
   let bodiesModule: BodiesModule;
-
   beforeEach(() => {
     bodiesModule = new BodiesModule();
   });
