@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['../button_style_down.css']
 })
 export class BodiesComponent {
-  public insertMan() {
+  insertMan() {
     var man = document.getElementById("manly").innerHTML;
     document.getElementById("relativeContainer").innerHTML = man;
   }
-  public insertWoman() {
+  insertWoman() {
     var woman = document.getElementById("womanly").innerHTML;
     document.getElementById("relativeContainer").innerHTML = woman;
   }
