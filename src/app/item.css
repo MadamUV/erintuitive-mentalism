@@ -1,12 +1,9 @@
-#header_panel, #items {
-    text-align: center;
-    background-color: purple;
-    border: solid 2px blueviolet
-}
 #items {
     padding: 5%;
     display: none;
     width: 85%;
+    border: solid 1px;
+    background-color: blueviolet;
 }
 #relativeContainer {
     position: relative;

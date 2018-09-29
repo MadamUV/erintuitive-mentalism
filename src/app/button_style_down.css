@@ -4,3 +4,8 @@ button {
     border: 0;
     background: transparent;
 }
+#header_panel, #items {
+    text-align: center;
+    background-color: purple;
+    border: solid 2px blueviolet
+}

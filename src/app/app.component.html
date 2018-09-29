@@ -1,10 +1,37 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<script>
+    $(document).ready(function(){
+        $("#header_panel").click(function(){
+            $("#items").slideToggle("slow");
+        });
+    });
+</script>
 <div style="text-align:center">
   <h2>
     Welcome to {{ title }}!
   </h2>
   <div id="page">
-    <item></item>
+      <div id="header_panel">Click to choose avatar {{ itemsArray[n] }}</div>
+      <!-- <div id="items">
+          <div [ngSwitch]="itemsArray[n]">
+              <div *ngSwitchCase="'bodies'">
+                  <bodies></bodies>
+              </div>
+              <div *ngSwitchCase="'hairs'">
+                  <hairs></hairs>
+              </div>
+              <div *ngSwitchDefault>
+                  <script>
+                      //document.getElementById("page").innerHTML = "<room></room>";
+                  </script>
+              </div>
+          </div>
+      </div> -->
+      <bodies></bodies>     
   </div>
+  <br><div>
+      <button>
+          Start over
+      </button>
+  </div> 
 </div>
 
