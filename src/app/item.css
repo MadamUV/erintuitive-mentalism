@@ -3,6 +3,8 @@
     display: none;
     width: 85%;
     border: solid 1px;
+}
+#items, #header_panel {
     background-color: blueviolet;
 }
 body {
@@ -12,4 +14,7 @@ body {
 }
 #relativeContainer, #header_panel {
     width: 100%;
+}
+#header_panel {
+    border: solid 3px;
 }

@@ -10,27 +10,12 @@
     Welcome to {{ title }}!
   </h2>
   <div id="page">
-      <div id="header_panel">Click to choose avatar {{ itemsArray[n] }}</div>
-      <!-- <div id="items">
-          <div [ngSwitch]="itemsArray[n]">
-              <div *ngSwitchCase="'bodies'">
-                  <bodies></bodies>
-              </div>
-              <div *ngSwitchCase="'hairs'">
-                  <hairs></hairs>
-              </div>
-              <div *ngSwitchDefault>
-                  <script>
-                      //document.getElementById("page").innerHTML = "<room></room>";
-                  </script>
-              </div>
-          </div>
-      </div> -->
+      <div id="header_panel">Click to choose avatar {{ item }}</div>
       <div id="myChoices" (click)="showHairs()">
         <bodies id="bodyness"></bodies>
-        <hairs></hairs>
+        <hairs id="hairstuff"></hairs>
       </div>
-      <div id="relativeContainer"></div><br>
+      <div id="relativeContainer" style="text-align:center"></div><br>
       <br><div>
           <button>
               Start over

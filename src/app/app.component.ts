@@ -8,11 +8,11 @@ import { delay } from '../../node_modules/@types/q';
 })
 export class AppComponent {
   title = 'Erintuitive\'s drawing interpretation app!';
-  n=0;
-  itemsArray = ['bodies', 'hairs'];
-  insertHairs () {
+  item = "body";
+  showHairs () {
     setTimeout(function(){
-      document.getElementById("myChoices").innerHTML = "<hairs></hairs>";
-    }, 1000);
+      document.getElementById("hairstuff").style.display = "block";
+    }, 300);
+    this.item = "hair";
   }
 }
