@@ -15,4 +15,9 @@ export class AppComponent {
     }, 300);
     this.item = "hair";
   }
+  showMouths () {
+    setTimeout(function(){
+      document.getElementById("mouthstuff").style.display = "block";
+    }, 300);
+  }
 }

@@ -11,23 +11,20 @@
   </h2>
   <div id="page">
     <div id="header_panel">Click to choose avatar {{ item }}</div>
-    <div id="myChoices" (click)="showHairs()">
+    <div id="pickAColor">
+      Pick {{ item }}'s color
+      <div id="colorPickers">
+      </div>
+    </div>
+    <div id="myChoices" (click)="showMouths()">
       <div id="bodyness">
         <bodies></bodies>
       </div>
       <div id="hairstuff">
         <hairs></hairs>
       </div>
-    </div>
-    <div id="pickAColor">
-      Pick {{ item }}'s color
-      <div id="colorPickers">
-          <p>
-            <input id="bodyColor" maxlength="1" size="1" [(colorPicker)]="bodyColor" [style.background]="bodyColor"/>
-          </p>
-          <p>
-            <input id="hairColor" maxlength="1" size="1" [(colorPicker)]="hairColor" [style.background]="hairColor"/>
-          </p>
+      <div id="mouthstuff">
+        <mouths></mouths>
       </div>
     </div>
     <div id="relativeContainer" style="text-align:center"></div><br>
