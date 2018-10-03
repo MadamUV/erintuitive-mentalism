@@ -1,0 +1,23 @@
+.avatarOptions button {
+    margin: 10%;
+    margin-top: -10%;
+    position: relative;
+    top: -40%;
+    left: -10%;
+}
+.avatarOptions {
+    position: relative;
+    padding-top: -10%;
+}
+#avatarOptionsContainer {
+    position: relative;
+    margin-top: -10%;
+}
+@media screen and (min-width: 550px) {
+    .avatarOptions button { 
+        margin: 6%; 
+    }
+    .avatarOptions {
+        padding-top: 0;
+    }
+}

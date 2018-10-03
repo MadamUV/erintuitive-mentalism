@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component ({
     selector: 'mouths',
     templateUrl: './mouths.component.html',
-    styleUrls: []
+    styleUrls: ['../avatarOptions.css', './mouths.css', '../button_style_down.css']
 })
 
 export class MouthsComponent {
