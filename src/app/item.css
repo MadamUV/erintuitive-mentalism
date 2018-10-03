@@ -14,6 +14,7 @@ body {
 }
 #relativeContainer, #header_panel {
     width: 100%;
+    position: relative;
 }
 #header_panel {
     border: solid 3px;
