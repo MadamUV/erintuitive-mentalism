@@ -10,28 +10,29 @@
     Welcome to {{ title }}!
   </h2>
   <div id="page">
-    <div id="header_panel">Click to choose avatar {{ item }}</div>
-    <div id="pickAColor">
-      Pick {{ item }}'s color
-      <div id="colorPickers">
+    <div id="header_panel"><button id="startOver">Click to start over</button></div>
+      <div id="pickAColor">
+        {{ mainMessage }} Pick your avatar's {{ item }}'s color
+        <div id="colorPickers">
+        </div> 
       </div>
-    </div>
-    <div id="myChoices" (click)="showMouths()">
-      <div id="bodyness">
-        <bodies></bodies>
+      <div id="relativeContainer" style="position: fixed; top: 20%; left: 5%; z-index: 2;"></div>
+      <div>
+      <div id="myChoices" (click)="showMouths()">
+        <div id="bodyness">
+          <bodies></bodies>
+        </div>
+        <div id="mouthstuff">
+          <p>
+              <input id="mouthColor" maxlength="1" size="1" [(colorPicker)]="mouthColor" [style.background]="mouthColor"/>
+          </p>
+          <br>
+          <mouths></mouths>
+        </div>
+        <div id="hairstuff">
+          <hairs></hairs>
+        </div>
       </div>
-      <div id="hairstuff">
-        <hairs></hairs>
-      </div>
-      <div id="mouthstuff">
-        <mouths></mouths>
-      </div>
-    </div>
-    <div id="relativeContainer" style="text-align:center"></div><br>
-    <br><div>
-        <button>
-            Start over
-        </button>
     </div>   
   </div> 
 </div>

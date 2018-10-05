@@ -9,6 +9,7 @@ import { delay } from '../../node_modules/@types/q';
 export class AppComponent {
   title = 'Erintuitive\'s drawing interpretation app!';
   item = "body";
+  mainMessage = "I interpret your personality from your avatar, too!";
   showHairs () {
     setTimeout(function(){
       document.getElementById("hairstuff").style.display = "block";
@@ -18,6 +19,8 @@ export class AppComponent {
   showMouths () {
     setTimeout(function(){
       document.getElementById("mouthstuff").style.display = "block";
+      this.mainMessage = "";
     }, 300);
+    this.item = "mouth";
   }
 }
