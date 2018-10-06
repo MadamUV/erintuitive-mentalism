@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'hairs',
   templateUrl: './hairs.component.html',
-  styleUrls: ['../button_style_down.css', '../avatarOptions.css']
+  styleUrls: ['./hairs.css', '../button_style_down.css', '../avatarOptions.css']
 })
 export class HairsComponent {
   insertMan() {
@@ -28,7 +28,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair1").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -34px; left: 0; margin-top: 0;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -34px; left: -8px; margin-top: 0;"); }
   }
   buttonHair2(){
     var hair = document.getElementById("hair2").innerHTML;
@@ -36,7 +36,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair2").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -34px; left: 0; margin-top: 0;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -12px; left: -24; margin-top: 0;"); }
   }
   buttonHair3(){
     var hair = document.getElementById("hair3").innerHTML;
@@ -52,7 +52,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair4").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -28px; left: -5px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -3px; left: -4px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair5(){
     var hair = document.getElementById("hair5").innerHTML;
@@ -164,7 +164,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair18").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -11px; left: 1px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -11px; left: 8px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair19(){
     var hair = document.getElementById("hair19").innerHTML;
