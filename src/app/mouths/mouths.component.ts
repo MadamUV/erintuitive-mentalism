@@ -17,7 +17,7 @@ export class MouthsComponent {
     buttonMouthStyle () {        
         var elemNew = document.querySelector("#relativeContainer .mouth");
         if(elemNew !== null){
-            elemNew.setAttribute("style", "position: absolute; top: 0; left: 0; margin-top: 0; z-index: 5;");
+            elemNew.setAttribute("style", "position: absolute; top: 0; left: -0.4; margin-top: 0; z-index: 5;");
         }
     }
     buttonMouth1 () {
