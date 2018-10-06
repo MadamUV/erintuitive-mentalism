@@ -13,27 +13,27 @@
     <div id="header_panel"><button id="startOver">Click to start over</button></div>
       <div id="pickAColor">
         {{ mainMessage }} Pick your avatar's {{ item }}'s color
-        <div id="colorPickers">
-        </div> 
       </div>
-      <div id="relativeContainer" style="position: fixed; top: 20%; left: 5%; z-index: 2;"></div>
       <div>
-      <div id="myChoices" (click)="showMouths()">
-        <div id="bodyness">
-          <bodies></bodies>
+        <div id="myChoices" (click)="showMouths()">
+          <div id="bodyness">
+            <bodies></bodies>
+          </div>
+          <div id="mouthstuff">
+            <button style="position: fixed; left: 77%;" (click)="showHairs()" id="hairButton">Hair step</button>
+            <mouths></mouths>
+          </div>
+          <div id="hairstuff">
+            <hairs></hairs>
+          </div>
         </div>
-        <div id="mouthstuff">
-          <p>
-              <input id="mouthColor" maxlength="1" size="1" [(colorPicker)]="mouthColor" [style.background]="mouthColor"/>
-          </p>
-          <br>
-          <mouths></mouths>
-        </div>
-        <div id="hairstuff">
-          <hairs></hairs>
-        </div>
-      </div>
     </div>   
-  </div> 
+  </div>
+  <div id="relativeContainerContainer" style="position: fixed; width: 87px; top: 20%; left: 5%; z-index: 2;">
+    <div id="relativeContainer" style="position: relative;">
+      <div id="hairContainer" style="position: relative; top: -386px;" height="386">
+      </div>
+    </div>
+  </div>
 </div>
 

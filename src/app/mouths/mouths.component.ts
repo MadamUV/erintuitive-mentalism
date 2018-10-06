@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class MouthsComponent {
+    mouthColor : string = "silver";
     buttonMouthRemove () {
         var elem = document.querySelector("#relativeContainer .mouth");
         if(elem !== null){
@@ -15,7 +16,9 @@ export class MouthsComponent {
     }
     buttonMouthStyle () {        
         var elemNew = document.querySelector("#relativeContainer .mouth");
-        elemNew.setAttribute("style", "position: absolute; top: 0; left: 0; margin-top: 0;");
+        if(elemNew !== null){
+            elemNew.setAttribute("style", "position: absolute; top: 0; left: 0; margin-top: 0;");
+        }
     }
     buttonMouth1 () {
         this.buttonMouthRemove();

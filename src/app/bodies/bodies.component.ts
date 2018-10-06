@@ -18,8 +18,4 @@ export class BodiesComponent {
     document.getElementById("choices").innerHTML = '<mouths></mouths>';
   }
   bodyColor : string = "tan";
-  mouthColor : string = "white";
-  hairColor : string = "white";
-  hairStreakColor : string = "white";
-  eyeColor : string = "brown";
 }
