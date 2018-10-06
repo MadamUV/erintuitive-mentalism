@@ -68,7 +68,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair6").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -28px; left: -5px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -4px; left: -5px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair7(){
     var hair = document.getElementById("hair7").innerHTML;
@@ -84,7 +84,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair8").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -2px; left: -7px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -2px; left: 7.5px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair9(){
     var hair = document.getElementById("hair9").innerHTML;
@@ -116,7 +116,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair12").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -6.8px; left: 0; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -7.2px; left: 7px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair13(){
     var hair = document.getElementById("hair13").innerHTML;
@@ -140,7 +140,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair15").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -24px; left: 1px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -16px; left: -3px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair16(){
     var hair = document.getElementById("hair16").innerHTML;
@@ -188,7 +188,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair21").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -20px; left: -7px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -20px; left: 7px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair22(){
     var hair = document.getElementById("hair22").innerHTML;
@@ -204,7 +204,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair23").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -12px; left: -7px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -12px; left: -3px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair24(){
     var hair = document.getElementById("hair24").innerHTML;
@@ -212,7 +212,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair24").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -28px; left: -2px; margin-top: 0; z-index: 4;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -28px; left: 4px; margin-top: 0; z-index: 4;"); }
   }
   buttonHair25(){
     var hair = document.getElementById("hair25").innerHTML;
