@@ -12,6 +12,8 @@ import { EyesComponent } from './eyes/eyes.component';
 import { EyesModule } from './eyes/eyes.module';
 import { MalePantsComponent } from './male-pants/male-pants.component';
 import { MalePantsModule } from './male-pants/male-pants.module';
+import { FemalePantsComponent } from './female-pants/female-pants.component';
+import { FemalePantsModule } from './female-pants/female-pants.module';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -22,7 +24,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MouthsComponent,
     HairsComponent,
     EyesComponent,
-    MalePantsComponent
+    MalePantsComponent,
+    FemalePantsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     HairsModule,
     EyesModule,
     ColorPickerModule,
-    MalePantsModule
+    MalePantsModule,
+    FemalePantsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

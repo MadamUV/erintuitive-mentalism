@@ -40,5 +40,11 @@ export class AppComponent {
         document.getElementById("eyestuff").innerHTML = "";
       }, 300);
     }
+    else if(document.querySelector("#relativeContainer .woman") != null) {
+      setTimeout(function(){
+        document.getElementById("femalePants").style.display = "block";
+        document.getElementById("eyestuff").innerHTML = "";
+      }, 300);
+    }
   }
 }
