@@ -33,4 +33,12 @@ export class AppComponent {
       document.getElementById("hairstuff").innerHTML = "";
     }, 300);
   }
+  showPants () {
+    if(document.querySelector("#relativeContainer .man") != null) {
+      setTimeout(function(){
+        document.getElementById("malePants").style.display = "block";
+        document.getElementById("eyestuff").innerHTML = "";
+      }, 300);
+    }
+  }
 }
