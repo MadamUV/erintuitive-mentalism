@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'hairs',
   templateUrl: './hairs.component.html',
-  styleUrls: ['./hairs.css', '../button_style_down.css', '../avatarOptions.css']
+  styleUrls: ['../leftPadding.css', '../button_style_down.css', '../avatarOptions.css']
 })
 export class HairsComponent {
   hairColor : string = "black";

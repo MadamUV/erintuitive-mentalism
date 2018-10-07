@@ -8,6 +8,8 @@ import { BodiesModule } from './bodies/bodies.module';
 import { HairsModule } from './hairs/hairs.module';
 import { MouthsModule } from './mouths/mouths.module';
 import { MouthsComponent } from './mouths/mouths.component';
+import { EyesComponent } from './eyes/eyes.component';
+import { EyesModule } from './eyes/eyes.module';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -16,13 +18,15 @@ import { ColorPickerModule } from 'ngx-color-picker';
     AppComponent,
     BodiesComponent,
     MouthsComponent,
-    HairsComponent
+    HairsComponent,
+    EyesComponent
   ],
   imports: [
     BrowserModule,
     BodiesModule,
     MouthsModule,
     HairsModule,
+    EyesModule,
     ColorPickerModule
   ],
   providers: [],

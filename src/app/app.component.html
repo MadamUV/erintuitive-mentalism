@@ -12,19 +12,24 @@
   <div id="page">
     <div id="header_panel"><button id="startOver">Click to start over</button></div>
       <div id="pickAColor">
-        {{ mainMessage }} Pick color for the items below:
+        Item color:
       </div>
       <div>
-        <div id="myChoices" (click)="showMouths()">
+        <div id="myChoices">
           <div id="bodyness">
+            <button style="position: fixed; left: 77%;" (click)="showMouths()" id="mouthButton">To mouth step</button>
             <bodies></bodies>
           </div>
           <div id="mouthstuff">
-            <button style="position: fixed; left: 77%;" (click)="showHairs()" id="hairButton">Hair step</button>
+            <button style="position: fixed; left: 77%;" (click)="showHairs()" id="hairButton">To hair step</button>
             <mouths></mouths>
           </div>
           <div id="hairstuff">
+            <button style="position: fixed; left: 77%;" (click)="showEyes()" id="eyeButton">To eye step</button>
             <hairs></hairs>
+          </div>
+          <div id="eyestuff">
+            <eyes></eyes>
           </div>
         </div>
     </div>   
