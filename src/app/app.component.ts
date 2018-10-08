@@ -48,10 +48,17 @@ export class AppComponent {
     }
   }
   showBottomOverlays() {
+    document.getElementById("pickAColor").innerHTML = "";
     if(document.querySelector("#relativeContainer .woman") != null) {
       if(document.querySelector("#relativeContainer .pants1") != null) {
         setTimeout(function(){
           document.getElementById("femalePantsStickers1").style.display = "block";
+          document.getElementById("femalePants").innerHTML = "";
+        }, 300);
+      }
+      else if(document.querySelector("#relativeContainer .pants2") != null) {
+        setTimeout(function(){
+          document.getElementById("femalePantsStickers2").style.display = "block";
           document.getElementById("femalePants").innerHTML = "";
         }, 300);
       }

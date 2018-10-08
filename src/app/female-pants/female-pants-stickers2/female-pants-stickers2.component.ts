@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'female-pants-stickers-one',
-    templateUrl: 'female-pants-stickers1.html',
+    selector: 'female-pants-stickers-two',
+    templateUrl: 'female-pants-stickers2.html',
     styleUrls: ['../../button_style_down.css', '../../item.css', '../../avatarOptions.css', '../../leftPadding.css']
 })
 
-export class FemalePantsStickers1Component {
+export class FemalePantsStickers2Component {
     removePants () {
         var elem = document.querySelector("#relativeContainer .bottomOverlay");
         if( elem != null ) { elem.parentNode.removeChild(elem); }
@@ -16,181 +16,209 @@ export class FemalePantsStickers1Component {
         if(elemNew !== null){
             elemNew.setAttribute("style", "position: absolute; top: 0; left: 0;");
             elemNew.setAttribute("height", "380px");
-            elemNew.setAttribute("viewBox", "202.715 584.407 86.593 380.048")
+            elemNew.setAttribute("viewBox", "202.715 584.407 86.593 380.048");
         }
     }
-    female_pants1_sticker1() {
+    female_pants2_sticker1() {
         this.removePants();
         var relativeContainer = document.getElementById("relativeContainer");
-        var pantsButton = document.getElementById("female_pants1_sticker1");
+        var pantsButton = document.getElementById("female_pants2_sticker1");
         relativeContainer.innerHTML += pantsButton.innerHTML;
         this.buttonPantsStyle(); 
-        } 
-    female_pants1_sticker10() {
+    } 
+    female_pants2_sticker10() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker10");
+    var pantsButton = document.getElementById("female_pants2_sticker10");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker11() {
+    female_pants2_sticker11() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker11");
+    var pantsButton = document.getElementById("female_pants2_sticker11");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker12() {
+    female_pants2_sticker12() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker12");
+    var pantsButton = document.getElementById("female_pants2_sticker12");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker13() {
+    female_pants2_sticker13() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker13");
+    var pantsButton = document.getElementById("female_pants2_sticker13");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker14() {
+    female_pants2_sticker14() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker14");
+    var pantsButton = document.getElementById("female_pants2_sticker14");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker15() {
+    female_pants2_sticker15() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker15");
+    var pantsButton = document.getElementById("female_pants2_sticker15");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker16() {
+    female_pants2_sticker16() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker16");
+    var pantsButton = document.getElementById("female_pants2_sticker16");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker17() {
+    female_pants2_sticker17() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker17");
+    var pantsButton = document.getElementById("female_pants2_sticker17");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker18() {
+    female_pants2_sticker18() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker18");
+    var pantsButton = document.getElementById("female_pants2_sticker18");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker19() {
+    female_pants2_sticker19() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker19");
+    var pantsButton = document.getElementById("female_pants2_sticker19");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker2() {
+    female_pants2_sticker2() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker2");
+    var pantsButton = document.getElementById("female_pants2_sticker2");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker20() {
+    female_pants2_sticker20() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker20");
+    var pantsButton = document.getElementById("female_pants2_sticker20");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker21() {
+    female_pants2_sticker21() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker21");
+    var pantsButton = document.getElementById("female_pants2_sticker21");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker22() {
+    female_pants2_sticker22() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker22");
+    var pantsButton = document.getElementById("female_pants2_sticker22");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker23() {
+    female_pants2_sticker23() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker23");
+    var pantsButton = document.getElementById("female_pants2_sticker23");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker24() {
+    female_pants2_sticker24() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker24");
+    var pantsButton = document.getElementById("female_pants2_sticker24");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker25() {
+    female_pants2_sticker25() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker25");
+    var pantsButton = document.getElementById("female_pants2_sticker25");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker3() {
+    female_pants2_sticker26() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker3");
+    var pantsButton = document.getElementById("female_pants2_sticker26");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker4() {
+    female_pants2_sticker27() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker4");
+    var pantsButton = document.getElementById("female_pants2_sticker27");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker5() {
+    female_pants2_sticker28() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker5");
+    var pantsButton = document.getElementById("female_pants2_sticker28");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker6() {
+    female_pants2_sticker29() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker6");
+    var pantsButton = document.getElementById("female_pants2_sticker29");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker7() {
+    female_pants2_sticker3() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker7");
+    var pantsButton = document.getElementById("female_pants2_sticker3");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker8() {
+    female_pants2_sticker4() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker8");
+    var pantsButton = document.getElementById("female_pants2_sticker4");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-    female_pants1_sticker9() {
+    female_pants2_sticker5() {
     this.removePants();
     var relativeContainer = document.getElementById("relativeContainer");
-    var pantsButton = document.getElementById("female_pants1_sticker9");
+    var pantsButton = document.getElementById("female_pants2_sticker5");
+    relativeContainer.innerHTML += pantsButton.innerHTML;
+    this.buttonPantsStyle(); 
+        } 
+    female_pants2_sticker6() {
+    this.removePants();
+    var relativeContainer = document.getElementById("relativeContainer");
+    var pantsButton = document.getElementById("female_pants2_sticker6");
+    relativeContainer.innerHTML += pantsButton.innerHTML;
+    this.buttonPantsStyle(); 
+        } 
+    female_pants2_sticker7() {
+    this.removePants();
+    var relativeContainer = document.getElementById("relativeContainer");
+    var pantsButton = document.getElementById("female_pants2_sticker7");
+    relativeContainer.innerHTML += pantsButton.innerHTML;
+    this.buttonPantsStyle(); 
+        } 
+    female_pants2_sticker8() {
+    this.removePants();
+    var relativeContainer = document.getElementById("relativeContainer");
+    var pantsButton = document.getElementById("female_pants2_sticker8");
+    relativeContainer.innerHTML += pantsButton.innerHTML;
+    this.buttonPantsStyle(); 
+        } 
+    female_pants2_sticker9() {
+    this.removePants();
+    var relativeContainer = document.getElementById("relativeContainer");
+    var pantsButton = document.getElementById("female_pants2_sticker9");
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
@@ -208,5 +236,5 @@ export class FemalePantsStickers1Component {
     relativeContainer.innerHTML += pantsButton.innerHTML;
     this.buttonPantsStyle(); 
         } 
-        
+    
 }

@@ -17,6 +17,8 @@ import { FemalePantsComponent } from './female-pants/female-pants.component';
 import { FemalePantsModule } from './female-pants/female-pants.module';
 import { FemalePantsStickers1Component } from './female-pants/female-pants-stickers1/female-pants-stickers1.component';
 import { FemalePantsStickers1Module } from './female-pants/female-pants-stickers1/female-pants-stickers1.module';
+import { FemalePantsStickers2Component } from './female-pants/female-pants-stickers2/female-pants-stickers2.component';
+import { FemalePantsStickers2Module } from './female-pants/female-pants-stickers2/female-pants-stickers2.module';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -29,7 +31,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     EyesComponent,
     MalePantsComponent,
     FemalePantsComponent,
-    FemalePantsStickers1Component
+    FemalePantsStickers1Component,
+    FemalePantsStickers2Component
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     ColorPickerModule,
     MalePantsModule,
     FemalePantsModule,
-    FemalePantsStickers1Module
+    FemalePantsStickers1Module,
+    FemalePantsStickers2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
