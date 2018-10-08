@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component ({
     selector: 'female-pants',
     templateUrl: './female-pants.component.html',
-    styleUrls: ['../button_style_down.css', '../item.css', '../avatarOptions.css']
+    styleUrls: ['../button_style_down.css', '../item.css', '../avatarOptions.css', '../leftPadding.css']
 })
 
 export class FemalePantsComponent {
@@ -16,7 +16,8 @@ export class FemalePantsComponent {
         var elemNew = document.querySelector("#relativeContainer .pants");
         if(elemNew !== null){
             elemNew.setAttribute("style", "position: absolute; top: 0; left: 0;");
-            elemNew.setAttribute("height", "380px");
+            elemNew.setAttribute("height", "380");
+            elemNew.setAttribute("width", "86");
         }
     }
     buttonFemalePants1() {

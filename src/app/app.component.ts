@@ -47,4 +47,14 @@ export class AppComponent {
       }, 300);
     }
   }
+  showBottomOverlays() {
+    if(document.querySelector("#relativeContainer .woman") != null) {
+      if(document.querySelector("#relativeContainer .pants1") != null) {
+        setTimeout(function(){
+          document.getElementById("femalePantsStickers1").style.display = "block";
+          document.getElementById("femalePants").innerHTML = "";
+        }, 300);
+      }
+    }
+  }
 }
