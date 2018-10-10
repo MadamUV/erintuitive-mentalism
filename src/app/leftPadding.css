@@ -1,5 +1,15 @@
 .avatarOptions {
-    padding-left: 23%;
+    padding-left: 33%;
+}
+@media screen and (min-width: 550px) {
+    .avatarOptions {
+        padding-left: 27%;
+    }
+}
+@media screen and (min-width: 925px) {
+    .avatarOptions {
+        padding-left: 22%;
+    }
 }
 #eyeButtons {
     margin-bottom: 70%;

@@ -18,6 +18,7 @@ export class FemalePantsComponent {
             elemNew.setAttribute("style", "position: absolute; top: 0; left: 0;");
             elemNew.setAttribute("height", "380");
             elemNew.setAttribute("width", "86");
+            elemNew.setAttribute("viewBox", "202.715 584.407 86.593 380.048");
         }
     }
     buttonFemalePants1() {

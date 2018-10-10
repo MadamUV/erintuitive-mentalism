@@ -62,6 +62,24 @@ export class AppComponent {
           document.getElementById("femalePants").innerHTML = "";
         }, 300);
       }
+      else if(document.querySelector("#relativeContainer .pants3") != null) {
+        setTimeout(function(){
+          document.getElementById("femalePantsStickers3").style.display = "block";
+          document.getElementById("femalePants").innerHTML = "";
+        }, 300);
+      }
+      else if(document.querySelector("#relativeContainer .pants4") != null) {
+        setTimeout(function(){
+          document.getElementById("femalePantsStickers4").style.display = "block";
+          document.getElementById("femalePants").innerHTML = "";
+        }, 300);
+      }
+      else if(document.querySelector("#relativeContainer .pants5") != null) {
+        setTimeout(function(){
+          document.getElementById("femalePantsStickers5").style.display = "block";
+          document.getElementById("femalePants").innerHTML = "";
+        }, 300);
+      }
     }
   }
 }
