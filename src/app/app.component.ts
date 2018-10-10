@@ -47,6 +47,20 @@ export class AppComponent {
       }, 300);
     }
   }
+  showSkirt () {
+    if(document.querySelector("#relativeContainer .man") != null) {
+      setTimeout(function(){
+        document.getElementById("maleSkirt").style.display = "block";
+        document.getElementById("eyestuff").innerHTML = "";
+      }, 300);
+    }
+    else if(document.querySelector("#relativeContainer .woman") != null) {
+      setTimeout(function(){
+        document.getElementById("femaleSkirt").style.display = "block";
+        document.getElementById("eyestuff").innerHTML = "";
+      }, 300);
+    }
+  }
   showBottomOverlays() {
     document.getElementById("pickAColor").innerHTML = "";
     if(document.querySelector("#relativeContainer .woman") != null) {
