@@ -29,26 +29,36 @@
             <hairs></hairs>
           </div>
           <div id="eyestuff">
-            <button style="position: fixed; left: 77%;" (click)="showPants()" id="pantsButton">To pants step</button>
-            <button style="position: fixed; left: 64%" (click)="showSkirt()" id="skirtButton">Or choose skirt/kilt</button>            
+            <div style="position: fixed; left: 57%;">
+              <button (click)="showPants()" id="pantsButton">To pants step</button>
+              <button (click)="showSkirt()" id="skirtButton">Or choose skirt/kilt</button> 
+            </div>           
             <eyes></eyes>
           </div>
           <div id="malePants">
+            <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button>
             <male-pants></male-pants>
           </div>
+          <!-- skirt/kilt here -->
           <div id="femalePants">
             <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button>
             <female-pants></female-pants>
           </div>
           <div id="femaleSkirt">
+            <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Skirt overlays!</button>
             <female-skirts></female-skirts>
           </div>
           <div id="bottomsStep">
+            <!-- female bottoms -->
             <female-pants-stickers-one id="femalePantsStickers1"></female-pants-stickers-one>
             <female-pants-stickers-two id="femalePantsStickers2"></female-pants-stickers-two>
             <female-pants-stickers-three id="femalePantsStickers3"></female-pants-stickers-three>
             <female-pants-stickers-four id="femalePantsStickers4"></female-pants-stickers-four>
             <female-pants-stickers-five id="femalePantsStickers5"></female-pants-stickers-five>
+            <female-skirts-stickers-one id="femaleSkirtsStickers1"></female-skirts-stickers-one>
+            <female-skirts-stickers-two id="femaleSkirtsStickers2"></female-skirts-stickers-two>
+            <!-- male bottoms -->
+            <male-pants-stickers-one id="malePantsStickers1"></male-pants-stickers-one>
           </div>
         </div>
     </div>   

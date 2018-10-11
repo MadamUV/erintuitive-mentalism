@@ -95,5 +95,13 @@ export class AppComponent {
         }, 300);
       }
     }
+    else if(document.querySelector("#relativeContainer .man") != null) {
+      if(document.querySelector("#relativeContainer .pants1") != null) {
+        setTimeout(function(){
+          document.getElementById("malePantsStickers1").style.display = "block";
+          document.getElementById("malePants").innerHTML = "";
+        }, 300);
+      }
+    }
   }
 }
