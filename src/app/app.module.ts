@@ -15,6 +15,8 @@ import { MalePantsModule } from './male-pants/male-pants.module';
 
 import { MalePantsStickers1Component } from './male-pants/male-pants-stickers1/male-pants-stickers1.component';
 import { MalePantsStickers1Module } from './male-pants/male-pants-stickers1/male-pants-stickers1.module';
+import { MalePantsStickers2Component } from './male-pants/male-pants-stickers2/male-pants-stickers2.component';
+import { MalePantsStickers2Module } from './male-pants/male-pants-stickers2/male-pants-stickers2.module';
 
 import { FemalePantsComponent } from './female-pants/female-pants.component';
 import { FemalePantsModule } from './female-pants/female-pants.module';
@@ -47,6 +49,7 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     EyesComponent,
     MalePantsComponent,
     MalePantsStickers1Component,
+    MalePantsStickers2Component,
 
     FemalePantsComponent,
     FemalePantsStickers1Component,
@@ -69,6 +72,7 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     ColorPickerModule,
     MalePantsModule,
     MalePantsStickers1Module,
+    MalePantsStickers2Module,
 
     FemalePantsModule,
     FemalePantsStickers1Module,

@@ -102,6 +102,12 @@ export class AppComponent {
           document.getElementById("malePants").innerHTML = "";
         }, 300);
       }
+      else if(document.querySelector("#relativeContainer .pants2") != null) {
+        setTimeout(function(){
+          document.getElementById("malePantsStickers2").style.display = "block";
+          document.getElementById("malePants").innerHTML = "";
+        }, 300);
+      }
     }
   }
 }
