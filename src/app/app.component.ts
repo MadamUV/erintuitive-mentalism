@@ -9,6 +9,10 @@ import { delay } from 'q';
 export class AppComponent {
   title = 'Erintuitive\'s drawing interpretation app!';
   mainMessage : string = "I interpret your personality from your avatar, too!";
+  startOver () {
+    document.getElementById("relativeContainer").innerHTML = "";
+    document.getElementById("bodyness").style.display = "block";
+  }
   showMouths () {
     if(document.getElementById("relativeContainer").innerHTML != ""){
       setTimeout(function(){
@@ -72,6 +76,15 @@ export class AppComponent {
       document.getElementById("maleSkirt").innerHTML = "";
       document.getElementById("malePants").innerHTML = "";
     }
+    document.getElementById("pickName").style.display = "block";
+  }
+  pickName () {
+    document.getElementById("buttonName").style.display = "block";
+    document.getElementById("maleTops").style.display = "none";
+    document.getElementById("femaleTops").style.display = "none";
+  }
+  pickIt () {
+    document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
   }
   showBottomOverlays() {
     document.getElementById("pickAColor").innerHTML = "";

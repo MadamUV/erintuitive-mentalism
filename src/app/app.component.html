@@ -10,7 +10,7 @@
     Welcome to {{ title }}!
   </h2>
   <div id="page">
-    <div id="header_panel"><button id="startOver">Click to start over</button></div>
+    <!-- <div id="header_panel"><button id="startOver" (click)="startOver()">Click to start over</button></div> -->
       <span id="pickAColor">
         Item color:
       </span>
@@ -36,7 +36,10 @@
             <eyes></eyes>
           </div>
           <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
-          <button id="buttonName" style="position: fixed; left: 77%;" (click)="showName()">Pick your name!</button>
+          <div id="buttonName" style="position: fixed; left: 77%;">
+            <input name="name" id="name" value="" type="text"/>
+            <button id="pickName" (click)="pickName()">Pick name!</button>
+          </div>
           <div id="malePants">
             <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
             <male-pants></male-pants>
