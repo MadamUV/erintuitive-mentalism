@@ -7,7 +7,7 @@ import { delay } from 'q';
   styleUrls: ['./app.component.css', './item.css']
 })
 export class AppComponent {
-  title = 'Erintuitive\'s drawing interpretation app!';
+  title = 'Erin\'s avatar app!';
   mainMessage : string = "I interpret your personality from your avatar, too!";
   startOver () {
     document.getElementById("relativeContainer").innerHTML = "";
