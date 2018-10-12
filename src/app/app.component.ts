@@ -60,15 +60,15 @@ export class AppComponent {
     }
   }
   showTops () {
-    document.getElementById("buttonWorld").style.display = "block";
+    document.getElementById("buttonName").style.display = "block";
     document.getElementById("topButton").style.display = "none";
     if(document.querySelector("#relativeContainer .woman") != null) {
       document.getElementById("femaleTops").style.display = "block";
       document.getElementById("femaleSkirt").innerHTML = "";
       document.getElementById("femalePants").innerHTML = "";
     }
-    else if(document.querySelector("#relativeContainer .woman") != null) {
-      
+    else if(document.querySelector("#relativeContainer .man") != null) {
+
     }
   }
   showBottomOverlays() {
