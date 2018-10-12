@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 export class MaleTopsComponent {
     topColor : string = "black";
-    sleevColor : string = "orange";
+    sleeveColor : string = "orange";
     removeTops () {
         var elem = document.querySelector("#relativeContainer .shirt");
         if( elem != null ) { elem.parentNode.removeChild(elem); }
