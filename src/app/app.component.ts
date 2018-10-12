@@ -68,7 +68,9 @@ export class AppComponent {
       document.getElementById("femalePants").innerHTML = "";
     }
     else if(document.querySelector("#relativeContainer .man") != null) {
-
+      document.getElementById("maleTops").style.display = "block";
+      document.getElementById("maleSkirt").innerHTML = "";
+      document.getElementById("malePants").innerHTML = "";
     }
   }
   showBottomOverlays() {

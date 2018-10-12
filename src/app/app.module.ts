@@ -47,6 +47,8 @@ import { FemaleSkirtsStickers1Component } from './female-skirts/female-skirts-st
 import { FemaleSkirtsStickers1Module } from './female-skirts/female-skirts-stickers1/female-skirts-stickers1.module';
 import { FemaleSkirtsStickers2Component } from './female-skirts/female-skirts-stickers2/female-skirts-stickers2.component';
 import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stickers2/female-skirts-stickers2.module';
+import { MaleTopsModule } from './male-tops/male-tops.module';
+import { MaleTopsComponent } from './male-tops/male-tops.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     FemaleSkirtsStickers1Component,
     FemaleSkirtsStickers2Component,
 
-    FemaleTopsComponent
+    FemaleTopsComponent,
+    MaleTopsComponent
 
   ],
   imports: [
@@ -101,7 +104,9 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     FemaleSkirtsStickers1Module,
     FemaleSkirtsStickers2Module,
 
-    FemaleTopsModule
+    FemaleTopsModule,
+    MaleTopsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
