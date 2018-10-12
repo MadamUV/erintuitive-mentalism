@@ -17,7 +17,7 @@ export class MalePantsStickers1Component {
             elemNew.setAttribute("style", "position: absolute; top: 0; left: 0;");
             elemNew.setAttribute("height", "380px");
             elemNew.setAttribute("viewBox", "202.715 584.407 86.593 380.048")
-        }
+        } 
     }
     pants1_sticker1() {
         this.removePants();

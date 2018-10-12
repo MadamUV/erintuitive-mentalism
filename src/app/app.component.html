@@ -35,18 +35,29 @@
             </div>           
             <eyes></eyes>
           </div>
+          <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
+          <button id="buttonWorld" style="position: fixed; left: 77%;" (click)="goWorld()">Go to the chatroom!</button>
           <div id="malePants">
-            <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button>
+            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
             <male-pants></male-pants>
           </div>
-          <!-- skirt/kilt here -->
+          <div id="maleSkirt">
+            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Male skirt/kilt overlays!</button> -->
+            <male-skirt></male-skirt>
+          </div>
           <div id="femalePants">
-            <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button>
+            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
             <female-pants></female-pants>
           </div>
           <div id="femaleSkirt">
-            <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Skirt overlays!</button>
+            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Skirt overlays!</button> -->
             <female-skirts></female-skirts>
+          </div>
+          <div id="femaleTops">
+            <female-tops></female-tops>
+          </div>
+          <div id="maleTops">
+
           </div>
           <div id="bottomsStep">
             <!-- female bottoms -->
@@ -60,6 +71,7 @@
             <!-- male bottoms -->
             <male-pants-stickers-one id="malePantsStickers1"></male-pants-stickers-one>
             <male-pants-stickers-two id="malePantsStickers2"></male-pants-stickers-two>
+            <male-skirts-stickers-one id="maleSkirtsStickers1"></male-skirts-stickers-one>
           </div>
         </div>
     </div>   

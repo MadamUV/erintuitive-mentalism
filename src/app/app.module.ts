@@ -18,6 +18,11 @@ import { MalePantsStickers1Module } from './male-pants/male-pants-stickers1/male
 import { MalePantsStickers2Component } from './male-pants/male-pants-stickers2/male-pants-stickers2.component';
 import { MalePantsStickers2Module } from './male-pants/male-pants-stickers2/male-pants-stickers2.module';
 
+import { MaleSkirtsComponent } from './male-skirts/male-skirts.component';
+import { MaleSkirtsModule } from './male-skirts/male-skirts.module';
+import { MaleSkirtsStickers1Component } from './male-skirts/male-skirts-stickers1/male-skirts-stickers1.component';
+import { MaleSkirtsStickers1Module } from './male-skirts/male-skirts-stickers1/male-skirts-stickers1.module';
+
 import { FemalePantsComponent } from './female-pants/female-pants.component';
 import { FemalePantsModule } from './female-pants/female-pants.module';
 import { FemalePantsStickers1Component } from './female-pants/female-pants-stickers1/female-pants-stickers1.component';
@@ -30,6 +35,9 @@ import { FemalePantsStickers4Component } from './female-pants/female-pants-stick
 import { FemalePantsStickers4Module } from './female-pants/female-pants-stickers4/female-pants-stickers4.module';
 import { FemalePantsStickers5Component } from './female-pants/female-pants-stickers5/female-pants-stickers5.component';
 import { FemalePantsStickers5Module } from './female-pants/female-pants-stickers5/female-pants-stickers5.module';
+
+import { FemaleTopsComponent } from './female-tops/female-tops.component';
+import { FemaleTopsModule } from './female-tops/female-tops.module';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -48,8 +56,11 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     HairsComponent,
     EyesComponent,
     MalePantsComponent,
+    MaleSkirtsComponent,
     MalePantsStickers1Component,
     MalePantsStickers2Component,
+
+    MaleSkirtsStickers1Component,
 
     FemalePantsComponent,
     FemalePantsStickers1Component,
@@ -62,6 +73,8 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     FemaleSkirtsStickers1Component,
     FemaleSkirtsStickers2Component,
 
+    FemaleTopsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -71,8 +84,11 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
     EyesModule,
     ColorPickerModule,
     MalePantsModule,
+    MaleSkirtsModule,
     MalePantsStickers1Module,
     MalePantsStickers2Module,
+
+    MalePantsStickers1Module,
 
     FemalePantsModule,
     FemalePantsStickers1Module,
@@ -83,7 +99,9 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
 
     FemaleSkirtsModule,
     FemaleSkirtsStickers1Module,
-    FemaleSkirtsStickers2Module
+    FemaleSkirtsStickers2Module,
+
+    FemaleTopsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

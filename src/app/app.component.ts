@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { delay } from '../../node_modules/@types/q';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +34,7 @@ export class AppComponent {
     }, 300);
   }
   showPants () {
+    document.getElementById("topButton").style.display = "block";
     if(document.querySelector("#relativeContainer .man") != null) {
       setTimeout(function(){
         document.getElementById("malePants").style.display = "block";
@@ -48,65 +49,64 @@ export class AppComponent {
     }
   }
   showSkirt () {
+    document.getElementById("topButton").style.display = "block";
     if(document.querySelector("#relativeContainer .man") != null) {
-      setTimeout(function(){
         document.getElementById("maleSkirt").style.display = "block";
         document.getElementById("eyestuff").innerHTML = "";
-      }, 300);
     }
     else if(document.querySelector("#relativeContainer .woman") != null) {
-      setTimeout(function(){
         document.getElementById("femaleSkirt").style.display = "block";
         document.getElementById("eyestuff").innerHTML = "";
-      }, 300);
+    }
+  }
+  showTops () {
+    document.getElementById("buttonWorld").style.display = "block";
+    document.getElementById("topButton").style.display = "none";
+    if(document.querySelector("#relativeContainer .woman") != null) {
+      document.getElementById("femaleTops").style.display = "block";
+      document.getElementById("femaleSkirt").innerHTML = "";
+      document.getElementById("femalePants").innerHTML = "";
+    }
+    else if(document.querySelector("#relativeContainer .woman") != null) {
+      
     }
   }
   showBottomOverlays() {
     document.getElementById("pickAColor").innerHTML = "";
     if(document.querySelector("#relativeContainer .woman") != null) {
       if(document.querySelector("#relativeContainer .pants1") != null) {
-        setTimeout(function(){
-          document.getElementById("femalePantsStickers1").style.display = "block";
-          document.getElementById("femalePants").innerHTML = "";
-        }, 300);
+        document.getElementById("femalePantsStickers1").style.display = "block";
+        document.getElementById("femalePants").innerHTML = "";
       }
       else if(document.querySelector("#relativeContainer .pants2") != null) {
-        setTimeout(function(){
-          document.getElementById("femalePantsStickers2").style.display = "block";
-          document.getElementById("femalePants").innerHTML = "";
-        }, 300);
+        document.getElementById("femalePantsStickers2").style.display = "block";
+        document.getElementById("femalePants").innerHTML = "";
       }
       else if(document.querySelector("#relativeContainer .pants3") != null) {
-        setTimeout(function(){
-          document.getElementById("femalePantsStickers3").style.display = "block";
-          document.getElementById("femalePants").innerHTML = "";
-        }, 300);
+        document.getElementById("femalePantsStickers3").style.display = "block";
+        document.getElementById("femalePants").innerHTML = "";
       }
       else if(document.querySelector("#relativeContainer .pants4") != null) {
-        setTimeout(function(){
-          document.getElementById("femalePantsStickers4").style.display = "block";
-          document.getElementById("femalePants").innerHTML = "";
-        }, 300);
+        document.getElementById("femalePantsStickers4").style.display = "block";
+        document.getElementById("femalePants").innerHTML = "";
       }
       else if(document.querySelector("#relativeContainer .pants5") != null) {
-        setTimeout(function(){
-          document.getElementById("femalePantsStickers5").style.display = "block";
-          document.getElementById("femalePants").innerHTML = "";
-        }, 300);
+        document.getElementById("femalePantsStickers5").style.display = "block";
+        document.getElementById("femalePants").innerHTML = "";
       }
     }
     else if(document.querySelector("#relativeContainer .man") != null) {
       if(document.querySelector("#relativeContainer .pants1") != null) {
-        setTimeout(function(){
-          document.getElementById("malePantsStickers1").style.display = "block";
-          document.getElementById("malePants").innerHTML = "";
-        }, 300);
+        document.getElementById("malePantsStickers1").style.display = "block";
+        document.getElementById("malePants").innerHTML = "";
       }
       else if(document.querySelector("#relativeContainer .pants2") != null) {
-        setTimeout(function(){
-          document.getElementById("malePantsStickers2").style.display = "block";
-          document.getElementById("malePants").innerHTML = "";
-        }, 300);
+        document.getElementById("malePantsStickers2").style.display = "block";
+        document.getElementById("malePants").innerHTML = "";
+      }
+      else if(document.querySelector("#relativeContainer .skirt1") != null) {
+        document.getElementById("maleSkirtsStickers1").style.display = "block";
+        document.getElementById("maleSkirt").innerHTML = "";
       }
     }
   }
