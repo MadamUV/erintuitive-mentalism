@@ -78,10 +78,12 @@ export class AppComponent {
     }
     document.getElementById("pickName").style.display = "block";
   }
-  pickName () {
+  postAvatarWithName() {
     document.getElementById("buttonName").style.display = "block";
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
+    //post name now!
+    
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");

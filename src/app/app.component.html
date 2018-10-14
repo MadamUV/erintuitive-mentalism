@@ -37,8 +37,8 @@
           </div>
           <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
           <div id="buttonName" style="position: fixed; left: 77%;">
-            <input name="name" id="name" value="" type="text"/>
-            <button id="pickName" (click)="pickName()">Pick name!</button>
+            Name your character<br><input id="avatarName" maxlength="12" name="avatarName" type="text"/>`;
+			      <button onclick="postAvatarWithName()">Choose name</button>
           </div>
           <div id="malePants">
             <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
