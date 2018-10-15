@@ -6,83 +6,85 @@
     });
 </script>
 <div style="text-align:center">
-  <h2>
-    Welcome to {{ title }}!
-  </h2>
-  <div id="page">
-    <!-- <div id="header_panel"><button id="startOver" (click)="startOver()">Click to start over</button></div> -->
-      <span id="pickAColor">
-        Item color:
-      </span>
-      <div>
-        <div id="myChoices">
-          <div id="bodyness">
-            <button style="position: fixed; left: 77%;" (click)="showMouths()" id="mouthButton">To mouth step</button>
-            <bodies></bodies>
+    <h2>
+      Welcome to {{ title }}!
+    </h2>
+    <div id="page">
+      <!-- <div id="header_panel"><button id="startOver" (click)="startOver()">Click to start over</button></div> -->
+        <span id="pickAColor">
+          Item color:
+        </span>
+        <div>
+          <div id="myChoices">
+            <div id="bodyness">
+              <button style="position: fixed; left: 77%;" (click)="showMouths()" id="mouthButton">To mouth step</button>
+              <bodies></bodies>
+            </div>
+            <div id="mouthstuff">
+              <button style="position: fixed; left: 77%;" (click)="showHairs()" id="hairButton">To hair step</button>
+              <mouths></mouths>
+            </div>
+            <div id="hairstuff">
+              <button style="position: fixed; left: 77%;" (click)="showEyes()" id="eyeButton">To eye step</button>
+              <hairs></hairs>
+            </div>
+            <div id="eyestuff">
+              <div style="position: fixed; left: 57%;">
+                <button (click)="showPants()" id="pantsButton">To pants step</button>
+                <button (click)="showSkirt()" id="skirtButton">Or choose skirt/kilt</button> 
+              </div>           
+              <eyes></eyes>
+            </div>
+            <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
+            <div id="buttonName" style="position: fixed; left: 77%;">
+              <div id="pickName">
+                <input name="name" id="name" [(ngModel)]="avatarName" type="text"/>
+                <button (click)="pickName()">Pick name!</button>
+              </div>
+            </div>
+            <div id="malePants">
+              <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
+              <male-pants></male-pants>
+            </div>
+            <div id="maleSkirt">
+              <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Male skirt/kilt overlays!</button> -->
+              <male-skirt></male-skirt>
+            </div>
+            <div id="femalePants">
+              <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
+              <female-pants></female-pants>
+            </div>
+            <div id="femaleSkirt">
+              <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Skirt overlays!</button> -->
+              <female-skirts></female-skirts>
+            </div>
+            <div id="femaleTops">
+              <female-tops></female-tops>
+            </div>
+            <div id="maleTops">
+              <male-tops></male-tops>
+            </div>
+            <div id="bottomsStep">
+              <!-- female bottoms -->
+              <female-pants-stickers-one id="femalePantsStickers1"></female-pants-stickers-one>
+              <female-pants-stickers-two id="femalePantsStickers2"></female-pants-stickers-two>
+              <female-pants-stickers-three id="femalePantsStickers3"></female-pants-stickers-three>
+              <female-pants-stickers-four id="femalePantsStickers4"></female-pants-stickers-four>
+              <female-pants-stickers-five id="femalePantsStickers5"></female-pants-stickers-five>
+              <female-skirts-stickers-one id="femaleSkirtsStickers1"></female-skirts-stickers-one>
+              <female-skirts-stickers-two id="femaleSkirtsStickers2"></female-skirts-stickers-two>
+              <!-- male bottoms -->
+              <male-pants-stickers-one id="malePantsStickers1"></male-pants-stickers-one>
+              <male-pants-stickers-two id="malePantsStickers2"></male-pants-stickers-two>
+              <male-skirts-stickers-one id="maleSkirtsStickers1"></male-skirts-stickers-one>
+            </div>
           </div>
-          <div id="mouthstuff">
-            <button style="position: fixed; left: 77%;" (click)="showHairs()" id="hairButton">To hair step</button>
-            <mouths></mouths>
-          </div>
-          <div id="hairstuff">
-            <button style="position: fixed; left: 77%;" (click)="showEyes()" id="eyeButton">To eye step</button>
-            <hairs></hairs>
-          </div>
-          <div id="eyestuff">
-            <div style="position: fixed; left: 57%;">
-              <button (click)="showPants()" id="pantsButton">To pants step</button>
-              <button (click)="showSkirt()" id="skirtButton">Or choose skirt/kilt</button> 
-            </div>           
-            <eyes></eyes>
-          </div>
-          <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
-          <div id="pickName" style="position: fixed; left: 77%;">
-            Name your character<br><input id="avatarName" [(ngModel)]="name" maxlength="12" name="avatarName" type="text"/>`;
-			      <button onclick="postAvatarWithName()">Choose name</button>
-          </div>
-          <div id="malePants">
-            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
-            <male-pants></male-pants>
-          </div>
-          <div id="maleSkirt">
-            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Male skirt/kilt overlays!</button> -->
-            <male-skirt></male-skirt>
-          </div>
-          <div id="femalePants">
-            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Pants overlays!</button> -->
-            <female-pants></female-pants>
-          </div>
-          <div id="femaleSkirt">
-            <!-- <button style="position: fixed; left: 77%;" (click)="showBottomOverlays()">Skirt overlays!</button> -->
-            <female-skirts></female-skirts>
-          </div>
-          <div id="femaleTops">
-            <female-tops></female-tops>
-          </div>
-          <div id="maleTops">
-            <male-tops></male-tops>
-          </div>
-          <div id="bottomsStep">
-            <!-- female bottoms -->
-            <female-pants-stickers-one id="femalePantsStickers1"></female-pants-stickers-one>
-            <female-pants-stickers-two id="femalePantsStickers2"></female-pants-stickers-two>
-            <female-pants-stickers-three id="femalePantsStickers3"></female-pants-stickers-three>
-            <female-pants-stickers-four id="femalePantsStickers4"></female-pants-stickers-four>
-            <female-pants-stickers-five id="femalePantsStickers5"></female-pants-stickers-five>
-            <female-skirts-stickers-one id="femaleSkirtsStickers1"></female-skirts-stickers-one>
-            <female-skirts-stickers-two id="femaleSkirtsStickers2"></female-skirts-stickers-two>
-            <!-- male bottoms -->
-            <male-pants-stickers-one id="malePantsStickers1"></male-pants-stickers-one>
-            <male-pants-stickers-two id="malePantsStickers2"></male-pants-stickers-two>
-            <male-skirts-stickers-one id="maleSkirtsStickers1"></male-skirts-stickers-one>
-          </div>
-        </div>
-    </div>   
-  </div>
+      </div>   
+    </div>
   <div id="relativeContainerContainer" style="position: fixed; width: 87px; top: 20%; left: 5%; z-index: 2;">
     <div id="relativeContainer" style="position: relative;">
-      <div id="avatarName">{{ name }}</div>
     </div>
+    <div>{{ avatarName }}</div>
   </div>
 </div>
 

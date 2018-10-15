@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { delay } from 'q';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   title = 'Erin\'s avatar app!';
-  name = '';
+  avatarName = '';
   mainMessage : string = "I interpret your personality from your avatar, too!";
   startOver () {
     document.getElementById("relativeContainer").innerHTML = "";
@@ -46,7 +45,7 @@ export class AppComponent {
         document.getElementById("malePants").style.display = "block";
         document.getElementById("eyestuff").innerHTML = "";
       }, 300);
-    }
+    } 
     else if(document.querySelector("#relativeContainer .woman") != null) {
       setTimeout(function(){
         document.getElementById("femalePants").style.display = "block";
@@ -55,7 +54,7 @@ export class AppComponent {
     }
   }
   showSkirt () {
-    document.getElementById("topButton").style.display = "block";
+    document.getElementById("topsButton").style.display = "block";
     if(document.querySelector("#relativeContainer .man") != null) {
         document.getElementById("maleSkirt").style.display = "block";
         document.getElementById("eyestuff").innerHTML = "";
@@ -84,8 +83,7 @@ export class AppComponent {
     document.getElementById("buttonName").style.display = "block";
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
-    //post name now!
-    
+    //post name now
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
