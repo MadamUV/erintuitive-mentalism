@@ -37,7 +37,7 @@
           </div>
           <button id="topButton" style="position: fixed; left: 77%;" (click)="showTops()">Pick a top!</button>
           <div id="buttonName" style="position: fixed; left: 77%;">
-            Name your character<br><input id="avatarName" [(ngModule)]="name" maxlength="12" name="avatarName" type="text"/>`;
+            Name your character<br><input id="avatarName" [(ngModel)]="name" maxlength="12" name="avatarName" type="text"/>`;
 			      <button onclick="postAvatarWithName()">Choose name</button>
           </div>
           <div id="malePants">
