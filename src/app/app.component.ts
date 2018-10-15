@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { delay } from 'q';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { delay } from 'q';
 })
 export class AppComponent {
   title = 'Erin\'s avatar app!';
+  name = '';
   mainMessage : string = "I interpret your personality from your avatar, too!";
   startOver () {
     document.getElementById("relativeContainer").innerHTML = "";

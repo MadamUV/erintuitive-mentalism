@@ -49,6 +49,7 @@ import { FemaleSkirtsStickers2Component } from './female-skirts/female-skirts-st
 import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stickers2/female-skirts-stickers2.module';
 import { MaleTopsModule } from './male-tops/male-tops.module';
 import { MaleTopsComponent } from './male-tops/male-tops.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,9 @@ import { MaleTopsComponent } from './male-tops/male-tops.component';
     FemaleSkirtsStickers2Module,
 
     FemaleTopsModule,
-    MaleTopsModule
+    MaleTopsModule,
+
+    FormsModule
 
   ],
   providers: [],
