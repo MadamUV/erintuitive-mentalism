@@ -39,7 +39,7 @@
             <div id="buttonName" style="position: fixed; left: 77%;">
               <div id="pickName">
                 <input name="name" id="name" [(ngModel)]="avatarName" type="text"/>
-                <button id="pickTheName">Pick name!</button>
+                <button id="pickTheName" (click)="postAvatarWithName()">Pick name!</button>
               </div>
             </div>
             <div id="malePants">

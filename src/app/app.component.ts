@@ -84,6 +84,9 @@ export class AppComponent {
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
     //post name now
+    var relative = document.getElementById('relativeContainerContainer');
+    window.localStorage.setItem('avatar', '<div width="21px" height="95px">' + relative.innerHTML + '</div>');
+    console.log(window.localStorage.getItem('avatar'));
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
