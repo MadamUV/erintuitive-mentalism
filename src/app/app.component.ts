@@ -85,8 +85,12 @@ export class AppComponent {
     document.getElementById("femaleTops").style.display = "none";
     //post name now
     var relative = document.getElementById('relativeContainerContainer');
-    window.localStorage.setItem('avatar', '<div width="21px" height="95px">' + relative.innerHTML + '</div>');
-    console.log(window.localStorage.getItem('avatar'));
+    window.localStorage.setItem("name", this.avatarName);
+    var relativeContainer = document.getElementById("relativeContainerContainer");
+		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div><div id="leftBlinkless"><div class="sprite" style="webkit-transform: scale(-0.45, 0.45); -ms-transform: scale(-0.45, 0.45); transform: scale(-0.45, 0.45);">${relativeContainer.innerHTML}</div></div>`;
+    window.localStorage.setItem("avatarClothed_right", document.getElementById("rightBlinkless").innerHTML);
+    window.localStorage.setItem("avatarClothed_left", document.getElementById("leftBlinkless").innerHTML);
+    window.localStorage.setItem("readyWorld", "ready");
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
