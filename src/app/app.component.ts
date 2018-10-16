@@ -54,7 +54,7 @@ export class AppComponent {
     }
   }
   showSkirt () {
-    document.getElementById("topsButton").style.display = "block";
+    document.getElementById("topButton").style.display = "block";
     if(document.querySelector("#relativeContainer .man") != null) {
         document.getElementById("maleSkirt").style.display = "block";
         document.getElementById("eyestuff").innerHTML = "";
