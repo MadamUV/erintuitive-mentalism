@@ -50,6 +50,12 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
 import { MaleTopsModule } from './male-tops/male-tops.module';
 import { MaleTopsComponent } from './male-tops/male-tops.component';
 import { FormsModule } from '@angular/forms';
+//import { Injectable } from '@angular/core';
+//import { Socket } from 'ng6-socket-io';
+//import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
+//import { map } from 'rxjs/operators';
+
+//const config : SocketIoConfig = { url: window.location.hostname };
 
 @NgModule({
   declarations: [
@@ -108,7 +114,9 @@ import { FormsModule } from '@angular/forms';
     FemaleTopsModule,
     MaleTopsModule,
 
-    FormsModule
+    FormsModule,
+
+    //SocketIoModule.forRoot(config)
 
   ],
   providers: [],
@@ -117,3 +125,19 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { 
   
 }
+
+/*@Injectable()
+export class ChatService {
+  constructor(private socket : Socket) {
+    
+  }
+  msg : string;
+  sendMessage(msg){
+    this.socket.emit("message", msg);
+  }
+  getMessage(){
+    return this.socket
+      .fromEvent("message")
+      .pipe(map(data => this.msg ));
+  }
+}*/
