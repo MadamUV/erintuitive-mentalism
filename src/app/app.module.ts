@@ -50,6 +50,10 @@ import { FemaleSkirtsStickers2Module } from './female-skirts/female-skirts-stick
 import { MaleTopsModule } from './male-tops/male-tops.module';
 import { MaleTopsComponent } from './male-tops/male-tops.component';
 import { FormsModule } from '@angular/forms';
+import { WorldModule } from './world/world.module';
+import { WorldComponent } from './world/world.component';
+import { DrawingComponent } from './drawing/drawing.component';
+import { DrawingModule } from './drawing/drawing.module';
 //import { Injectable } from '@angular/core';
 //import { Socket } from 'ng6-socket-io';
 //import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
@@ -83,7 +87,10 @@ import { FormsModule } from '@angular/forms';
     FemaleSkirtsStickers2Component,
 
     FemaleTopsComponent,
-    MaleTopsComponent
+    MaleTopsComponent,
+
+    WorldComponent,
+    DrawingComponent
 
   ],
   imports: [
@@ -117,7 +124,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
     //SocketIoModule.forRoot(config)
-
+    WorldModule,
+    DrawingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

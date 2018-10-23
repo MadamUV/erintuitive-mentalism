@@ -87,10 +87,10 @@ export class AppComponent {
     var relative = document.getElementById('relativeContainerContainer');
     window.localStorage.setItem("name", this.avatarName);
     var relativeContainer = document.getElementById("relativeContainerContainer");
-		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div><div id="leftBlinkless"><div class="sprite" style="webkit-transform: scale(-0.45, 0.45); -ms-transform: scale(-0.45, 0.45); transform: scale(-0.45, 0.45);">${relativeContainer.innerHTML}</div></div>`;
-    window.localStorage.setItem("avatarClothed_right", document.getElementById("rightBlinkless").innerHTML);
-    window.localStorage.setItem("avatarClothed_left", document.getElementById("leftBlinkless").innerHTML);
-    window.localStorage.setItem("readyWorld", "ready");
+		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
+    document.getElementById("page").style.display = "none";
+    document.getElementById("drawing").style.display = "block";
+    document.getElementById("buttonName").style.display = "none";
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");

@@ -38,7 +38,7 @@ export class HairsComponent {
     var relativeContainer = document.getElementById("relativeContainer");
     relativeContainer.innerHTML += document.getElementById("hair2").innerHTML;
     var elemNew = document.querySelector("#relativeContainer .hair");
-    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -12px; left: -24.8; margin-top: 0;"); }
+    if(elemNew !== null ) { elemNew.setAttribute("style", "position: absolute; top: -12px; left: -24.8px; margin-top: 0;"); }
   }
   buttonHair3(){
     var hair = document.getElementById("hair3").innerHTML;
