@@ -7,7 +7,7 @@ import { delay } from 'q';
   styleUrls: ['./app.component.css', './item.css']
 })
 export class AppComponent {
-  title = 'Erin\'s avatar app!';
+  title = 'Erintuitive\'s mentalism app where I interpret avatars and drawings to reveal your personality!';
   avatarName = '';
   mainMessage : string = "I interpret your personality from your avatar, too!";
   //bools

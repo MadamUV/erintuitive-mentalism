@@ -6,9 +6,9 @@
     });
 </script>
 <div style="text-align:center">
-    <h2>
+    <h3>
       Welcome to {{ title }}!
-    </h2>
+    </h3>
     <div id="page">
       <!-- <div id="header_panel"><button id="startOver" (click)="startOver()">Click to start over</button></div> -->
         <span id="pickAColor">
@@ -81,7 +81,7 @@
           </div>
       </div>   
     </div>
-  <div id="drawing" [class.inactive]="!(drawingBool)">
+  <div id="drawing" *ngIf="drawingBool">
     <drawing></drawing>
     <button id="canvasButton" (click)="saveDrawing()">Save drawing as chat message!</button>
   </div>
