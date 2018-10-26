@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['../app.component.css', './world.scss']
 })
 export class WorldComponent {
-    drawAgain () {
 
-    }
 }
 
 /*export class StorageAccessComponent implements OnInit{

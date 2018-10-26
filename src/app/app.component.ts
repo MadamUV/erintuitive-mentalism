@@ -9,6 +9,7 @@ import { delay } from 'q';
 export class AppComponent {
   title = 'Erin\'s avatar app!';
   avatarName = '';
+  avatarPassword : string;
   mainMessage : string = "I interpret your personality from your avatar, too!";
   //bools
   drawingBool : boolean = false;
@@ -92,8 +93,14 @@ export class AppComponent {
     var relativeContainer = document.getElementById("relativeContainerContainer");
 		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
     document.getElementById("page").style.display = "none";
-    document.getElementById("drawing").style.display = "block";
-    document.getElementById("buttonName").style.display = "none";
+    if (this.avatarName == "Erintuitive") { 
+      if (this.avatarPassword == "173281"){
+        document.getElementById("buttonName").style.display = "none";
+        this.worldBool = true;
+      }
+    } else {
+      document.getElementById("drawing").style.display = "block";
+    }
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
@@ -138,12 +145,7 @@ export class AppComponent {
     }
   } 
   saveDrawing () {
-    let canvas = <any>document.getElementById("canvas");
-    let dataURL = canvas.toDataURL();
-    console.log(dataURL);
-    const myName = document.getElementById("myName").innerHTML;
-    const myAvatar = document.getElementById("relativeContainerContainer").innerHTML;
-    document.getElementById("relativeContainerContainer").innerHTML = "";
-    this.drawingBool = false;
+    document.getElementById("relativeContainerContainer").style.display = "none";
+    this.worldBool = true;
   }
 }

@@ -5,15 +5,15 @@
 	<div id="form">
 		<ul id="messages" style="word-break: break-all; word-wrap: break-word;"></ul>
 	</div>
-	<textarea id="m" rows="5" cols="34" value=""></textarea><button id="n">Send</button>
+	<textarea id="m" rows="5" cols="34" value=""></textarea><button id="n">Send message!</button>
 </div>
 <div id="menuSuggestions" height="80%">
 	<font color="purple"><br>You have been <br>logged out of <br>chat due to messaging<br> inactivity.</font><br>
 </div>
-<div id="drawingButton">
+<!-- <div id="drawingButton">
 	<button (click)="drawAgain()">Draw a picture for me to interpret!</button><br>
 	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
-</div>
+</div> -->
 <div id="fb-root">Share on Facebook</div>
 <!-- Mental note: correct Facebook share URL -->
 <script>(function(d, s, id) {
@@ -23,13 +23,13 @@
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=817064305070781&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div style="position: fixed; top: 550px; left: 450px;">
+<div>
 	<div class="fb-share-button" data-href="https://erintuitive6.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ferintuitive6.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 	<a class="twitter-share-button"
 	href="https://twitter.com/intent/tweet?text=I%20was%20read%20by%20%23Erintuitive%21"
 	data-size="large"><font color="yellow">Tweet about this!</font></a>	
 </div>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="color: white; position: fixed; top: 500px; left: 680px;">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="color: white;">
 	<input type="hidden" name="cmd" value="_s-xclick">
 	<input type="hidden" name="hosted_button_id" value="PRUWLY3PGJUFA">
 	<table>
@@ -44,11 +44,11 @@
 	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>	
 <!-- start embed scripts -->
-<script src="/assets/js/socket.io.js"></script>
+<script src="../js/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- end embed scripts -->
 <script>
-	var name = localStorage.getItem("name");
+	var socket = io.connect("/");
 	$("#m").focus(function(){
 		$(document).keyup(function(e){
 			switch(e.which) {
@@ -68,22 +68,36 @@
 	
 	//set user id
 	//var userId = "local" + Math.random().toString();
+	var password = document.getElementById("password").value;
 	var d = new Date();
-	var userId = d.getTime();
+	if(password == "173281"){
+		userId = password;
+	} else {
+		var userId = d.getTime();
+	}
 	var posX = 0;
 	var posY = 0;
 	var right = window.localStorage.getItem("avatarClothed_right");
 	var players = {};
-	var socket = io.connect("/");
+	let message = document.getElementById("m").innerHTML;    
+	const myName = document.getElementById("myName").innerHTML;
+	const myAvatar = document.getElementById("relativeContainerContainer").innerHTML;
 	function submit() {
-		socket.emit("msg", $("#m").val(), name, userId);
+		socket.emit("msg", $("#m").val(), name, userId, myAvatar);
 		$("#m").val('');
 	}
-	submitDrawing(window.localStorage.getItem("drawing"));
+	let canvas = document.getElementById("canvas");
+    let dataURL = canvas.toDataURL();
+    document.getElementById("drawing").style.display = "none";
+	submitDrawing(dataURL);
+	document.getElementById("n").addEventListener("click", function(){
+		//socket
+		socket.emit("msg", message, myName, id, myAvatar, false);
+	}); //reply avatar tomorrow
 	function submitDrawing(dataUrl) {
-		if(localStorage.getItem("drawing") != null && localStorage.getItem("drawing") != undefined){
+		if(dataURL != null && dataURL != undefined){
 			document.getElementById("myDrawing").style.visibility = 'visible';
-			socket.emit("msg", '<a target="_blank" href="' + dataUrl + '">My drawing</a>', name, userId);
+			socket.emit("msg", '<a target="_blank" href="' + dataUrl + '">My drawing</a>', name, userId, true);
 			setTimeout(function(){
 				window.localStorage.removeItem("drawing");
 			}, 60);
@@ -93,19 +107,42 @@
 		}
 	}
 	var motionTime = false;
-	socket.on("msgReturn", function(value, name2){
+	socket.on("msgReturn", function(value, name2, id, avatar, isDrawing){
+		var theMessage = "<font color='purple'>" + name2 + "</font>: " + value + "</li><br>";
 		if(value != "" && value != null){
-			if(value.indexOf("/remove ") == 0){
-				var nameValue = value.substr(8);
-				for (player in players){
-					//name
-					if(players[player][1] == nameValue){
-						socket.emit("removePlayer", player);
+			if(name2 == "Erintuitive"){
+				if(value.indexOf("/remove ") == 0){
+					var nameValue = value.substr(8);
+					for (player in players){
+						//name
+						if(players[player][1] == nameValue){
+							socket.emit("removePlayer", player);
+						}
+					}
+				}
+				else {
+					if(userId == id){
+						var totalMessage = '<div class="flex-container"><div>' + avatar + '</div>' + theMessage + '</div>';
+						$("#messages").append(totalMessage);
+					}
+					else {
+						var totalMessage = '<div class="flex-container-backwards"><div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div></div>';
 					}
 				}
 			}
-			else {
-				$("#messages").append("<font color='purple'>" + name2 + "</font>: " + value + "</li><br>");
+			else if (name2 != "Erintuitive"){
+				if(userId == id){
+					var totalMessage = '<div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div>';
+					$("#messages").append(totalMessage);
+				}
+				else {
+					if(isDrawing){
+						var totalMessage = name2 + " has sent Erintuitive a drawing to interpret!";
+					}
+					else {
+						var totalMessage = '<div class="flex-container-backwards"><div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div></div>';
+					}
+				}
 			}
 		}
 		var chatWindow = document.getElementById("messages");

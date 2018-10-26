@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const fs = require('fs');
+require('es6');
 
 const path = require('path');
 
@@ -9,10 +11,11 @@ const path = require('path');
     var players = {};
 var afk = {};
 var numPlayers = 0;
-io.on('connection', (socket)=>{
+io.on('connection', function(socket){
   //A new user has connected!
-  socket.on("msg", function(value, name, id){
-    io.emit("msgReturn", value, name);
+  console.log("successful connection!");
+  socket.on("msg", function(value, name, id, avatar, isDrawing){
+    io.emit("msgReturn", value, name, id, avatar, isDrawing);
     afk[`${id}`] = 0;
   });
   socket.on("afk", function(id){
@@ -24,7 +27,7 @@ io.on('connection', (socket)=>{
     delete players[id];
     numPlayers--
   });
-  socket.on("id", function(id, name){
+  socket.on("id", function(id, name, char){
     numPlayers++
     if(numPlayers <= 25){
       players[`${id}`] = [char, name, numPlayers];

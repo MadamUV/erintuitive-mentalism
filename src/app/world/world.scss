@@ -2,9 +2,9 @@ $msgBorder: solid 2px;
 $white : #FFF;
 #m {border: $msgBorder;}
 #n {border: $msgBorder; padding: 5px;}
-#messages {list-style-type: none; margin: 0; padding: 0; overflow: scroll; height: 600px; 
+#messages {list-style-type: none; margin: 0; padding: 0; overflow: scroll; height: 350px; 
     li {padding: 5px 10px; }
-    li:nth-child(odd) { background-color: #AAA; }
+    background-color: #AAA;
 }
 /*input, #skip, #next, #back, #skip, #skip2, #enter, #buttons button, */ #drawingButton button {
     font-family: rubik, sans-serif;
@@ -16,4 +16,16 @@ $white : #FFF;
     border-radius: 3px;
     border-color: $white;
     margin: 3px;
+}
+@mixin the-scale ($scaleX, $scaleY){
+    -webkit-transform: scale($scaleX, $scaleY);
+    -ms-transform: scale($scaleX, $scaleY);
+    transform: scale($scaleX, $scaleY);
+}
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.flex-container-backwards {
+    @include the-scale(-1, 1);
 }
