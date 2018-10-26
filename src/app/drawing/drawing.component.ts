@@ -126,14 +126,14 @@ export class DrawingComponent {
       document.getElementById("_pink").onfocus = function () {
         ctx.strokeStyle = "pink";
       };
-      document.getElementById("_lightblue").onfocus = function () {
+      document.getElementById("_lightBlue").onfocus = function () {
         ctx.strokeStyle = "lightblue";
       };
       document.getElementById("_beige").onfocus = function () {
         ctx.strokeStyle = "beige";
       };
       document.getElementById("_tan").onfocus = function () {
-        ctx.strokeStyle = "#tan";
+        ctx.strokeStyle = "tan";
       };
       document.getElementById("_orange").onfocus = function () {
         ctx.strokeStyle = "orange";
