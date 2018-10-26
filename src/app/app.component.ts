@@ -7,7 +7,7 @@ import { delay } from 'q';
   styleUrls: ['./app.component.css', './item.css']
 })
 export class AppComponent {
-  title = 'Erintuitive\'s mentalism app where I interpret avatars and drawings to reveal your personality!';
+  title = 'Erin\'s avatar app!';
   avatarName = '';
   mainMessage : string = "I interpret your personality from your avatar, too!";
   //bools
@@ -92,8 +92,8 @@ export class AppComponent {
     var relativeContainer = document.getElementById("relativeContainerContainer");
 		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
     document.getElementById("page").style.display = "none";
+    document.getElementById("drawing").style.display = "block";
     document.getElementById("buttonName").style.display = "none";
-    this.drawingBool = true;
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
@@ -145,6 +145,5 @@ export class AppComponent {
     const myAvatar = document.getElementById("relativeContainerContainer").innerHTML;
     document.getElementById("relativeContainerContainer").innerHTML = "";
     this.drawingBool = false;
-    this.worldBool = true;
   }
 }
