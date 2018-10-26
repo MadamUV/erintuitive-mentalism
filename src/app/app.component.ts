@@ -92,7 +92,6 @@ export class AppComponent {
     var relativeContainer = document.getElementById("relativeContainerContainer");
 		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
     document.getElementById("page").style.display = "none";
-    document.getElementById("drawing").style.display = "block";
     document.getElementById("buttonName").style.display = "none";
     this.drawingBool = true;
   }
