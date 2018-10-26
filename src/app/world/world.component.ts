@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+//import { LocalStorageService } from 'ngx-localstorage';
 
 @Component ({
     selector: 'world',
     templateUrl: './world.html',
-    styleUrls: []
+    styleUrls: ['../app.component.css', './world.scss']
 })
 export class WorldComponent {
-    
+    drawAgain () {
+
+    }
 }
+
+/*export class StorageAccessComponent implements OnInit{
+    constructor (public _storageService: LocalStorageService) {
+    }
+
+    ngOnInit(): void {
+        this._storageService.asPromisable().set
+    }
+}*/

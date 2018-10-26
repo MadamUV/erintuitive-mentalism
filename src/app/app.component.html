@@ -81,10 +81,11 @@
           </div>
       </div>   
     </div>
-  <div id="drawing">
+  <div id="drawing" [class.inactive]="!(drawingBool)">
     <drawing></drawing>
+    <button id="canvasButton" (click)="saveDrawing()">Save drawing as chat message!</button>
   </div>
-  <div id="world">
+  <div id="worldDiv" *ngIf="worldBool">
     <world></world>
   </div>
   <div id="relativeContainerContainer" style="position: fixed; width: 87px; top: 20%; left: 5%; z-index: 2;">

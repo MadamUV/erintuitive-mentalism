@@ -125,7 +125,7 @@ import { DrawingModule } from './drawing/drawing.module';
 
     //SocketIoModule.forRoot(config)
     WorldModule,
-    DrawingModule
+    DrawingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

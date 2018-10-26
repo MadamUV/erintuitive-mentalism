@@ -10,8 +10,11 @@ export class AppComponent {
   title = 'Erin\'s avatar app!';
   avatarName = '';
   mainMessage : string = "I interpret your personality from your avatar, too!";
+  //bools
+  drawingBool : boolean = false;
+  worldBool : boolean = false;
   startOver () {
-    document.getElementById("relativeContainer").innerHTML = "";
+    document.getElementById("relativeContainerContainer").innerHTML = "";
     document.getElementById("bodyness").style.display = "block";
   }
   showMouths () {
@@ -91,6 +94,7 @@ export class AppComponent {
     document.getElementById("page").style.display = "none";
     document.getElementById("drawing").style.display = "block";
     document.getElementById("buttonName").style.display = "none";
+    this.drawingBool = true;
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
@@ -133,5 +137,15 @@ export class AppComponent {
         document.getElementById("maleSkirt").innerHTML = "";
       }
     }
+  } 
+  saveDrawing () {
+    let canvas = <any>document.getElementById("canvas");
+    let dataURL = canvas.toDataURL();
+    console.log(dataURL);
+    const myName = document.getElementById("myName").innerHTML;
+    const myAvatar = document.getElementById("relativeContainerContainer").innerHTML;
+    document.getElementById("relativeContainerContainer").innerHTML = "";
+    this.drawingBool = false;
+    this.worldBool = true;
   }
 }

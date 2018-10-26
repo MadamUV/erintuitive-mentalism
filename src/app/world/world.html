@@ -10,7 +10,8 @@
 <div id="menuSuggestions" height="80%">
 	<font color="purple"><br>You have been <br>logged out of <br>chat due to messaging<br> inactivity.</font><br>
 </div>
-<div id="drawingButton"><button onclick="drawing()">Draw a picture for me to interpret!</button><br>
+<div id="drawingButton">
+	<button (click)="drawAgain()">Draw a picture for me to interpret!</button><br>
 	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
 </div>
 <div id="fb-root">Share on Facebook</div>
@@ -47,7 +48,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- end embed scripts -->
 <script>
-	var name = document.getElementById("myName");
+	var name = localStorage.getItem("name");
 	$("#m").focus(function(){
 		$(document).keyup(function(e){
 			switch(e.which) {

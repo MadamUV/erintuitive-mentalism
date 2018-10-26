@@ -1,0 +1,19 @@
+$msgBorder: solid 2px;
+$white : #FFF;
+#m {border: $msgBorder;}
+#n {border: $msgBorder; padding: 5px;}
+#messages {list-style-type: none; margin: 0; padding: 0; overflow: scroll; height: 600px; 
+    li {padding: 5px 10px; }
+    li:nth-child(odd) { background-color: #AAA; }
+}
+/*input, #skip, #next, #back, #skip, #skip2, #enter, #buttons button, */ #drawingButton button {
+    font-family: rubik, sans-serif;
+    font-size: 1.2em;
+    background-color: #3FC;
+    padding: 2px;
+    border: 2px;
+    border-color: #000;
+    border-radius: 3px;
+    border-color: $white;
+    margin: 3px;
+}

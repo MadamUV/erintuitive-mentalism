@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./drawing.css']
 })
 
-export class DrawingComponent { 
+export class DrawingComponent {
     ngOnInit() { 
         //code example from https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
         var canvas = <any>document.getElementById('canvas'); //modified to cast
@@ -136,8 +136,7 @@ export class DrawingComponent {
         ctx.strokeStyle = "#tan";
       };
       document.getElementById("_orange").onfocus = function () {
-        ctx.strokeStyle = "#orange";
+        ctx.strokeStyle = "orange";
       };
     }
-
 }
