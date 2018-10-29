@@ -81,9 +81,6 @@
           </div>
       </div>   
     </div>
-  <div id="pass" *ngIf="avatarName == 'Erintuitive'">
-      If you are Erintuitive, type password.<input type="password" [(ngModel)]="avatarPassword" id="password"/>
-  </div>
   <div id="drawing" *ngIf="!(avatarName == 'Erintuitive')">
     <drawing></drawing>
     <button id="canvasButton" (click)="saveDrawing()">Save drawing as chat message!</button>

@@ -1,17 +1,18 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+'use strict';
+
+let app = require('express')();
+let http = require('http').Server(app);
+let io = require('socket.io')(http);
 const fs = require('fs');
 require('es6');
 
 const path = require('path');
 
 //var totalPositions = [['420px', '0px'], ['73px', '0px'], ['143px', '30px'], ['85px', '200px'], ['200px', '200px'], ['345px', '7px'], ['0px', '230px'], ['195px', '90px'], ['305px', '210px'], ['259px,', '10px']];
-    var players = {};
+var players = {};
 var afk = {};
 var numPlayers = 0;
-io.on('connection', function(socket){
+io.on('connection', (socket) => {
   //A new user has connected!
   console.log("successful connection!");
   socket.on("msg", function(value, name, id, avatar, isDrawing){
@@ -21,6 +22,9 @@ io.on('connection', function(socket){
   socket.on("afk", function(id){
     afk[`${id}`] += 1;
     io.emit("afkReturn", id, afk);
+  });
+  socket.on('disconnect', function(){
+    console.log("user disconnected");
   });
   socket.on("removePlayer", function(id){
     io.emit("removePlayerReturn", id);

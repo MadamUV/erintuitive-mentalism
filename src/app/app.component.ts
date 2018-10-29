@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { delay } from 'q';
 
 @Component({
   selector: 'app-root',

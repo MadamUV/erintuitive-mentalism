@@ -1,11 +1,14 @@
-<div id="worldBody">
+<div id="pass" [(ngModel)]="password" *ngIf="avatarName == 'Erintuitive'">
+	If you are Erintuitive, type password.<input type="password" [(ngModel)]="avatarPassword" id="password"/>
+</div>
+<div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
 	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
 	<!-- message form -->
 	<div id="form">
 		<ul id="messages" style="word-break: break-all; word-wrap: break-word;"></ul>
 	</div>
-	<textarea id="m" rows="5" cols="34" value=""></textarea><button id="n">Send message!</button>
+	<textarea id="m" rows="5" cols="34" [(ngModel)]="message"></textarea><button id="n" (click)="submit()">Send message!</button>
 </div>
 <div id="menuSuggestions" height="80%">
 	<font color="purple"><br>You have been <br>logged out of <br>chat due to messaging<br> inactivity.</font><br>
@@ -15,6 +18,14 @@
 	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
 </div> -->
 <div id="fb-root">Share on Facebook</div>
+
+<!--  use service in app.component.ts too separately for bringing in the drawing
+get it from context
+
+-->
+
+
+
 <!-- Mental note: correct Facebook share URL -->
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -46,170 +57,4 @@
 <!-- start embed scripts -->
 <script src="../js/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- end embed scripts -->
-<script>
-	var socket = io.connect("/");
-	$("#m").focus(function(){
-		$(document).keyup(function(e){
-			switch(e.which) {
-				case 13:
-				submit();
-			}
-		});
-		$("#n").click(function(){
-			submit();
-		})
-	});
-	console.log(window.localStorage.getItem("drawing"));
-	document.getElementById("myDrawing").setAttribute("src", window.localStorage.getItem("drawing"));
-	//add link in message
-	
-	var count = 0;
-	
-	//set user id
-	//var userId = "local" + Math.random().toString();
-	var password = document.getElementById("password").value;
-	var d = new Date();
-	if(password == "173281"){
-		userId = password;
-	} else {
-		var userId = d.getTime();
-	}
-	var posX = 0;
-	var posY = 0;
-	var right = window.localStorage.getItem("avatarClothed_right");
-	var players = {};
-	let message = document.getElementById("m").innerHTML;    
-	const myName = document.getElementById("myName").innerHTML;
-	const myAvatar = document.getElementById("relativeContainerContainer").innerHTML;
-	function submit() {
-		socket.emit("msg", $("#m").val(), name, userId, myAvatar);
-		$("#m").val('');
-	}
-	let canvas = document.getElementById("canvas");
-    let dataURL = canvas.toDataURL();
-    document.getElementById("drawing").style.display = "none";
-	submitDrawing(dataURL);
-	document.getElementById("n").addEventListener("click", function(){
-		//socket
-		socket.emit("msg", message, myName, id, myAvatar, false);
-	}); //reply avatar tomorrow
-	function submitDrawing(dataUrl) {
-		if(dataURL != null && dataURL != undefined){
-			document.getElementById("myDrawing").style.visibility = 'visible';
-			socket.emit("msg", '<a target="_blank" href="' + dataUrl + '">My drawing</a>', name, userId, true);
-			setTimeout(function(){
-				window.localStorage.removeItem("drawing");
-			}, 60);
-		}
-		else {
-			document.getElementById("myDrawing").style.visibility = 'hidden';
-		}
-	}
-	var motionTime = false;
-	socket.on("msgReturn", function(value, name2, id, avatar, isDrawing){
-		var theMessage = "<font color='purple'>" + name2 + "</font>: " + value + "</li><br>";
-		if(value != "" && value != null){
-			if(name2 == "Erintuitive"){
-				if(value.indexOf("/remove ") == 0){
-					var nameValue = value.substr(8);
-					for (player in players){
-						//name
-						if(players[player][1] == nameValue){
-							socket.emit("removePlayer", player);
-						}
-					}
-				}
-				else {
-					if(userId == id){
-						var totalMessage = '<div class="flex-container"><div>' + avatar + '</div>' + theMessage + '</div>';
-						$("#messages").append(totalMessage);
-					}
-					else {
-						var totalMessage = '<div class="flex-container-backwards"><div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div></div>';
-					}
-				}
-			}
-			else if (name2 != "Erintuitive"){
-				if(userId == id){
-					var totalMessage = '<div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div>';
-					$("#messages").append(totalMessage);
-				}
-				else {
-					if(isDrawing){
-						var totalMessage = name2 + " has sent Erintuitive a drawing to interpret!";
-					}
-					else {
-						var totalMessage = '<div class="flex-container-backwards"><div class="flex-container"><div>' + avatar + '</div><div>' + theMessage + '</div></div></div>';
-					}
-				}
-			}
-		}
-		var chatWindow = document.getElementById("messages");
-		chatWindow.scrollTop = chatWindow.scrollHeight;
-	});
-	setInterval(function(){
-		socket.emit("afk", userId);
-	}, 1000);
-	socket.on("removePlayerReturn", function(id){
-		var element = document.getElementById(id);
-		var element2 = element.parentNode;
-		element2.parentNode.removeChild(element2);
-	});
-	function drawing() {
-		if(document.getElementById(userId) != null){
-			socket.emit("removePlayer", userId);
-			window.location.replace("/drawing");
-		}
-	}
-	socket.on("afkReturn", function(id, afk){
-		if(document.getElementById(userId) != null){
-			var element = document.getElementById(userId);
-			var elemName = userId + "afk";
-			var elem = document.getElementById(elemName);
-			if(id == userId){
-				if(afk[`${id}`] <= 500) {
-					elem.style.visibility = "hidden";
-				}
-				else if(afk[`${id}`] > 500){
-					elem.style.visibility = "visible";
-				}
-				if(afk[`${id}`] > 2200){
-					socket.emit("removePlayer", id);
-				}
-			}
-		}
-	});
-	if( document.getElementById(userId) != null && document.getElementById(userId) != undefined ){
-		setInterval(function(){	
-			socket.emit("blinkInterval", userId);
-		}, 3000);
-	}
-	/*document.getElementById("playersDiv").innerHTML += '<div class="player"><div class="' + userId + '" id="' + userId + '" style="position: absolute; top: 0px + ; left: 0px;" alt="player">' + players[player][0] + '</div><div style="position: absolute; left: ' + (parseInt(players[player][2].replace("px", "")) - 50).toString() + 'px; top: ' + (parseInt(players[player][3].replace("px", "")) + 259).toString() + 'px; webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);" id="' + player + 'name"><font color="white" size="23px">' + players[player][4] + '</font><br><div id="' + player + 'afk" style="visibility: hidden; position: relative; left: 35px;"><font size="18" color="silver">(afk)</font></div></div></div></div>';*/
-	socket.emit("id", userId, /*right, left,*/ name/*, "0px", "0px"*/);
-	//here
-	socket.on('players', function(player2, numPlyr){
-		var beforePlayers = false;
-		var afterPlayers = false;
-		for(player1 in player2){
-			if(player1[1] == "Erintuitive"){
-				beforePlayers = true;
-			}
-		}
-		players = player2;
-		for(player1 in players){
-			if(player1[1] == "Erintuitive"){
-				afterPlayers = true;
-			}
-		}
-		if(name == "Erintuitive" && beforePlayers == afterPlayers && numPlyr > 1){
-			alert("Erintuitive, a person has entered your chatroom!");
-		}
-		for(player in players) {
-			if(document.getElementById(player) == null || document.getElementById(player) == undefined){
-				document.getElementById("playersDiv").innerHTML += '<div class="player"><div class="' + player + '" id="' + player + '" style="position: absolute; top: ' + players[player][3] + '; left: ' + players[player][2] + ';" alt="player">' + players[player][0] + '</div><div style="position: absolute; left: ' + (parseInt(players[player][2].replace("px", "")) - 50).toString() + 'px; top: ' + (parseInt(players[player][3].replace("px", "")) + 259).toString() + 'px; webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);" id="' + player + 'name"><font color="white" size="23px">' + players[player][4] + '</font><br><div id="' + player + 'afk" style="visibility: hidden; position: relative; left: 35px;"><font size="18" color="silver">(afk)</font></div></div></div></div>';
-			}
-		}
-	});
-</script>
 </div>
