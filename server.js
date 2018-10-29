@@ -1,7 +1,11 @@
 'use strict';
 
+ 
+
 let app = require('express')();
+
 let http = require('http').Server(app);
+
 let io = require('socket.io')(http);
 const fs = require('fs');
 require('es6');
@@ -12,37 +16,30 @@ const path = require('path');
 var players = {};
 var afk = {};
 var numPlayers = 0;
+
+//start tutorial code
+
 io.on('connection', (socket) => {
-  //A new user has connected!
-  console.log("successful connection!");
-  socket.on("msg", function(value, name, id, avatar, isDrawing){
-    io.emit("msgReturn", value, name, id, avatar, isDrawing);
-    afk[`${id}`] = 0;
-  });
-  socket.on("afk", function(id){
-    afk[`${id}`] += 1;
-    io.emit("afkReturn", id, afk);
-  });
+
+  console.log('USER CONNECTED');
+
+ 
+
   socket.on('disconnect', function(){
-    console.log("user disconnected");
+
+    console.log('USER DISCONNECTED');
+
   });
-  socket.on("removePlayer", function(id){
-    io.emit("removePlayerReturn", id);
-    delete players[id];
-    numPlayers--
+
+ 
+
+  socket.on('add-message', (message) => {
+
+    io.emit('message', {type:'new-message', text: message});
+
   });
-  socket.on("id", function(id, name, char){
-    numPlayers++
-    if(numPlayers <= 25){
-      players[`${id}`] = [char, name, numPlayers];
-    }
-    else {
-      socket.emit("roomFull");
-    }
-    afk[`${id}`] = 0; 
-    io.emit("players", players, numPlayers);
-  });
-});
+
+}); //end tutorial code
 
 app.use(express.static(__dirname + "/dist/erintuitive-mentalist"));
 
