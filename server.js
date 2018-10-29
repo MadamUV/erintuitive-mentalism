@@ -1,11 +1,8 @@
 'use strict';
 
- 
-
-let app = require('express')();
-
+let express = require('express');
+let app = express();
 let http = require('http').Server(app);
-
 let io = require('socket.io')(http);
 const fs = require('fs');
 require('es6');
@@ -41,9 +38,10 @@ io.on('connection', (socket) => {
 
 }); //end tutorial code
 
+
 app.use(express.static(__dirname + "/dist/erintuitive-mentalist"));
 
-app.listen(process.env.PORT || 9200);
+http.listen(process.env.PORT || 9200);
 
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname + "/dist/erintuitive-mentalist/index.html"));

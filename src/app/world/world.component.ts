@@ -32,25 +32,24 @@ export class WorldComponent {
     d : Date = new Date();
     userId : string = this.d.toString();
     players = [this.userId];
-    txtMessage : string = document.getElementById("m").innerHTML;    
-	myName : string = document.getElementById("myName").innerHTML;
+    txtMessage : string = document.getElementById("m").innerHTML;
 	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML;
     isDrawing : boolean = false;
     afkId : string;
     loggedOut = false;
     
-    canvas = <any>document.getElementById("canvas");
-    dataURL : string;
+    canvas;
+    dataURL;
     afkCount : 0;
 
-    submitDrawing(dataUrl) {
+    submitDrawing() {
 		if(this.dataURL != null && this.dataURL != undefined){
-			document.getElementById("myDrawing").style.visibility = 'visible';
+			document.getElementById("canvas").style.visibility = 'visible';
             this.message = ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
             this.sendMessage();
 		}
 		else {
-			document.getElementById("myDrawing").style.visibility = 'hidden';
+			document.getElementById("canvas").style.visibility = 'hidden';
 		}
     }
     ngOnInit() {
@@ -65,6 +64,7 @@ export class WorldComponent {
         this.afkId = userId + "_afk";
         this.myAvatar = '<div class="' + this.userId + " " + this.name + '">' + this.myAvatar + "<br><div class=" + this.afkId + "</div></div>";
         if (document.getElementById("canvas") != undefined && document.getElementById("canvas") != null ){
+            this.canvas = document.getElementById("canvas");
             this.dataURL = this.canvas.toDataURL();
         }
         else {
@@ -141,7 +141,7 @@ export class WorldComponent {
                 if (countPerson == false) this.players.push(message[1]);
             }
         });
-        this.submitDrawing(this.dataURL);    
+        this.submitDrawing();    
         document.getElementById("drawing").style.display = "none";
         if(this.loggedOut == true) {
             alert('You may be timed out. Do you wish to stay?');

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ChatService } from '../chat-service';
 
 @Component ({
     selector: 'drawing',
@@ -8,32 +7,8 @@ import { ChatService } from '../chat-service';
 })
 
 export class DrawingComponent {
-  constructor(private chatService : ChatService){};
-  messages = [];
-  message;
-  connection;
-  
-  
-  sendMessage() {
-
-      this.chatService.sendMessage(this.message);
-  
-      this.message = '';
-  
-    }
-  
-     ngOnDestroy() {
-  
-      this.connection.unsubscribe();
-  
-    }
     ngOnInit() { 
-
-      this.connection = this.chatService.getMessages().subscribe(message => {
-    
-        this.messages.push(message);
   
-      })
         //code example from https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
         var canvas = <any>document.getElementById('canvas'); //modified to cast
         var ctx = <CanvasRenderingContext2D>canvas.getContext('2d');

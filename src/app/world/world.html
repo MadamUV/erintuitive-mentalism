@@ -1,12 +1,11 @@
-<div id="pass" [(ngModel)]="password" *ngIf="avatarName == 'Erintuitive'">
+<div id="pass" [(ngModel)]="password" *ngIf="name == 'Erintuitive'">
 	If you are Erintuitive, type password.<input type="password" [(ngModel)]="avatarPassword" id="password"/>
 </div>
 <div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
 	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
 	<!-- message form -->
-	<div id="form">
-		<ul id="messages" style="word-break: break-all; word-wrap: break-word;"></ul>
+	<div id="messages">
 	</div>
 	<textarea id="m" rows="5" cols="34" [(ngModel)]="message"></textarea><button id="n" (click)="submit()">Send message!</button>
 </div>

@@ -2,7 +2,7 @@ $msgBorder: solid 2px;
 $white : #FFF;
 #m {border: $msgBorder;}
 #n {border: $msgBorder; padding: 5px;}
-#messages {list-style-type: none; margin: 0; padding: 0; overflow: scroll; height: 350px; 
+#messages {margin: 0; padding: 0; overflow: scroll; height: 350px; 
     li {padding: 5px 10px; }
     background-color: #AAA;
 }
