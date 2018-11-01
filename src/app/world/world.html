@@ -1,5 +1,6 @@
-<div id="pass" [(ngModel)]="password" *ngIf="name == 'Erintuitive'">
-	If you are Erintuitive, type password.<input type="password" [(ngModel)]="avatarPassword" id="password"/>
+<div id="pass" *ngIf="name == 'Erintuitive'">
+	If you are Erintuitive, type password.<input type="password" [(ngModel)]="password" id="password"/>
+	<button id="passButton" (click)="setPass()">Submit password</button>
 </div>
 <div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
@@ -7,15 +8,13 @@
 	<!-- message form -->
 	<div id="messages">
 	</div>
-	<textarea id="m" rows="5" cols="34" [(ngModel)]="message"></textarea><button id="n" (click)="submit()">Send message!</button>
-</div>
-<div id="menuSuggestions" height="80%">
-	<font color="purple"><br>You have been <br>logged out of <br>chat due to messaging<br> inactivity.</font><br>
+	<textarea id="m" rows="5" cols="34" [(ngModel)]="txtMessage"></textarea><button id="n" (click)="initVariables()">Send message!</button>
 </div>
 <!-- <div id="drawingButton">
 	<button (click)="drawAgain()">Draw a picture for me to interpret!</button><br>
 	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
 </div> -->
+<input type="hidden" [(ngModel)]="message"/>
 <div id="fb-root">Share on Facebook</div>
 
 <!--  use service in app.component.ts too separately for bringing in the drawing

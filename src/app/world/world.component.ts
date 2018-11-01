@@ -8,155 +8,93 @@ import { ChatService } from '../chat-service';
     styleUrls: ['../app.component.css', './world.scss'],
     providers: [ChatService]
 })
-export class WorldComponent {
-    constructor(private chatService : ChatService){};
-    messages = [];
-    message;
+export class WorldComponent implements OnInit, OnDestroy {
+    message  : string = '';
     connection;
-    onKeyUp(event) {
-        if (event.key === "Enter") {
-            this.sendMessage();
-        }
-    }
-    //clicking n will also sendMessage()
-    sendMessage() {
-        this.chatService.sendMessage(this.message);
-        this.txtMessage = '';
-        this.message = [];
-        var chatWindow = document.getElementById("messages");
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
     name : string = document.getElementById("myName").innerHTML;
-	//set user id
+    txtMessage : string;
 	password : string;
     d : Date = new Date();
     userId : string = this.d.toString();
     players = [this.userId];
-    txtMessage : string = document.getElementById("m").innerHTML;
 	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML;
     isDrawing : boolean = false;
     afkId : string;
     loggedOut = false;
+    afkDiv = document.getElementsByClassName(this.afkId)[0];
     
-    canvas;
-    dataURL;
-    afkCount : 0;
+    canvas = <HTMLCanvasElement>document.getElementById("canvas");
+    dataURL = this.canvas.toDataURL();
+    afkCount = 0;
 
-    submitDrawing() {
-		if(this.dataURL != null && this.dataURL != undefined){
-			document.getElementById("canvas").style.visibility = 'visible';
-            this.message = ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
-            this.sendMessage();
-		}
-		else {
-			document.getElementById("canvas").style.visibility = 'hidden';
-		}
-    }
-    ngOnInit() {
-        setInterval(function(){
-            this.message = ["afk", this.userId, this.name, this.afkCount];
-        }, 1000);  
-        if (this.password == "173281"){   
+    constructor(private chatService: ChatService) { }
+
+    setPass() {
+        if (this.password == "173281"){
+            document.getElementById('pass').style.display = "none";
             this.userId = this.password;
-        } else {
-            var userId = this.d.getTime();
-        }        
-        this.afkId = userId + "_afk";
-        this.myAvatar = '<div class="' + this.userId + " " + this.name + '">' + this.myAvatar + "<br><div class=" + this.afkId + "</div></div>";
-        if (document.getElementById("canvas") != undefined && document.getElementById("canvas") != null ){
-            this.canvas = document.getElementById("canvas");
-            this.dataURL = this.canvas.toDataURL();
         }
-        else {
-            this.dataURL = '';
-        }
-        this.connection = this.chatService.getMessages().subscribe(message => {
-            this.messages.push(message);
-            let afkDiv = document.getElementsByClassName(this.afkId)[0];
-            if(message[0] == "msg") {
-                afkDiv.innerHTML = "";
-                let counter = 0;
-                //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
-                    // ["afk", this.userId, this.name, this.afkCount]
-                //}
-                if(name == "Erintuitive" && this.userId == "173281"){
-                    if(this.txtMessage.indexOf("/remove ") == 0){
-                        var nameValue = this.txtMessage.substr(8);
-                        for (let player of this.players){
-                            //name
-                            if(message[2] == nameValue){
-                                //its to remove player, but for convenience's sake we'll give them an afk status
-                                this.message = ["afk", message[3], nameValue, 1501];
-                                this.sendMessage();
-                            }
-                        }
-                    }
-                    else {
-                        if(this.userId == message[3]){
+    }
 
-                            var totalMessage = '<div class="flex-container"><div>' + message[4] + '</div><div>' + message[1] + '</div></div>';
-                            document.getElementById("messages").innerHTML += totalMessage;
-                        }
-                        else {
-                            var totalMessage = '<div class="flex-container"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + '</div></div>';
-                        }
-                    }
-                    
-                }
-                else {
-                    if(userId == message[3]){
-                        if (message[5] == true){
-                            var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + message[1] + '"></font>' + message[2] + '</a></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
-                        }
-                        else {
-                            var totalMessage = '<div class="flex-container"><div>' + this.myAvatar + '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
-                        }
-                        document.getElementById("messages").innerHTML += totalMessage;
-                    }
-                    else {
-                        if(message[5] == true){
-                            var totalMessage = name + " has sent Erintuitive a drawing to interpret!";
-                        }
-                        else {
-                            var totalMessage = '<div class="flex-container"><div><font color="green"><a href="' + message[1] + '">' + message[2] + '</a></font></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
-                        }
-                    }
-                }
-            }
-            else if (message[0] == "afk") {
-                let afkPerson = document.getElementsByClassName(message[1])[0];
-                let countPerson = false;
-                if(this.name == message[2]) this.afkCount++;
-                for(let i=0; i<this.players.length; i++) {
-                    if(message[1] == this.players[i]){
-                        countPerson = true;
-                        if(message[3] > 1500){
-                            this.players.splice(i, 1);
-                            this.loggedOut = true;
-                        }
-                        else if(message[3] < 1500 && message[2] >= 500) { afkDiv.innerHTML = "(afk)"; }
-                        else if (message[3] < 2) { afkDiv.innerHTML = ""; }
-                    }
-                }
-                if (countPerson == false) this.players.push(message[1]);
-            }
-        });
-        this.submitDrawing();    
-        document.getElementById("drawing").style.display = "none";
-        if(this.loggedOut == true) {
-            alert('You may be timed out. Do you wish to stay?');
+    //["msg", this.txtMessage, this.name, this.userId, this.myAvatar, this.isDrawing];
+    initVariables () {
+        //name already initialized
+        //pass initialized if we call setpass before this function inside ngOniInit()
+        this.setPass();
+        if(document.getElementById("canvas").style.display == "block"){
+            //remember, the booleans and numbers will become strings
+            this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true___false";
+            this.sendMessage();
+            this.canvas.style.display = "none";
+        }
+        if(this.txtMessage != ""){
+            this.message = "msg___" + this.txtMessage + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___false___false";
+            //Send message
+            this.sendMessage();
+            this.txtMessage = "";
         }
     }
-	submit() {
-        this.message = ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, this.isDrawing];
-        this.sendMessage();
+
+    sendMessage() {
+
+        this.chatService.sendMessage(this.message);
         this.message = '';
+
     }
-    
+
+    checkMessage (message) {
+        message = message.split("___");
+        if(message[0] == "msg"){
+            this.afkCount = 0;
+        }
+        if(this.afkCount == 5000){
+            for(let i=0; i<this.players.length; i++) {
+                if(message[1] == this.players[i]){
+
+                }
+            }
+        }
+    }
+
+    ngOnInit() {
+
+        this.setPass();
+        setInterval(function(){
+            this.afkCount += 1;
+        }, 1000);
+
+        //here we return the socket
+        this.connection = this.chatService.getMessages().subscribe(message => {
+        document.getElementById("messages").innerHTML += message;
+        if(message != '') this.checkMessage(message);
+
+        })
+
+    }
     ngOnDestroy() {
-    
+
         this.connection.unsubscribe();
-    
+
     }
 }
 

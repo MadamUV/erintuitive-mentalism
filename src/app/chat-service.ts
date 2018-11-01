@@ -10,7 +10,7 @@ export class ChatService {
   private url = 'http://localhost:9200';
   private socket;
 
-  sendMessage(message) {
+    sendMessage(message) {
 
     this.socket.emit('add-message', message);
 
