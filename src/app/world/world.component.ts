@@ -85,7 +85,7 @@ export class WorldComponent implements OnInit, OnDestroy {
 
         //here we return the socket
         this.connection = this.chatService.getMessages().subscribe(message => {
-        document.getElementById("messages").innerHTML += message;
+        document.getElementById("messages").innerHTML += message["text"];
         if(message != '') this.checkMessage(message);
 
         })
