@@ -10,6 +10,12 @@
       Welcome to {{ title }}!
     </h3>
     <div id="page">
+      <div id="buttonName">      
+        If you are Erintuitive, please sign in here. Otherwise keep blank.
+        <input type="text" [(ngModel)]="avatarName"/>
+        <input type="password" [(ngModel)]="avatarPassword"/>
+        <button type="button" (click)="postAvatarWithName()">Submit password!</button>
+      </div>
       <!-- <div id="header_panel"><button id="startOver" (click)="startOver()">Click to start over</button></div> -->
         <span id="pickAColor">
           Item color:
@@ -91,6 +97,7 @@
   <div id="relativeContainerContainer" style="position: fixed; width: 87px; top: 20%; left: 5%; z-index: 2;">
     <div id="relativeContainer" style="position: relative;">
     </div>
+    <br>
     <div id="myName"><font size="35px">{{ avatarName }}</font></div>
     <div class="afk"></div>
   </div>

@@ -2,7 +2,7 @@ $msgBorder: solid 2px;
 $white : #FFF;
 #m {border: $msgBorder;}
 #n {border: $msgBorder; padding: 5px;}
-#messages {margin: 0; padding: 0; overflow: scroll; height: 350px; 
+#messages {margin: 0; padding: 0; overflow: scroll; height: 520px; 
     li {padding: 5px 10px; }
     background-color: #AAA;
 }
@@ -21,6 +21,9 @@ $white : #FFF;
     -webkit-transform: scale($scaleX, $scaleY);
     -ms-transform: scale($scaleX, $scaleY);
     transform: scale($scaleX, $scaleY);
+}
+.margin-it {
+    margin-left: 3em;
 }
 .flex-container {
     display: flex;

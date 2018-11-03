@@ -19,7 +19,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     d = this.date.getTime();
     userId : string = this.d.toString();
     players = [this.userId];
-	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML;
+	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML + this.name + ": ";
     isDrawing : boolean = false;
     afkId : string = this.userId + "_afk";
     loggedOut = false;
@@ -43,8 +43,8 @@ export class WorldComponent implements OnInit, OnDestroy {
         //name already initialized
         //pass initialized if we call setpass before this function inside ngOniInit()
         this.setPass();
-        document.getElementsByClassName("afk")[0].classList.add(this.afkId);
-        this.afkDiv = document.getElementsByClassName(this.afkId)[0];
+        //document.getElementsByClassName("afk")[0].classList.add(this.afkId);
+        //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
         if(document.getElementById("canvas").style.display == "block"){
             //remember, the booleans and numbers will become strings
             this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
@@ -55,7 +55,6 @@ export class WorldComponent implements OnInit, OnDestroy {
             this.message = "msg___" + this.txtMessage + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___false";
             //Send message
             this.sendMessage();
-            this.txtMessage = "";
         }
     }
 
@@ -72,15 +71,18 @@ export class WorldComponent implements OnInit, OnDestroy {
     checkMessage (message) {
         message = message["text"].toString();
         message = message.split("___");
+        console.log("this is" + message[1]);
+        //get chat window
+        var chatWindow = document.getElementById("messages");
         ///////////////
 
         if(message[0] == "msg") {
-            this.afkDiv.innerHTML = "";
+            //this.afkDiv.innerHTML = "";
             this.afkCount = 0;
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            if(name == "Erintuitive" && this.userId == "173281"){
+            if(this.name == "Erintuitive" && this.userId == "173281"){
                 if(this.txtMessage.indexOf("/remove ") == 0){
                     var nameValue = this.txtMessage.substr(8);
                     for (let player of this.players){
@@ -95,11 +97,11 @@ export class WorldComponent implements OnInit, OnDestroy {
                 else {
                     if(this.userId == message[3]){
 
-                        var totalMessage = '<div class="flex-container"><div>' + message[4] + '</div><div>' + message[1] + '</div></div>';
+                        var totalMessage = '<br><div class="flex-container"><div>' + message[4] + message[2] + '</div><div>' + message[1] + '</div></div>';
                         document.getElementById("messages").innerHTML += totalMessage;
                     }
                     else {
-                        var totalMessage = '<div class="flex-container"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                        var totalMessage = '<div class="flex-container margin-it"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + message[2] + '</div></div>';
                     }
                 }
                 
@@ -115,13 +117,16 @@ export class WorldComponent implements OnInit, OnDestroy {
                 }
                 else {
                     if(message[5] == "true"){
-                        var totalMessage = name + " has sent Erintuitive a drawing to interpret!";
+                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + message[1] + message[2] + '">' + message[2] + '</a></font></div><div class="flex-container-backwards">' + message[4] + '</div></div></div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container"><div><font color="green"><a href="' + message[1] + '">' + message[2] + '</a></font></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                        var totalMessage = '<div class="flex-container margin-it"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + '</div></div>';
                     }
                 }
-                document.getElementById("messages").innerHTML += totalMessage;
+                if(chatWindow.innerHTML == ""){
+                    totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
+                }
+                chatWindow.innerHTML += totalMessage;
             }
         }
         else if (message[0] == "afk") {
@@ -136,8 +141,8 @@ export class WorldComponent implements OnInit, OnDestroy {
                         this.players.splice(i, 1);
                         this.loggedOut = true;
                     }
-                    else if(afkCount2 < 1500 && message[2] >= 500) { this.afkDiv.innerHTML = "(afk)"; }
-                    else if (afkCount2 < 2) { this.afkDiv.innerHTML = ""; }
+                    //else if(afkCount2 < 1500 && message[2] >= 500) { this.afkDiv.innerHTML = "(afk)"; }
+                    //else if (afkCount2 < 2) { this.afkDiv.innerHTML = ""; }
                 }
             }
             if (countPerson == false) this.players.push(message[1]);
@@ -152,6 +157,8 @@ export class WorldComponent implements OnInit, OnDestroy {
             }
         }
         this.message = '';
+        this.txtMessage = "";
+        chatWindow.scrollTop = chatWindow.scrollHeight;
     }
     ngOnInit() {
 
