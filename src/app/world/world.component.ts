@@ -10,18 +10,20 @@ import { ChatService } from '../chat-service';
 })
 export class WorldComponent implements OnInit, OnDestroy {
     message  : string = '';
+    messages = [];
     connection;
     name : string = document.getElementById("myName").innerHTML;
     txtMessage : string;
 	password : string;
-    d : Date = new Date();
+    date : Date = new Date();
+    d = this.date.getTime();
     userId : string = this.d.toString();
     players = [this.userId];
 	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML;
     isDrawing : boolean = false;
-    afkId : string;
+    afkId : string = this.userId + "_afk";
     loggedOut = false;
-    afkDiv = document.getElementsByClassName(this.afkId)[0];
+    afkDiv : Element;
     
     canvas = <HTMLCanvasElement>document.getElementById("canvas");
     dataURL = this.canvas.toDataURL();
@@ -41,14 +43,16 @@ export class WorldComponent implements OnInit, OnDestroy {
         //name already initialized
         //pass initialized if we call setpass before this function inside ngOniInit()
         this.setPass();
+        document.getElementsByClassName("afk")[0].classList.add(this.afkId);
+        this.afkDiv = document.getElementsByClassName(this.afkId)[0];
         if(document.getElementById("canvas").style.display == "block"){
             //remember, the booleans and numbers will become strings
-            this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true___false";
+            this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
             this.sendMessage();
             this.canvas.style.display = "none";
         }
         if(this.txtMessage != ""){
-            this.message = "msg___" + this.txtMessage + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___false___false";
+            this.message = "msg___" + this.txtMessage + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___false";
             //Send message
             this.sendMessage();
             this.txtMessage = "";
@@ -58,15 +62,88 @@ export class WorldComponent implements OnInit, OnDestroy {
     sendMessage() {
 
         this.chatService.sendMessage(this.message);
-        this.message = '';
 
     }
-
-    checkMessage (message) {
-        message = message.split("___");
-        if(message[0] == "msg"){
-            this.afkCount = 0;
+    onKeyUp(event) {
+        if (event.key === "Enter") {
+            this.initVariables();
         }
+    }
+    checkMessage (message) {
+        message = message["text"].toString();
+        message = message.split("___");
+        ///////////////
+
+        if(message[0] == "msg") {
+            this.afkDiv.innerHTML = "";
+            this.afkCount = 0;
+            //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
+                // ["afk", this.userId, this.name, this.afkCount]
+            //}
+            if(name == "Erintuitive" && this.userId == "173281"){
+                if(this.txtMessage.indexOf("/remove ") == 0){
+                    var nameValue = this.txtMessage.substr(8);
+                    for (let player of this.players){
+                        //name
+                        if(message[2] == nameValue){
+                            //its to remove player, but for convenience's sake we'll give them an afk status
+                            this.message = "afk___" + message[3] + "___" + nameValue + "___" + this.afkCount;
+                            this.sendMessage();
+                        }
+                    }
+                }
+                else {
+                    if(this.userId == message[3]){
+
+                        var totalMessage = '<div class="flex-container"><div>' + message[4] + '</div><div>' + message[1] + '</div></div>';
+                        document.getElementById("messages").innerHTML += totalMessage;
+                    }
+                    else {
+                        var totalMessage = '<div class="flex-container"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                    }
+                }
+                
+            }
+            else {
+                if(this.userId == message[3]){
+                    if (message[5] == "true"){
+                        var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + message[1] + '"></font>' + message[2] + '</a></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                    }
+                    else {
+                        var totalMessage = '<div class="flex-container"><div>' + this.myAvatar + '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
+                    }
+                }
+                else {
+                    if(message[5] == "true"){
+                        var totalMessage = name + " has sent Erintuitive a drawing to interpret!";
+                    }
+                    else {
+                        var totalMessage = '<div class="flex-container"><div><font color="green"><a href="' + message[1] + '">' + message[2] + '</a></font></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                    }
+                }
+                document.getElementById("messages").innerHTML += totalMessage;
+            }
+        }
+        else if (message[0] == "afk") {
+            //let afkPerson = document.getElementsByClassName(message[1])[0];
+            var afkCount2 = message[3].parseInt();
+            let countPerson = false;
+            if(this.name == message[2] && this.userId == message[1]) this.afkCount++;
+            for(let i=0; i<this.players.length; i++) {
+                if(message[1] == this.players[i]){
+                    countPerson = true;
+                    if(afkCount2 > 1500){
+                        this.players.splice(i, 1);
+                        this.loggedOut = true;
+                    }
+                    else if(afkCount2 < 1500 && message[2] >= 500) { this.afkDiv.innerHTML = "(afk)"; }
+                    else if (afkCount2 < 2) { this.afkDiv.innerHTML = ""; }
+                }
+            }
+            if (countPerson == false) this.players.push(message[1]);
+        }
+
+        //////////////
         if(this.afkCount == 5000){
             for(let i=0; i<this.players.length; i++) {
                 if(message[1] == this.players[i]){
@@ -74,8 +151,8 @@ export class WorldComponent implements OnInit, OnDestroy {
                 }
             }
         }
+        this.message = '';
     }
-
     ngOnInit() {
 
         this.setPass();
@@ -85,7 +162,9 @@ export class WorldComponent implements OnInit, OnDestroy {
 
         //here we return the socket
         this.connection = this.chatService.getMessages().subscribe(message => {
-        document.getElementById("messages").innerHTML += message["text"];
+        this.messages.push(message);
+        console.log(this.messages);
+
         if(message != '') this.checkMessage(message);
 
         })
