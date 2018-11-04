@@ -72,6 +72,11 @@ export class WorldComponent implements OnInit, OnDestroy {
         message = message["text"].toString();
         message = message.split("___");
         console.log("this is" + textMsg);
+        var latestSpeaker = '';
+        if (this.messages[this.messages.length - 2] != null && this.messages[this.messages.length - 2] != undefined){
+            latestSpeaker = this.messages[this.messages.length - 2]["text"].toString().split("___")[3];
+        }
+        console.log(latestSpeaker);
         //get chat window
         var chatWindow = document.getElementById("messages");
         ///////////////
@@ -117,7 +122,13 @@ export class WorldComponent implements OnInit, OnDestroy {
                         var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container"><div>' + this.myAvatar + '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
+                        var totalMessage1 = '<div class="flex-container"><div>'
+                        var totalMessage2 = this.myAvatar;
+                        if (latestSpeaker == this.userId) { totalMessage2 = ""; }
+                        else totalMessage2 = this.myAvatar;
+
+                        var totalMessage3 = '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
+                        totalMessage = totalMessage1 + totalMessage2 + totalMessage3;
                     }
                 }
                 else {
