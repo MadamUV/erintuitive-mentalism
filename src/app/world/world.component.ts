@@ -45,7 +45,7 @@ export class WorldComponent implements OnInit, OnDestroy {
         this.setPass();
         //document.getElementsByClassName("afk")[0].classList.add(this.afkId);
         //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
-        if(document.getElementById("canvas").style.display == "block"){
+        if(this.canvas.style.display == "block"){
             //remember, the booleans and numbers will become strings
             this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
             this.sendMessage();
@@ -75,14 +75,13 @@ export class WorldComponent implements OnInit, OnDestroy {
         //get chat window
         var chatWindow = document.getElementById("messages");
         ///////////////
-
         if(message[0] == "msg") {
             //this.afkDiv.innerHTML = "";
             this.afkCount = 0;
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            if(this.name == "Erintuitive" && this.userId == "173281"){
+            if(this.name == "Erintuitive" /* && this.userId == "173281" */){
                 if(this.txtMessage.indexOf("/remove ") == 0){
                     var nameValue = this.txtMessage.substr(8);
                     for (let player of this.players){

@@ -88,17 +88,19 @@ export class AppComponent {
     document.getElementById("femaleTops").style.display = "none";
     //post name now
     var relativeContainer = document.getElementById("relativeContainerContainer");
-		relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
-    if (this.avatarName == "Erintuitive") { 
+    /* if (this.avatarName == "Erintuitive") { 
       if (this.avatarPassword == "173281"){
         document.getElementById("buttonName").style.display = "none";
         document.getElementById("page").style.display = "none";
         this.worldBool = true;
+        relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
       }
-    } else {
+    } else { */
       document.getElementById("drawing").style.display = "block";
       document.getElementById("page").style.display = "none";
-    }
+      relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
+    //}
+      this.worldBool = true;
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");
