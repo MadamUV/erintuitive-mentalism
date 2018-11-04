@@ -19,7 +19,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     d = this.date.getTime();
     userId : string = this.d.toString();
     players = [this.userId];
-	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML + this.name + ": ";
+	myAvatar : string = document.getElementById("relativeContainerContainer").innerHTML;
     isDrawing : boolean = false;
     afkId : string = this.userId + "_afk";
     loggedOut = false;
@@ -43,9 +43,9 @@ export class WorldComponent implements OnInit, OnDestroy {
         //name already initialized
         //pass initialized if we call setpass before this function inside ngOniInit()
         this.setPass();
-        //document.getElementsByClassName("afk")[0].classList.add(this.afkId);
-        //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
-        if(this.canvas.style.display == "block"){
+        document.getElementsByClassName("afk")[0].classList.add(this.afkId);
+        this.afkDiv = document.getElementsByClassName(this.afkId)[0];
+        if(document.getElementById("canvas").style.display == "block"){
             //remember, the booleans and numbers will become strings
             this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
             this.sendMessage();
@@ -71,7 +71,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     checkMessage (message) {
         message = message["text"].toString();
         message = message.split("___");
-        console.log("this is" + message[1]);
+        console.log("this is" + textMsg);
         //get chat window
         var chatWindow = document.getElementById("messages");
         ///////////////
@@ -81,76 +81,82 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
+            var textMsg = message[1];
+            var nameMsg = message[2];
+            var idMsg = message[3];
+            var avatarMsg = message[4];
+            var boolMsg = message[5];
+            //change this
             if(this.name == "Erintuitive" /* && this.userId == "173281" */){
                 if(this.txtMessage.indexOf("/remove ") == 0){
                     var nameValue = this.txtMessage.substr(8);
                     for (let player of this.players){
                         //name
-                        if(message[2] == nameValue){
+                        if(nameMsg == nameValue){
                             //its to remove player, but for convenience's sake we'll give them an afk status
-                            this.message = "afk___" + message[3] + "___" + nameValue + "___" + this.afkCount;
+                            this.message = "afk___" + idMsg + "___" + nameValue + "___" + this.afkCount;
                             this.sendMessage();
                         }
                     }
                 }
                 else {
-                    if(this.userId == message[3]){
+                    if(this.userId == idMsg){
 
-                        var totalMessage = '<br><div class="flex-container"><div>' + message[4] + message[2] + '</div><div>' + message[1] + '</div></div>';
+                        var totalMessage = '<br><div class="flex-container"><div>' + avatarMsg + nameMsg + '</div><div>' + textMsg + " : " +'</div></div>';
                         document.getElementById("messages").innerHTML += totalMessage;
                     }
                     else {
-                        var totalMessage = '<div class="flex-container margin-it"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + message[2] + '</div></div>';
+                        var totalMessage = '<div class="flex-container margin-it"><div>' + textMsg + " : " +'</div><div class="flex-container-backwards">' + avatarMsg + nameMsg + '</div></div>';
                     }
                 }
                 
             }
             else {
-                if(this.userId == message[3]){
-                    if (message[5] == "true"){
-                        var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + message[1] + '"></font>' + message[2] + '</a></div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                if(this.userId == idMsg){
+                    if (boolMsg == "true"){
+                        var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
                     }
                     else {
                         var totalMessage = '<div class="flex-container"><div>' + this.myAvatar + '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
                     }
                 }
                 else {
-                    if(message[5] == "true"){
-                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + message[1] + message[2] + '">' + message[2] + '</a></font></div><div class="flex-container-backwards">' + message[4] + '</div></div></div>';
+                    if(boolMsg == "true"){
+                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container margin-it"><div>' + message[1] + '</div><div class="flex-container-backwards">' + message[4] + '</div></div>';
+                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
                     }
                 }
                 if(chatWindow.innerHTML == ""){
                     totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
                 }
-                chatWindow.innerHTML += totalMessage;
             }
+            chatWindow.innerHTML += totalMessage;
         }
         else if (message[0] == "afk") {
-            //let afkPerson = document.getElementsByClassName(message[1])[0];
-            var afkCount2 = message[3].parseInt();
+            //let afkPerson = document.getElementsByClassName(textMsg)[0];
+            var afkCount2 = idMsg.parseInt();
             let countPerson = false;
-            if(this.name == message[2] && this.userId == message[1]) this.afkCount++;
+            if(this.name == nameMsg && this.userId == textMsg) this.afkCount++;
             for(let i=0; i<this.players.length; i++) {
-                if(message[1] == this.players[i]){
+                if(textMsg == this.players[i]){
                     countPerson = true;
                     if(afkCount2 > 1500){
                         this.players.splice(i, 1);
                         this.loggedOut = true;
                     }
-                    //else if(afkCount2 < 1500 && message[2] >= 500) { this.afkDiv.innerHTML = "(afk)"; }
+                    //else if(afkCount2 < 1500 && nameMsg >= 500) { this.afkDiv.innerHTML = "(afk)"; }
                     //else if (afkCount2 < 2) { this.afkDiv.innerHTML = ""; }
                 }
             }
-            if (countPerson == false) this.players.push(message[1]);
+            if (countPerson == false) this.players.push(textMsg);
         }
 
         //////////////
         if(this.afkCount == 5000){
             for(let i=0; i<this.players.length; i++) {
-                if(message[1] == this.players[i]){
+                if(textMsg == this.players[i]){
 
                 }
             }
