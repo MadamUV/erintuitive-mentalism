@@ -24,6 +24,8 @@ export class WorldComponent implements OnInit, OnDestroy {
     afkId : string = this.userId + "_afk";
     loggedOut = false;
     afkDiv : Element;
+    currentId = this.userId;
+    currentAvatarSpeaker : string = '';
     
     canvas = <HTMLCanvasElement>document.getElementById("canvas");
     dataURL = this.canvas.toDataURL();
@@ -72,11 +74,6 @@ export class WorldComponent implements OnInit, OnDestroy {
         message = message["text"].toString();
         message = message.split("___");
         console.log("this is" + textMsg);
-        var latestSpeaker = '';
-        if (this.messages[this.messages.length - 2] != null && this.messages[this.messages.length - 2] != undefined){
-            latestSpeaker = this.messages[this.messages.length - 2]["text"].toString().split("___")[3];
-        }
-        console.log(latestSpeaker);
         //get chat window
         var chatWindow = document.getElementById("messages");
         ///////////////
@@ -91,19 +88,12 @@ export class WorldComponent implements OnInit, OnDestroy {
             var idMsg = message[3];
             var avatarMsg = message[4];
             var boolMsg = message[5];
+            if(avatarMsg == this.currentAvatarSpeaker){
+                avatarMsg = '';
+            }
             //change this
-            if(this.name == "Erintuitive" /* && this.userId == "173281" */){
-                if(this.txtMessage.indexOf("/remove ") == 0){
-                    var nameValue = this.txtMessage.substr(8);
-                    for (let player of this.players){
-                        //name
-                        if(nameMsg == nameValue){
-                            //its to remove player, but for convenience's sake we'll give them an afk status
-                            this.message = "afk___" + idMsg + "___" + nameValue + "___" + this.afkCount;
-                            this.sendMessage();
-                        }
-                    }
-                }
+            /*if(this.name == "Erintuitive" ){
+                
                 else {
                     if(this.userId == idMsg){
 
@@ -116,34 +106,40 @@ export class WorldComponent implements OnInit, OnDestroy {
                 }
                 
             }
-            else {
-                if(this.userId == idMsg){
-                    if (boolMsg == "true"){
-                        var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
+            else {*/
+            if(textMsg.indexOf("/remove ") == 0){
+                var nameValue = this.txtMessage.substr(8);
+                for (let player of this.players){
+                    //name
+                    if(nameMsg == nameValue){
+                        //its to remove player, but for convenience's sake we'll give them an afk status
+                        this.message = "afk___" + idMsg + "___" + nameValue + "___6000";
+                        this.sendMessage();
                     }
-                    else {
-                        var totalMessage1 = '<div class="flex-container"><div>'
-                        var totalMessage2 = this.myAvatar;
-                        if (latestSpeaker == this.userId) { totalMessage2 = ""; }
-                        else totalMessage2 = this.myAvatar;
-
-                        var totalMessage3 = '</div><div><div><font color="green">' + this.txtMessage + '</font></div></div>';
-                        totalMessage = totalMessage1 + totalMessage2 + totalMessage3;
-                    }
-                }
-                else {
-                    if(boolMsg == "true"){
-                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
-                    }
-                    else {
-                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
-                    }
-                }
-                if(chatWindow.innerHTML == ""){
-                    totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
                 }
             }
+            if(this.userId == idMsg){
+                if (boolMsg == "true"){
+                    var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
+                }
+                else {
+                    var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div><font color="green">' + textMsg + '</font></div></div>';
+                }
+            }
+            else {
+                if(boolMsg == "true"){
+                    var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
+                }
+                else {
+                    var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
+                }
+            }
+            if(chatWindow.innerHTML == ""){
+                totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
+            }
+                
             chatWindow.innerHTML += totalMessage;
+            if(avatarMsg != '') this.currentAvatarSpeaker = avatarMsg;
         }
         else if (message[0] == "afk") {
             //let afkPerson = document.getElementsByClassName(textMsg)[0];
