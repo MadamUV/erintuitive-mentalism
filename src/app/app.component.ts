@@ -87,7 +87,6 @@ export class AppComponent {
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
     //post name now
-    var relativeContainer = document.getElementById("relativeContainerContainer");
     /* if (this.avatarName == "Erintuitive") { 
       if (this.avatarPassword == "173281"){
         document.getElementById("buttonName").style.display = "none";
@@ -96,9 +95,9 @@ export class AppComponent {
         relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
       }
     } else { */
+      document.getElementById("relativeContainerContainer").innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.6); -ms-transform: scale(0.6); transform: scale(0.6);">` + document.getElementById("relativeContainerContainer").innerHTML + `</div></div>`;
       document.getElementById("drawing").style.display = "block";
       document.getElementById("page").style.display = "none";
-      relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
     //}
       this.worldBool = true;
   }
@@ -145,7 +144,6 @@ export class AppComponent {
     }
   } 
   saveDrawing () {
-    document.getElementById("relativeContainerContainer").style.display = "none";
     this.worldBool = true;
   }
 }

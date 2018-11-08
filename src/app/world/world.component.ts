@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 //import { LocalStorageService } from 'ngx-localstorage';
 import { ChatService } from '../chat-service';
+import { DrawingComponent } from '../drawing/drawing.component';
 
 @Component ({
     selector: 'world',
@@ -26,10 +27,10 @@ export class WorldComponent implements OnInit, OnDestroy {
     afkDiv : Element;
     currentId = this.userId;
     currentAvatarSpeaker : string = '';
-    
-    canvas = <HTMLCanvasElement>document.getElementById("canvas");
-    dataURL = this.canvas.toDataURL();
     afkCount = 0;
+    canvasDrawing : string = '';
+
+
 
     constructor(private chatService: ChatService) { }
 
@@ -45,14 +46,10 @@ export class WorldComponent implements OnInit, OnDestroy {
         //name already initialized
         //pass initialized if we call setpass before this function inside ngOniInit()
         this.setPass();
-        document.getElementsByClassName("afk")[0].classList.add(this.afkId);
-        this.afkDiv = document.getElementsByClassName(this.afkId)[0];
-        if(document.getElementById("canvas").style.display == "block"){
-            //remember, the booleans and numbers will become strings
-            this.message = "msg___" + this.dataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
-            this.sendMessage();
-            this.canvas.style.display = "none";
-        }
+        var canvas = <any>document.getElementById('canvas'); //modified to cast
+        var dataURL = canvas.toDataURL();
+        //document.getElementsByClassName("afk")[0].classList.add(this.afkId);
+        //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
         if(this.txtMessage != ""){
             this.message = "msg___" + this.txtMessage + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___false";
             //Send message
@@ -92,8 +89,18 @@ export class WorldComponent implements OnInit, OnDestroy {
                 avatarMsg = '';
             }
             //change this
-            /*if(this.name == "Erintuitive" ){
-                
+            if(this.name == "Erintuitive" ){
+                if(textMsg.indexOf("/remove ") == 0){
+                var nameValue = this.txtMessage.substr(8);
+                    for (let player of this.players){
+                        //name
+                        if(nameMsg == nameValue){
+                            //its to remove player, but for convenience's sake we'll give them an afk status
+                            this.message = "afk___" + idMsg + "___" + nameValue + "___6000";
+                            this.sendMessage();
+                        }
+                    }
+                }
                 else {
                     if(this.userId == idMsg){
 
@@ -106,38 +113,28 @@ export class WorldComponent implements OnInit, OnDestroy {
                 }
                 
             }
-            else {*/
-            if(textMsg.indexOf("/remove ") == 0){
-                var nameValue = this.txtMessage.substr(8);
-                for (let player of this.players){
-                    //name
-                    if(nameMsg == nameValue){
-                        //its to remove player, but for convenience's sake we'll give them an afk status
-                        this.message = "afk___" + idMsg + "___" + nameValue + "___6000";
-                        this.sendMessage();
+            else {
+                textMsg = '<div style="margin-left: 40%; width: 50% align: left; word-wrap: normal;">' + textMsg + '</div>';
+                if(this.userId == idMsg){
+                    if (boolMsg == "true"){
+                        var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
+                    }
+                    else {
+                        var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div><font color="green">' + textMsg + '</font></div></div>';
                     }
                 }
-            }
-            if(this.userId == idMsg){
-                if (boolMsg == "true"){
-                    var totalMessage = '<div class="flex-container"><div><div><font color="green"><a href="' + textMsg + " : " +'"></font>' + nameMsg + '</a></div><div class="flex-container-backwards">' + avatarMsg + '</div></div>';
-                }
                 else {
-                    var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div><font color="green">' + textMsg + '</font></div></div>';
+                    if(boolMsg == "true"){
+                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
+                    }
+                    else {
+                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
+                    }
                 }
-            }
-            else {
-                if(boolMsg == "true"){
-                    var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
+                if(chatWindow.innerHTML == ""){
+                    totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
                 }
-                else {
-                    var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
-                }
-            }
-            if(chatWindow.innerHTML == ""){
-                totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
-            }
-                
+            }          
             chatWindow.innerHTML += totalMessage;
             if(avatarMsg != '') this.currentAvatarSpeaker = avatarMsg;
         }
@@ -178,6 +175,10 @@ export class WorldComponent implements OnInit, OnDestroy {
         setInterval(function(){
             this.afkCount += 1;
         }, 1000);
+
+        if(this.name == "Erintuitive"){
+            document.getElementById("canvas").style.display = "none";
+        }
 
         //here we return the socket
         this.connection = this.chatService.getMessages().subscribe(message => {

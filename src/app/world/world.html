@@ -2,6 +2,7 @@
 	If you are Erintuitive, type password.<input type="password" [(ngModel)]="password" id="password"/>
 	<button id="passButton" (click)="setPass()">Submit password</button>
 </div> -->
+<button id="canvasButton" (click)="initVariables()">Save drawing as chat message!</button><br>
 <div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
 	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
@@ -15,6 +16,7 @@
 	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
 </div> -->
 <input type="hidden" [(ngModel)]="message"/>
+<input id="canvasDrawing" type="hidden" [(ngModel)]="canvasDrawing"/>
 <div id="fb-root">Share on Facebook</div>
 
 <!--  use service in app.component.ts too separately for bringing in the drawing
@@ -56,4 +58,9 @@ get it from context
 <!-- start embed scripts -->
 <script src="../js/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	var canvas = document.getElementById("canvas");
+	var dataURL = canvas.toDataURL();
+	document.getElementById("canvasDrawing").nodeValue = dataURL;
+</script>
 </div>
