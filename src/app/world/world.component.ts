@@ -91,7 +91,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            var textMsg = message[1];
+            var textMsg = '<div style="margin-right: 12%; margin-bottom: 6%; border: 1px tan solid; background-color: white; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><font color="black">' + message[1]; + '</font></div>';
             var nameMsg = message[2];
             var idMsg = message[3];
             var avatarMsg = message[4];
@@ -128,24 +128,24 @@ export class WorldComponent implements OnInit, OnDestroy {
                 textMsg = '<div style="margin-left: 40%; width: 50% align: left; word-wrap: normal;">' + textMsg + '</div>';
                 if(this.userId == idMsg){
                     if (boolMsg == "true"){
-                        var totalMessage = '<div class="flex-container"><div><div class="flex-container-backwards">' + avatarMsg + '</div><div>' + textMsg + '</div></div>'; //tomorrow: change bgcolor
+                        var totalMessage = '<div class="flex-container"><div><div class="flex-container-backwards">' + avatarMsg + '</div><div width="70%" height="70%">' + textMsg + '</div></div>'; //tomorrow: change bgcolor
                     }
                     else {
-                        var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div><font color="green">' + textMsg + '</font></div></div>';
+                        var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div>' + textMsg + '</div></div>';
                     }
                 }
                 else {
                     if(boolMsg == "true"){
-                        var totalMessage = '<div class="margin-it">' + name + ' has sent Erintuitive a drawing to interpret!<br><div class="flex-container"><div><font color="green"><a href="' + textMsg + " : " +nameMsg + '">' + nameMsg + '</a></font></div><div class="flex-container-backwards">' + avatarMsg + '</div></div></div>';
+                        var totalMessage = '<div class="margin-it">' + avatarMsg + name + 'I have sent Erintuitive a drawing to interpret!</div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg  + " : " +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
+                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
                     }
                 }
                 if(chatWindow.innerHTML == ""){
                     totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
                 }
-            }          
+            }
             chatWindow.innerHTML += totalMessage;
             if(avatarMsg != '') this.currentAvatarSpeaker = avatarMsg;
         }
