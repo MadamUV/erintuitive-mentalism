@@ -1,8 +1,43 @@
+<p>
+	<input id="_black" maxlength="1" size="1" style="background-color: black"/>
+	<input id="_white" maxlength="1" size="1" style="background-color: white"/>
+	<input id="_darkgray" maxlength="1" size="1" style="background-color: darkgray"/>
+	<input id="_gray" maxlength="1" size="1" style="background-color: gray"/>
+	<input id="_silver" maxlength="1" size="1" style="background-color: silver"/>
+	<input id="_red" maxlength="1" size="1" style="background-color: red"/>
+	<br>
+	<input id="_green" maxlength="1" size="1" style="background-color: green"/>
+	<input id="_blue" maxlength="1" size="1" style="background-color: blue"/>
+	<input id="_brown" maxlength="1" size="1" style="background-color: brown"/>
+	<input id="_yellow" maxlength="1" size="1" style="background-color: yellow"/>
+	<input id="_cyan" maxlength="1" size="1" style="background-color: cyan"/>
+	<input id="_magenta" maxlength="1" size="1" style="background-color: magenta"/>
+	<br>
+	<input id="_darkred" maxlength="1" size="1" style="background-color:darkred"/>
+	<input id="_purple" maxlength="1" size="1" style="background-color: purple"/>
+	<input id="_gold" maxlength="1" size="1" style="background-color: gold"/>
+	<input id="_indigo" maxlength="1" size="1" style="background-color: indigo"/>
+	<input id="_olive" maxlength="1" size="1" style="background-color: olive"/>
+	<input id="_dullGreen" maxlength="1" size="1" style="background-color: #674"/>
+	<br>
+	<input id="_lightYellow" maxlength="1" size="1" style="background-color: lightyellow"/>
+	<input id="_pink" maxlength="1" size="1" style="background-color: pink"/>
+	<input id="_lightBlue" maxlength="1" size="1" style="background-color: lightblue"/>
+	<input id="_beige" maxlength="1" size="1" style="background-color: beige"/>
+	<input id="_tan" maxlength="1" size="1" style="background-color: tan"/>
+	<input id="_orange" maxlength="1" size="1" style="background-color: orange"/>
+</p>
+<div id="d">
+<h4>Click and drag to draw a picture so I can interpret your personality from it!</h4>
+	<canvas width="500" height="300" id="canvas2"></canvas>
+	<p style="color:#9ac">Attribution: by <a href="http://justgoscha.github.io">justGoscha</a></p>
+</div>
 <!-- <div id="pass" *ngIf="name == 'Erintuitive'">
 	If you are Erintuitive, type password.<input type="password" [(ngModel)]="password" id="password"/>
 	<button id="passButton" (click)="setPass()">Submit password</button>
 </div> -->
-<button id="canvasButton" (click)="initVariables()">Save drawing as chat message!</button><br>
+<button id="canvasButton" (click)="drawingSave()">Save drawing as chat message!</button><br>
+<input type="hidden" [(ngModel)]="theData" id="theData"/>
 <div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
 	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>

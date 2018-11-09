@@ -96,7 +96,7 @@ export class AppComponent {
       }
     } else { */
       document.getElementById("relativeContainerContainer").innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.6); -ms-transform: scale(0.6); transform: scale(0.6);">` + document.getElementById("relativeContainerContainer").innerHTML + `</div></div>`;
-      document.getElementById("drawing").style.display = "block";
+      //document.getElementById("drawing").style.display = "block";
       document.getElementById("page").style.display = "none";
     //}
       this.worldBool = true;
