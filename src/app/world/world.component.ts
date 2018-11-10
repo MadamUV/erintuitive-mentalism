@@ -10,7 +10,7 @@ import { getPreviousOrParentNode } from '../../../node_modules/@angular/core/src
     templateUrl: './world.html',
     styleUrls: ['../app.component.css', './world.scss', '../drawing/drawing.css'],
     providers: [ChatService]
-})
+}) 
 export class WorldComponent implements OnInit, OnDestroy {
     message  : string = '';
     messages = [];
@@ -31,9 +31,12 @@ export class WorldComponent implements OnInit, OnDestroy {
     currentAvatarSpeaker : string = '';
     afkCount = 0;
     canvasDrawing : string = ''; 
+    firstName : string = '';
     
     canvas : HTMLCanvasElement;
     bestDataURL : string;
+    erinBool : boolean = false;
+    imgSetup : string = '';
 
     constructor(private chatService: ChatService) { }
 
@@ -51,11 +54,11 @@ export class WorldComponent implements OnInit, OnDestroy {
         //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
         //remember, the booleans and numbers will become strings
         let dataProcess = this.bestDataURL.replace(" ", "");
-        let imgSetup = '<img src="' + dataProcess + '">';
-        this.bestDataURL = imgSetup;
+        this.imgSetup = '<img style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; background-color: white;" src="' + dataProcess + '">';
+        this.bestDataURL = this.imgSetup;
         this.message = "msg___" + this.bestDataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
         this.sendMessage();
-        document.getElementById("canvas2").style.display = "none";
+        document.getElementById("allDrawingStuff").style.display = "none";
     }
     //["msg", this.txtMessage, this.name, this.userId, this.myAvatar, this.isDrawing];
     initVariables () {
@@ -67,6 +70,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             //Send message
             this.sendMessage();
         }
+
     }
 
     sendMessage() {
@@ -83,7 +87,7 @@ export class WorldComponent implements OnInit, OnDestroy {
         message = message["text"].toString();
         message = message.split("___");
         //get chat window
-        var chatWindow = document.getElementById("messages");
+        var chatWindow = document.getElementById("messagesTable");
         ///////////////
         if(message[0] == "msg") {
             //this.afkDiv.innerHTML = "";
@@ -91,7 +95,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            var textMsg = '<div style="margin-right: 12%; margin-bottom: 6%; border: 1px tan solid; background-color: white; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><font color="black">' + message[1]; + '</font></div>';
+            var textMsg = '<div style="margin-right: 12%; border: 1px tan solid; background-color: white; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><font color="black">' + message[1]; + '</div>';
             var nameMsg = message[2];
             var idMsg = message[3];
             var avatarMsg = message[4];
@@ -99,6 +103,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             if(avatarMsg == this.currentAvatarSpeaker){
                 avatarMsg = '';
             }
+            var totalMessage = '';
             //change this
             if(this.name == "Erintuitive" ){
                 if(textMsg.indexOf("/remove ") == 0){
@@ -114,12 +119,16 @@ export class WorldComponent implements OnInit, OnDestroy {
                 }
                 else {
                     if(this.userId == idMsg){
-
-                        var totalMessage = '<br><div class="flex-container"><div>' + avatarMsg + nameMsg + '</div><div>' + textMsg + " : " +'</div></div>';
-                        document.getElementById("messages").innerHTML += totalMessage;
+                        if (boolMsg == "true"){
+                            totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div style="margin-left: 30%">' + this.imgSetup; + '</div></div>';
+                        }
+                        else {
+                            totalMessage = '<br><div class="flex-container"><div>' + avatarMsg + nameMsg + '</div><div>' + textMsg + " : " +'</div></div>';
+                        }
                     }
                     else {
-                        var totalMessage = '<div class="flex-container margin-it"><div class="flex-container-backwards">' + avatarMsg + nameMsg + '</div><div>' + textMsg + " : " +'</div></div>';
+                        this.erinBool = true;
+                        totalMessage = '<div class="flex-container"><div class="flex-container-backwards">' + avatarMsg + nameMsg + '</div><div>' + textMsg + " : " +'</div></div>';
                     }
                 }
                 
@@ -128,25 +137,31 @@ export class WorldComponent implements OnInit, OnDestroy {
                 textMsg = '<div style="margin-left: 40%; width: 50% align: left; word-wrap: normal;">' + textMsg + '</div>';
                 if(this.userId == idMsg){
                     if (boolMsg == "true"){
-                        var totalMessage = '<div class="flex-container"><div><div class="flex-container-backwards">' + avatarMsg + '</div><div width="70%" height="70%">' + textMsg + '</div></div>'; //tomorrow: change bgcolor
+                        totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div style="margin-left: 30%">' + this.imgSetup; + '</div></div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div>' + textMsg + '</div></div>';
+                        totalMessage = '<div class="flex-container"><div>' + avatarMsg + '</div><div><div>' + textMsg + '</div></div>';
                     }
                 }
                 else {
                     if(boolMsg == "true"){
-                        var totalMessage = '<div class="margin-it">' + avatarMsg + name + 'I have sent Erintuitive a drawing to interpret!</div>';
+                        totalMessage = '<div>' + avatarMsg + name + 'I have sent Erintuitive a drawing to interpret!</div>';
                     }
                     else {
-                        var totalMessage = '<div class="flex-container margin-it"><span>' + avatarMsg +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
+                        totalMessage = '<div class="flex-container"><span>' + avatarMsg +'</span><div class="flex-container-backwards">' + textMsg + '</div></div>';
                     }
                 }
                 if(chatWindow.innerHTML == ""){
-                    totalMessage = '<br><br><br><br><br><br><br><br>' + totalMessage;
+                    totalMessage = '<br><br>' + totalMessage;
                 }
             }
-            chatWindow.innerHTML += totalMessage;
+            if((this.currentAvatarSpeaker != this.myAvatar && this.firstName != '' && message[2] != this.firstName) || this.erinBool == true) {
+                totalMessage = '<div style="margin-top: 10%;">' + totalMessage + '</div>';
+            }
+            if(this.userId == idMsg){
+                totalMessage = '<div style="margin-left: -20%">' + totalMessage + '</div>';
+            }
+            chatWindow.innerHTML += '<tr><td>' + totalMessage + '</td></tr>';
             if(avatarMsg != '') this.currentAvatarSpeaker = avatarMsg;
         }
         else if (message[0] == "afk") {
@@ -178,10 +193,12 @@ export class WorldComponent implements OnInit, OnDestroy {
         }
         this.message = '';
         this.txtMessage = "";
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        this.firstName = nameMsg;
+        document.getElementById("messages").scrollTop = chatWindow.scrollHeight;
+        if(this.firstName == '') document.body.scrollTop = document.body.scrollHeight;
     }
     ngOnInit() {
-
+        document.getElementById("relativeContainerContainer").style.display = "none";
         this.setPass();
         setInterval(function(){
             this.afkCount += 1;

@@ -1,3 +1,4 @@
+<div id="allDrawingStuff">
 <p>
 	<input id="_black" maxlength="1" size="1" style="background-color: black"/>
 	<input id="_white" maxlength="1" size="1" style="background-color: white"/>
@@ -29,7 +30,7 @@
 </p>
 <div id="d">
 <h4>Click and drag to draw a picture so I can interpret your personality from it!</h4>
-	<canvas width="500" height="300" id="canvas2"></canvas>
+	<canvas width="340" height="340" id="canvas2"></canvas>
 	<p style="color:#9ac">Attribution: by <a href="http://justgoscha.github.io">justGoscha</a></p>
 </div>
 <!-- <div id="pass" *ngIf="name == 'Erintuitive'">
@@ -37,12 +38,15 @@
 	<button id="passButton" (click)="setPass()">Submit password</button>
 </div> -->
 <button id="canvasButton" (click)="drawingSave()">Save drawing as chat message!</button><br>
+</div>
 <input type="hidden" [(ngModel)]="theData" id="theData"/>
 <div id="worldBody" (keyup)="onKeyUp($event)">
 <div id="inworld">
 	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
 	<!-- message form -->
 	<div id="messages">
+		<table id="messagesTable" style="scale: 0.7; -webkit-scale: 0.7; -ms-scale: 0.7;">
+		</table>
 	</div>
 	<textarea id="m" rows="5" cols="34" [(ngModel)]="txtMessage"></textarea><button id="n" (click)="initVariables()">Send message!</button>
 </div>
