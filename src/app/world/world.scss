@@ -5,6 +5,9 @@ $white : #FFF;
 #messages {margin: 0; padding: 0; overflow: scroll; height: 520px; 
     li {padding: 5px 10px; }
     background-color: #AAA;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    color: black;
 }
 /*input, #skip, #next, #back, #skip, #skip2, #enter, #buttons button, */ #drawingButton button {
     font-family: rubik, sans-serif;
@@ -16,6 +19,24 @@ $white : #FFF;
     border-radius: 3px;
     border-color: $white;
     margin: 3px;
+}
+.three {
+    width: 320px;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+}
+td {
+    padding-left: 28%;
+    max-width: 60%;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    border: 1px tan solid;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-left: 12%;
+
 }
 @mixin the-scale ($scaleX, $scaleY){
     -webkit-transform: scale($scaleX, $scaleY);
