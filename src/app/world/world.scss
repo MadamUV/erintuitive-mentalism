@@ -35,8 +35,6 @@ td {
     -webkit-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    margin-left: 12%;
-
 }
 @mixin the-scale ($scaleX, $scaleY){
     -webkit-transform: scale($scaleX, $scaleY);
