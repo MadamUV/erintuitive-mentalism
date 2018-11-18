@@ -40,12 +40,12 @@ io.on('connection', (socket) => {
 }); //end tutorial code
 
 
-app.use(express.static(__dirname + "/dist/erintuitive-mentalist"));
+app.use(express.static("../dist/erintuitive-mentalist"), { root : __dirname});
 
 http.listen(process.env.PORT || 9200);
 
 app.get('/', function(req, res){
-    res.sendFile(__dirname + "/dist/erintuitive-mentalist/index.html");
+    res.sendFile("../dist/erintuitive-mentalist/index.html", { root : __dirname});
 });
 
 console.log("console listening!");
