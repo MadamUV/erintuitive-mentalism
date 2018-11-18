@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', function(){
 
     console.log('USER DISCONNECTED');
-
+    
 
   });
 
@@ -40,12 +40,12 @@ io.on('connection', (socket) => {
 }); //end tutorial code
 
 
-app.use(express.static("/dist/erintuitive-mentalist"));
+app.use(express.static(__dirname + "/dist/erintuitive-mentalist"));
 
 http.listen(process.env.PORT || 9200);
 
 app.get('/', function(req, res){
-    res.sendFile(path.join("/dist/erintuitive-mentalist/index.html"));
+    res.sendFile(path.join(__dirname + "/dist/erintuitive-mentalist/index.html"));
 });
 
 console.log("console listening!");
