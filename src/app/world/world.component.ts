@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ChatService } from '../chat-service';
 import { DrawingComponent } from '../drawing/drawing.component';
 import { WorldModule } from './world.module';
-import { getPreviousOrParentNode } from '../../../node_modules/@angular/core/src/render3/instructions';
+import { getPreviousOrParentNode, text } from '../../../node_modules/@angular/core/src/render3/instructions';
 
 @Component ({
     selector: 'world',
@@ -29,6 +29,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     afkDiv : Element;
     currentId = this.userId;
     currentAvatarSpeaker : string = '';
+    currentDrawing : string = "false";
     afkCount = 0;
     canvasDrawing : string = ''; 
     firstName : string = '';
@@ -95,18 +96,18 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word; border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; margin-left: 25%;"><font color="black">' + message[1]; + '</font></div>';
+            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word; border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; margin-left: 25%;">' + message[1]; + '</div>';
             var nameMsg = message[2];
             var idMsg = message[3];
             var avatarMsg = message[4];
             var boolMsg = message[5];
-            if( avatarMsg == this.currentAvatarSpeaker){
-                avatarMsg = '';
-            }
             var totalMessage = '';
             //change this
             if(this.currentAvatarSpeaker != avatarMsg && boolMsg == false) {
                 textMsg = '<div style="margin-top: 100px;">' + textMsg + '</div>';
+            }
+            if( avatarMsg == this.currentAvatarSpeaker && this.currentDrawing == "false"){
+                avatarMsg = '';
             }
             if(this.name == "Erintuitive" ){
                 if(textMsg.indexOf("/remove ") == 0){
@@ -122,19 +123,25 @@ export class WorldComponent implements OnInit, OnDestroy {
                 } 
                 else {
                     if(this.userId == idMsg){
+                        textMsg = '<font color="indigo"size="14px"' + textMsg + '</font>'; 
                         if (boolMsg == "true"){
                             totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="background-color: white;">' + avatarMsg + '</div><div>' + this.imgSetup; + '</div></div></td>';
                         }
                         else {
-                            totalMessage = '<td style="background-color: transparent; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><br><div class="flex-container"><div style="position: relative; z-index: 8;">' + avatarMsg + '</div><div style="position: relative;"><div style="position: relative; "><div style="position: relative; z-index: 9;">' + textMsg + " : " + '</div></div></div></div></td>';
+                            totalMessage = '<td style="background-color: transparent; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><br><div class="flex-container"><div style="position: relative; z-index: 8;">' + avatarMsg + '</div><div style="position: relative;"><div style="position: relative; "><div style="position: relative; z-index: 9; text-align: center;">' + textMsg + " : " + '</div></div></div></div></td>';
                         }
                     }
                     else {
+                        textMsg = '<font color="white"size="14px"' + textMsg + '</font>'; 
                         if (boolMsg == "true"){
                             totalMessage = '<td style="margin-left: 80%; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; background-color: white;">' + this.imgSetup + avatarMsg + '</td>';
                         }
                         else {
-                            totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative; z-index: 9; vertical-align: center;">' + textMsg + '</div><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + avatarMsg + '</div></div></div></td><br><br><br><br></td>';
+                            var br = '';
+                            if(this.currentDrawing == "true"){
+                                br = '<br><br><br><br><br><br>';
+                            }
+                            totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + avatarMsg + '</div></div></div><div style="position: relative; z-index: 9; vertical-align: center; text-align: center;">' + br + textMsg + '</div></td>';
                         }
                     }
                 }
@@ -142,19 +149,25 @@ export class WorldComponent implements OnInit, OnDestroy {
             }
             else {
                 if(this.userId == idMsg){
+                    textMsg = '<font color="indigo" size="14px">' + textMsg + '</font>'; 
                     if (boolMsg == "true"){
                         totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="background-color: white;">' + avatarMsg + this.imgSetup; + '</div></div></td>';
                     }
                     else {
-                        totalMessage = '<td style="position: relative; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="position: relative; z-index: 8; ">' + avatarMsg + '</div></div><div style="position: relative; z-index: 9; ">' + textMsg + '</div></div></td>';
+                        totalMessage = '<td style="position: relative; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="position: relative; z-index: 8; ">' + avatarMsg + '</div></div><div style="position: relative; z-index: 9; text-align: center;">' + textMsg + '</div></div></td>';
                     }
                 }
                 else {
+                    textMsg = '<font color="white"size="14px"' + textMsg + '</font>'; 
                     if(boolMsg == "true"){
-                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;">' + nameMsg + ' sent a drawing</td>';
+                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="background-color: white;"><div style="float: right;">' + avatarMsg + '</div><div>' + this.imgSetup; + '</div></div></td>';
                     }
                     else {
-                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative; z-index: 9; vertical-align: center;">' + textMsg + '</div><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + avatarMsg + '</div></div></div></td><br><br><br><br></td>';
+                        var br = '';
+                        if(this.currentDrawing == "true"){
+                            br = '<br><br><br><br><br><br>';
+                        }
+                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + br + avatarMsg + '</div></div></div><div style="position: relative; z-index: 9; vertical-align: center; text-align: center;">' + br + textMsg + '</div></td>';
                     }
                 }
                 if(chatWindow.innerHTML == ""){
@@ -183,6 +196,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             /*if(myMessages.innerHTML.indexOf(" ") != -1){
                 myMessages.style.wordWrap = "normal";
             }*/
+            this.currentDrawing = boolMsg;
             if(avatarMsg != '') this.currentAvatarSpeaker = avatarMsg;
         }
         else if (message[0] == "afk") {
@@ -231,7 +245,7 @@ export class WorldComponent implements OnInit, OnDestroy {
 
         //here we return the socket
         this.connection = this.chatService.getMessages().subscribe(message => {
-        this.messages.push(message);
+        //this.messages.push(message);
 
         if(message != '') this.checkMessage(message);
 
