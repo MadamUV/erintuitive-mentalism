@@ -54,7 +54,7 @@ export class WorldComponent implements OnInit, OnDestroy {
         //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
         //remember, the booleans and numbers will become strings
         let dataProcess = this.bestDataURL.replace(" ", "");
-        this.imgSetup = '<img style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; background-color: white;" src="' + dataProcess + '">';
+        this.imgSetup = '<img style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; " src="' + dataProcess + '">';
         this.bestDataURL = this.imgSetup;
         this.message = "msg___" + this.bestDataURL + "___" + this.name + "___" + this.userId + "___" + this.myAvatar + "___true";
         this.sendMessage();
@@ -95,16 +95,19 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word;"><font color="black">' + message[1]; + '</font></div>';
+            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word; border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; margin-left: 25%;"><font color="black">' + message[1]; + '</font></div>';
             var nameMsg = message[2];
             var idMsg = message[3];
             var avatarMsg = message[4];
             var boolMsg = message[5];
-            if(avatarMsg == this.currentAvatarSpeaker){
+            if( avatarMsg == this.currentAvatarSpeaker){
                 avatarMsg = '';
             }
             var totalMessage = '';
             //change this
+            if(this.currentAvatarSpeaker != avatarMsg && boolMsg == false) {
+                textMsg = '<div style="margin-top: 100px;">' + textMsg + '</div>';
+            }
             if(this.name == "Erintuitive" ){
                 if(textMsg.indexOf("/remove ") == 0){
                 var nameValue = this.txtMessage.substr(8);
@@ -120,18 +123,18 @@ export class WorldComponent implements OnInit, OnDestroy {
                 else {
                     if(this.userId == idMsg){
                         if (boolMsg == "true"){
-                            totalMessage = '<td><div class="flex-container"><div>' + avatarMsg + '</div><div>' + this.imgSetup; + '</div></div></td>';
+                            totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="background-color: white;">' + avatarMsg + '</div><div>' + this.imgSetup; + '</div></div></td>';
                         }
                         else {
-                            totalMessage = '<td><br><div class="flex-container"><div>' + avatarMsg + '</div><div>' + textMsg + " : " +'</div></div></td>';
+                            totalMessage = '<td style="background-color: transparent; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><br><div class="flex-container"><div style="position: relative; z-index: 8;">' + avatarMsg + '</div><div style="position: relative;"><div style="position: relative; "><div style="position: relative; z-index: 9;">' + textMsg + " : " + '</div></div></div></div></td>';
                         }
                     }
                     else {
                         if (boolMsg == "true"){
-                            totalMessage = '<td style="margin-left: 80%;">' + this.imgSetup; + '</td><td>' + avatarMsg + '</td>';
+                            totalMessage = '<td style="margin-left: 80%; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; background-color: white;">' + this.imgSetup + avatarMsg + '</td>';
                         }
                         else {
-                            totalMessage = '<td style="background-color: white; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;">' + textMsg + " : " +'</td><td><div class="flex-container"><div class="flex-container-backwards" style="margin-right: 12%">' + avatarMsg + '</div></div><br><br><br><br></td> ';
+                            totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative; z-index: 9; vertical-align: center;">' + textMsg + '</div><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + avatarMsg + '</div></div></div></td><br><br><br><br></td>';
                         }
                     }
                 }
@@ -140,34 +143,41 @@ export class WorldComponent implements OnInit, OnDestroy {
             else {
                 if(this.userId == idMsg){
                     if (boolMsg == "true"){
-                        totalMessage = '<td><div class="flex-container"><div>' + avatarMsg + '</div><div>' + this.imgSetup; + '</div></div></td>';
+                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="background-color: white;">' + avatarMsg + this.imgSetup; + '</div></div></td>';
                     }
                     else {
-                        totalMessage = '<td style="position: relative; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="position: relative; z-index: 8;">' + avatarMsg + '</div></div><br><div style="position: absolute; top: 12%; z-index: 9; background-color: white;">' + textMsg + '</div></div></td>';
+                        totalMessage = '<td style="position: relative; border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div class="flex-container"><div style="position: relative; z-index: 8; ">' + avatarMsg + '</div></div><div style="position: relative; z-index: 9; ">' + textMsg + '</div></div></td>';
                     }
                 }
                 else {
                     if(boolMsg == "true"){
-                        totalMessage = '<td>' + nameMsg + ' sent a drawing</td>';
+                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;">' + nameMsg + ' sent a drawing</td>';
                     }
                     else {
-                        totalMessage = '<td><div class="flex-container"><span>' + avatarMsg + textMsg + '</span></div></td><br><br><br><br></td>';
+                        totalMessage = '<td style="border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px;"><div style="position: relative; z-index: 9; vertical-align: center;">' + textMsg + '</div><div style="position: relative;"><div style="position: relative;"><div style="position: relative; z-index: 8; float: right; margin-left: 20%;">' + avatarMsg + '</div></div></div></td><br><br><br><br></td>';
                     }
                 }
                 if(chatWindow.innerHTML == ""){
                     totalMessage = '<br><br>' + totalMessage;
                 }
             }
-            //new speaker is someone else
-            if(this.currentAvatarSpeaker != this.myAvatar && this.firstName != '' && message[2] != this.firstName && boolMsg == false) {
+            /* if(this.currentAvatarSpeaker != this.myAvatar && this.firstName != '' && message[2] != this.firstName && boolMsg == false) {
                 var speechBubbleTriangle = '<svg height="210" width="500"><polygon points="480,10 250,210 160,210" style="fill:cyan;stroke:none;stroke-width:1" /></svg>';
-                totalMessage = speechBubbleTriangle + '<span style="margin-top: 209px;">' + totalMessage + '</span>';
-            }
-            //if the new speaker is the first person user and didn't just do a drawing
-            if(this.currentAvatarSpeaker == this.myAvatar && message[2] == this.name && boolMsg == false) {
-                var speechBubbleTriangle = '<svg height="210" width="500"><polygon points="80,10 250,210 160,210" style="fill:white;stroke:none;stroke-width:1" /></svg>';
-               totalMessage = '<div>' + speechBubbleTriangle + '<span style="margin-top: 209px;">' + totalMessage + '</span></div>';
-            }
+                //totalMessage = speechBubbleTriangle + '<span style="margin-top: 209px;">' + totalMessage + '</span>';
+            } */
+            
+            //new speaker is someone else
+            /* if(this.currentAvatarSpeaker != avatarMsg && boolMsg == false) {
+                if (idMsg == this.userId){
+                    var speechBubbleTriangle = '<svg height="210" width="500"><polygon points="80,10 250,210 160,210" style="fill:white;stroke:black;stroke-width:2" /></svg><br>';
+                    totalMessage = "<div style='background-color: transparent;'>" + avatarMsg + speechBubbleTriangle + "<br><br><br></div>" +  totalMessage;
+                }
+                else {
+                    var speechBubbleTriangle = '<svg height="210" width="500"><polygon points="420,10 250,210 160,210" style="fill:cyan;stroke:black;stroke-width:2" /></svg><br>';
+                    totalMessage = "<div style='background-color: transparent;'>" + avatarMsg + speechBubbleTriangle + "<br><br><br></div>" +  totalMessage;
+                }
+                totalMessage = avatarMsg  + totalMessage;
+            } */
             chatWindow.innerHTML += '<tr width="70%" style="margin-left: -10%;">' + totalMessage + '</tr>';
             let myMessages = document.getElementById("myMessages");
             /*if(myMessages.innerHTML.indexOf(" ") != -1){

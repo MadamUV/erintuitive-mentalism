@@ -26,7 +26,14 @@ $white : #FFF;
     -ms-word-wrap: break-word;
 }
 td {
-    padding-left: 28%;
+    text-align: center;
+    color: indigo;
+    font-weight: bold;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+44,ffffff+100&0+39,0+39,1+52 */
+    /* background: -moz-linear-gradient(left, rgba(255,255,255,0) 39%, rgba(255,255,255,0.38) 44%, rgba(255,255,255,1) 52%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    /* background: -webkit-linear-gradient(left, rgba(255,255,255,0) 39%,rgba(255,255,255,0.38) 44%,rgba(255,255,255,1) 52%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    /* background: linear-gradient(to right, rgba(255,255,255,0) 39%,rgba(255,255,255,0.38) 44%,rgba(255,255,255,1) 52%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
     max-width: 60%;
     word-wrap: break-word;
     -ms-word-wrap: break-word;
