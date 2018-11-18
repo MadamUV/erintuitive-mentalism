@@ -267,13 +267,23 @@ export class WorldComponent implements OnInit, OnDestroy {
 
     this.canvas.onmousedown = function(event){
       
-      lastX = event.offsetX;
-      lastY = event.offsetY;
-      
-      // begins new line
-      ctx.beginPath();
-      
-      drawing = true;
+        lastX = event.offsetX;
+        lastY = event.offsetY;
+        
+        // begins new line
+        ctx.beginPath();
+        
+        drawing = true;
+      };
+    this.canvas.ontouchmove = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var touch = event.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+            clientX : touch.clientX,
+            clientY : touch.clientY
+        });
+        this.dispatchEvent(mouseEvent);
     };
     this.canvas.onmousemove = function(event){
       if(drawing){
