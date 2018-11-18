@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
 }); //end tutorial code
 
 
-app.use(express.static("../dist/erintuitive-mentalist"), { root : __dirname});
+app.use(express.static("../dist/erintuitive-mentalist"));
 
 http.listen(process.env.PORT || 9200);
 
