@@ -44,7 +44,7 @@ app.use(express.static("/dist/erintuitive-mentalist"));
 
 http.listen(process.env.PORT || 9200);
 
-app.get('/*', function(req, res){
+app.get('/', function(req, res){
     res.sendFile(path.join("/dist/erintuitive-mentalist/index.html"));
 });
 
