@@ -2,5 +2,5 @@
     display: none;
 }
 select:focus, textarea:focus, input, input:focus {
-    font-size: 16px;
+    /* font-size: 16px; */
 }

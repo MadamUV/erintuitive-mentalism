@@ -253,117 +253,135 @@ export class WorldComponent implements OnInit, OnDestroy {
 
         //drawing stuff
         //code example from https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
-    this.canvas = <HTMLCanvasElement> document.getElementById('canvas2'); //modified to cast
-    this.bestDataURL = this.canvas.toDataURL();
-    var ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
-
-    ctx.strokeStyle = "black";
-      // variable that decides if something should be drawn on mousemove
-    var drawing = false;
-    var mousePos = { x:0, y:0 };
-    var lastPos = mousePos;
-    //some use of tutorial at bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
-    function getMousePos(canvasDOM, mouseEvent){
-        var rect = canvasDOM.getBoundingClientRect();
-        return {
-            x: mouseEvent.clientX - rect.left,
-            y: mouseEvent.clientY - rect.top
-        }
-    }
-    function getTouchPos(canvasDOM, touchEvent){
-        var rect = canvasDOM.getBoundingClientRect();
-        return {
-            x: touchEvent.touches[0].clientX - rect.left,
-            y: touchEvent.touches[0].clientY - rect.top
-        };
-    }
-    this.canvas.onmousedown = function(event){
-        drawing = true;
-        lastPos = getMousePos(this, event);
-    }
-    this.canvas.onmousemove = function(event){
-        mousePos = getMousePos(this, event);
-    };
-    this.canvas.onmouseup = function(event){
-        // stop drawing
-        drawing = false;
-    };
-    window.requestAnimationFrame ( function (callback) {
-        return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame || function(callback) {
-            window.setTimeout(callback, 1000/50);
-        }
-    });
-    function drawLoop () {
-        requestAnimationFrame(drawLoop);
-        draw();
-    }
-    this.canvas.ontouchstart = function(event){
-        mousePos = getTouchPos(this, event);
-        var touch = event.touches[0];
-        var mouseEvent = new MouseEvent("mousedown", {
-            clientX: touch.clientX,
-            clientY : touch.clientY
-        });
-        this.dispatchEvent(mouseEvent);
-    }
-    this.canvas.ontouchend = function(event){
-        var mouseEvent = new MouseEvent("mouseup", {});
-        this.dispatchEvent(mouseEvent);
-    }
-    this.canvas.ontouchmove = function(event) {
-        //event.preventDefault();
-        //event.stopPropagation();
-        var touch = event.touches[0];
-        var mouseEvent = new MouseEvent("mousemove", {
-            clientX : touch.clientX,
-            clientY : touch.clientY
-        });
-        this.dispatchEvent(mouseEvent);
-    };
-    var canvas = this.canvas;
-    document.body.ontouchstart = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    };
-    document.body.ontouchend = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    };
-    document.body.ontouchmove = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    };
-    function loadCanvas(dataURL, canvas, context) {
-        // load image from data url
-        var imageObj = new Image();
-        imageObj.onload = function() {
-          context.drawImage(this, 0, 0);
-        };
-
-        imageObj.src = dataURL;
-      }
-      
-    // canvas reset
-    function reset(){
-      this.canvas[0].width = this.canvas[0].width; 
-    }
+        this.canvas = <HTMLCanvasElement> document.getElementById('canvas2'); //modified to cast
+        this.bestDataURL = this.canvas.toDataURL();
+        var ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
     
-    function draw(){
-      // line from
-      ctx.moveTo(lastPos.x,lastPos.y);
-      // to
-      ctx.lineTo(mousePos.x,mousePos.y);
-      // color
-      // draw it
-      ctx.stroke();
-      lastPos = mousePos;
-    }
+        ctx.strokeStyle = "black";
+          // variable that decides if something should be drawn on mousemove
+        var drawing = false;
+        
+        // the last coordinates before the current move
+        var lastX;
+        var lastY;
+        
+        /////
+        //touch events
+        this.canvas.addEventListener("touchstart", handleStart, false);
+        this.canvas.addEventListener("touchend", handleEnd, false);
+        this.canvas.addEventListener("touchcancel", handleCancel, false);
+        this.canvas.addEventListener("touchmove", handleMove, false);
+        var ongoingTouches = [];
+        function ongoingTouchIndexById(idToFind){
+            for (var i=0; ongoingTouches.length; i++){
+                var id = ongoingTouches[i].identifier;
+                if(id == idToFind){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        function handleStart(event){
+            event.preventDefault();
+            var touches = event.changedTouches;
+            for (var i=0; i < touches.length; i++) {
+                //here
+                ongoingTouches.push(copyTouch(touches[i]));
+                ctx.beginPath();
+                ctx.moveTo(touches[i].pageX, touches[i].pageY);
+                ctx.lineTo(touches[i].pageX, touches[i].pageY);
+                ctx.stroke;
+            }
+        }
+        function handleEnd(event){
+            event.preventDefault();
+            var touches = event.changedTouches;
+            for (var i=0; i < touches.length; i++){
+                var idx = ongoingTouchIndexById(touches[i].identifier);
+                if (idx >= 0){
+                    ongoingTouches.push(copyTouch(touches[i]));
+                    ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+                    ctx.lineTo(touches[i].pageX, touches[i].pageY);
+                    ctx.stroke;
+                    ongoingTouches.splice(idx, 1);
+                }
+            }
 
-    if(this.message != ''){
-        this.sendMessage();
-        document.getElementById("canvas2").style.display = "none";
-    }
+
+            drawing = false;
+        }
+        function handleMove(event){
+            event.preventDefault();
+            var touches = event.changedTouches;
+            for (var i=0; i < touches.length; i++) {
+                var idx = ongoingTouchIndexById(touches[i].identifier);
+                //here
+                if(idx >= 0){
+                    ongoingTouches.push(copyTouch(touches[i]));
+                    ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+                    ctx.lineTo(touches[i].pageX, touches[i].pageY);
+                    ctx.stroke;
+                }
+            }
+        }
+        function handleCancel(event){
+            event.preventDefault();
+            var touches = event.changedTouches;
+            for (var i=0; i < touches.length; i++) {
+                var idx = ongoingTouchIndexById(touches[i].identifier);
+                ongoingTouches.splice(idx, 1);
+            }
+        }
+        function copyTouch(touch){
+            return {identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY};
+        }
+        /////
+        this.canvas.onmousedown = function(event){
+            lastX = event.offsetX;
+            lastY = event.offsetY;
+            
+            // begins new line
+            ctx.beginPath();
+            
+            drawing = true;
+        };
+        this.canvas.onmousemove = function(event){
+            if(drawing){
+                // get current mouse position
+                var currentX = event.offsetX;
+                var currentY = event.offsetY;
+                
+                draw(lastX, lastY, currentX, currentY);
+                
+                // set current coordinates to last one
+                lastX = currentX;
+                lastY = currentY;
+            }
+        };
+        this.canvas.onmouseup = function(event){
+          // stop drawing
+          drawing = false;
+        };
+          
+        // canvas reset
+        function reset(){
+          this.canvas[0].width = this.canvas[0].width; 
+        }
+        
+        function draw(lX, lY, cX, cY){
+          // line from
+          ctx.moveTo(lX,lY);
+          // to
+          ctx.lineTo(cX,cY);
+          // color
+          // draw it
+          ctx.stroke();
+        }
+    
+        if(this.message != ''){
+            this.sendMessage();
+            document.getElementById("canvas2").style.display = "none";
+        }
 
     document.getElementById("_black").onfocus = function () {
       ctx.strokeStyle = "black";
