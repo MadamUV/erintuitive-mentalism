@@ -260,24 +260,60 @@ export class WorldComponent implements OnInit, OnDestroy {
     ctx.strokeStyle = "black";
       // variable that decides if something should be drawn on mousemove
     var drawing = false;
-    
-    // the last coordinates before the current move
-    var lastX;
-    var lastY;
-
+    var mousePos = { x:0, y:0 };
+    var lastPos = mousePos;
+    //some use of tutorial at bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
+    function getMousePos(canvasDOM, mouseEvent){
+        var rect = canvasDOM.getBoundingClientRect();
+        return {
+            x: mouseEvent.clientX - rect.left,
+            y: mouseEvent.clientY - rect.top
+        }
+    }
+    function getTouchPos(canvasDOM, touchEvent){
+        var rect = canvasDOM.getBoundingClientRect();
+        return {
+            x: touchEvent.touches[0].clientX - rect.left,
+            y: touchEvent.touches[0].clientY - rect.top
+        };
+    }
     this.canvas.onmousedown = function(event){
-      
-        lastX = event.offsetX;
-        lastY = event.offsetY;
-        
-        // begins new line
-        ctx.beginPath();
-        
         drawing = true;
-      };
+        lastPos = getMousePos(this, event);
+    }
+    this.canvas.onmousemove = function(event){
+        mousePos = getMousePos(this, event);
+    };
+    this.canvas.onmouseup = function(event){
+        // stop drawing
+        drawing = false;
+    };
+    window.requestAnimationFrame ( function (callback) {
+        return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame || function(callback) {
+            window.setTimeout(callback, 1000/50);
+        }
+    });
+    function drawLoop () {
+        requestAnimationFrame(drawLoop);
+        draw();
+    }
+    this.canvas.ontouchstart = function(event){
+        mousePos = getTouchPos(this, event);
+        var touch = event.touches[0];
+        var mouseEvent = new MouseEvent("mousedown", {
+            clientX: touch.clientX,
+            clientY : touch.clientY
+        });
+        this.dispatchEvent(mouseEvent);
+    }
+    this.canvas.ontouchend = function(event){
+        var mouseEvent = new MouseEvent("mouseup", {});
+        this.dispatchEvent(mouseEvent);
+    }
     this.canvas.ontouchmove = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
+        //event.preventDefault();
+        //event.stopPropagation();
         var touch = event.touches[0];
         var mouseEvent = new MouseEvent("mousemove", {
             clientX : touch.clientX,
@@ -285,19 +321,20 @@ export class WorldComponent implements OnInit, OnDestroy {
         });
         this.dispatchEvent(mouseEvent);
     };
-    this.canvas.onmousemove = function(event){
-      if(drawing){
-        // get current mouse position
-        var currentX = event.offsetX;
-        var currentY = event.offsetY;
-        
-        draw(lastX, lastY, currentX, currentY);
-        
-        // set current coordinates to last one
-        lastX = currentX;
-        lastY = currentY;
-      }
-      
+    function fixTheDocumentTouch(canv, event){
+        if(event.target == canv){
+            event.preventDefault();
+        }
+    }
+    var canvas = this.canvas;
+    document.body.ontouchstart = function(event) {
+        fixTheDocumentTouch(canvas, event);
+    };
+    document.body.ontouchend = function(event) {
+        fixTheDocumentTouch(canvas, event);
+    };
+    document.body.ontouchmove = function(event) {
+        fixTheDocumentTouch(canvas, event);
     };
     function loadCanvas(dataURL, canvas, context) {
         // load image from data url
@@ -308,24 +345,21 @@ export class WorldComponent implements OnInit, OnDestroy {
 
         imageObj.src = dataURL;
       }
-    this.canvas.onmouseup = function(event){
-      // stop drawing
-      drawing = false;
-    };
       
     // canvas reset
     function reset(){
       this.canvas[0].width = this.canvas[0].width; 
     }
     
-    function draw(lX, lY, cX, cY){
+    function draw(){
       // line from
-      ctx.moveTo(lX,lY);
+      ctx.moveTo(lastPos.x,lastPos.y);
       // to
-      ctx.lineTo(cX,cY);
+      ctx.lineTo(mousePos.x,mousePos.y);
       // color
       // draw it
       ctx.stroke();
+      lastPos = mousePos;
     }
 
     if(this.message != ''){
