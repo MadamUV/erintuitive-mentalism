@@ -321,20 +321,18 @@ export class WorldComponent implements OnInit, OnDestroy {
         });
         this.dispatchEvent(mouseEvent);
     };
-    function fixTheDocumentTouch(canv, event){
-        if(event.target == canv){
-            event.preventDefault();
-        }
-    }
     var canvas = this.canvas;
     document.body.ontouchstart = function(event) {
-        fixTheDocumentTouch(canvas, event);
+        event.preventDefault();
+        event.stopPropagation();
     };
     document.body.ontouchend = function(event) {
-        fixTheDocumentTouch(canvas, event);
+        event.preventDefault();
+        event.stopPropagation();
     };
     document.body.ontouchmove = function(event) {
-        fixTheDocumentTouch(canvas, event);
+        event.preventDefault();
+        event.stopPropagation();
     };
     function loadCanvas(dataURL, canvas, context) {
         // load image from data url
