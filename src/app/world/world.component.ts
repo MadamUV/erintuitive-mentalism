@@ -255,12 +255,15 @@ export class WorldComponent implements OnInit, OnDestroy {
         //drawing stuff
         //code example from https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
         this.canvas = <HTMLCanvasElement> document.getElementById('canvas2'); //modified to cast
-        this.canvas.onwheel = function(event) {
-            event.preventDefault();
-        };
-        this.canvas.onmousewheel = function(event) {
-            event.preventDefault();
-        };
+        if(this.canvas != null && this.canvas != undefined )
+        {
+            this.canvas.onwheel = function(event) {
+                event.preventDefault();
+            };
+            this.canvas.onmousewheel = function(event) {
+                event.preventDefault();
+            };
+        }
         this.bestDataURL = this.canvas.toDataURL();
         var ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
     
