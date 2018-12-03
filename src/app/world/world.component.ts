@@ -96,7 +96,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             //     ["msg", this.txtMessage, this.name, this.userId, this.myAvatar, true];
                 // ["afk", this.userId, this.name, this.afkCount]
             //}
-            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word; border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; margin-left: 25%;">' + message[1]; + '</div>';
+            var textMsg = '<div id="myMessaging" style="width: 320px; word-wrap: break-word; border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px;">' + message[1]; + '</div>';
             var nameMsg = message[2];
             var idMsg = message[3];
             var avatarMsg = message[4];
@@ -263,7 +263,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             this.canvas.onmousewheel = function(event) {
                 event.preventDefault();
             };
-        }
+        } else console.log("null");
         this.bestDataURL = this.canvas.toDataURL();
         var ctx = <CanvasRenderingContext2D> this.canvas.getContext('2d');
     
