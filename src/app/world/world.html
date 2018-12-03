@@ -1,104 +1,113 @@
+<!-- <p>
+	<input id="paintColor" maxlength="1" size="1" (blur)="getHexToRGB()" [(colorPicker)]="paintColor" [style.background]="paintColor"/>
+</p> -->
 <div id="allDrawingStuff">
-<p>
-	<input id="_black" maxlength="1" size="1" style="background-color: black"/>
-	<input id="_white" maxlength="1" size="1" style="background-color: white"/>
-	<input id="_darkgray" maxlength="1" size="1" style="background-color: darkgray"/>
-	<input id="_gray" maxlength="1" size="1" style="background-color: gray"/>
-	<input id="_silver" maxlength="1" size="1" style="background-color: silver"/>
-	<input id="_red" maxlength="1" size="1" style="background-color: red"/>
-	<br>
-	<input id="_green" maxlength="1" size="1" style="background-color: green"/>
-	<input id="_blue" maxlength="1" size="1" style="background-color: blue"/>
-	<input id="_brown" maxlength="1" size="1" style="background-color: brown"/>
-	<input id="_yellow" maxlength="1" size="1" style="background-color: yellow"/>
-	<input id="_cyan" maxlength="1" size="1" style="background-color: cyan"/>
-	<input id="_magenta" maxlength="1" size="1" style="background-color: magenta"/>
-	<br>
-	<input id="_darkred" maxlength="1" size="1" style="background-color:darkred"/>
-	<input id="_purple" maxlength="1" size="1" style="background-color: purple"/>
-	<input id="_gold" maxlength="1" size="1" style="background-color: gold"/>
-	<input id="_indigo" maxlength="1" size="1" style="background-color: indigo"/>
-	<input id="_olive" maxlength="1" size="1" style="background-color: olive"/>
-	<input id="_dullGreen" maxlength="1" size="1" style="background-color: #674"/>
-	<br>
-	<input id="_lightYellow" maxlength="1" size="1" style="background-color: lightyellow"/>
-	<input id="_pink" maxlength="1" size="1" style="background-color: pink"/>
-	<input id="_lightBlue" maxlength="1" size="1" style="background-color: lightblue"/>
-	<input id="_beige" maxlength="1" size="1" style="background-color: beige"/>
-	<input id="_tan" maxlength="1" size="1" style="background-color: tan"/>
-	<input id="_orange" maxlength="1" size="1" style="background-color: orange"/>
-</p>
-<div id="d">
-<h4>Click and drag to draw a picture so I can interpret your personality from it!</h4>
-	<canvas width="340" height="340" id="canvas2"></canvas>
-	<p style="color:#9ac">Attribution: by <a href="http://justgoscha.github.io">justGoscha</a></p>
-</div>
-<!-- <div id="pass" *ngIf="name == 'Erintuitive'">
-	If you are Erintuitive, type password.<input type="password" [(ngModel)]="password" id="password"/>
-	<button id="passButton" (click)="setPass()">Submit password</button>
-</div> -->
-<button id="canvasButton" (click)="drawingSave()">Save drawing as chat message!</button><br>
-</div>
-<div id="worldBody" (keyup)="onKeyUp($event)">
-<div id="inworld">
-	<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
-	<!-- message form -->
-	<div id="messages">
-		<table id="messagesTable" style="scale: 0.55; -webkit-scale: 0.55; -ms-scale: 0.55;">
-		</table>
+	<p>
+		<button class="colorButton" id="_black" maxlength="1" size="1" style="padding: 20px; background-color: black;">&nbsp;</button>
+		<button class="colorButton" id="_white" maxlength="1" size="1" style="padding: 20px; background-color: white;">&nbsp;</button>
+		<button class="colorButton" id="_darkgray" maxlength="1" size="1" style="padding: 20px; background-color: darkgray;">&nbsp;</button>
+		<button class="colorButton" id="_gray" maxlength="1" size="1" style="padding: 20px; background-color: gray;">&nbsp;</button>
+		<button class="colorButton" id="_silver" maxlength="1" size="1" style="padding: 20px; background-color: silver;">&nbsp;</button>
+		<button class="colorButton" id="_red" maxlength="1" size="1" style="padding: 20px; background-color: red;">&nbsp;</button>
+		<br>
+		<button class="colorButton" id="_green" maxlength="1" size="1" style="padding: 20px; background-color: green;">&nbsp;</button>
+		<button class="colorButton" id="_blue" maxlength="1" size="1" style="padding: 20px; background-color: blue;">&nbsp;</button>
+		<button class="colorButton" id="_brown" maxlength="1" size="1" style="padding: 20px; background-color: brown;">&nbsp;</button>
+		<button class="colorButton" id="_yellow" maxlength="1" size="1" style="padding: 20px; background-color: yellow;">&nbsp;</button>
+		<button class="colorButton" id="_cyan" maxlength="1" size="1" style="padding: 20px; background-color: cyan;">&nbsp;</button>
+		<button class="colorButton" id="_magenta" maxlength="1" size="1" style="padding: 20px; background-color: magenta;">&nbsp;</button>
+		<br>
+		<button class="colorButton" id="_darkred" maxlength="1" size="1" style="padding: 20px;" color="darkred;">&nbsp;</button>
+		<button class="colorButton" id="_purple" maxlength="1" size="1" style="padding: 20px; background-color: purple;">&nbsp;</button>
+		<button class="colorButton" id="_gold" maxlength="1" size="1" style="padding: 20px; background-color: gold;">&nbsp;</button>
+		<button class="colorButton" id="_indigo" maxlength="1" size="1" style="padding: 20px; background-color: indigo;">&nbsp;</button>
+		<button class="colorButton" id="_olive" maxlength="1" size="1" style="padding: 20px; background-color: olive;">&nbsp;</button>
+		<button class="colorButton" id="_#674" maxlength="1" size="1" style="padding: 20px; background-color: #674;">&nbsp;</button>
+		<br>
+		<button class="colorButton" id="_hotpink" maxlength="1" size="1" style="padding: 20px; background-color: hotpink;">&nbsp;</button>
+		<button class="colorButton" id="_pink" maxlength="1" size="1" style="padding: 20px; background-color: pink;">&nbsp;</button>
+		<button class="colorButton" id="_lightblue" maxlength="1" size="1" style="padding: 20px; background-color: lightblue;">&nbsp;</button>
+		<button class="colorButton" id="_beige" maxlength="1" size="1" style="padding: 20px; background-color: beige;">&nbsp;</button>
+		<button class="colorButton" id="_tan" maxlength="1" size="1" style="padding: 20px; background-color: tan;">&nbsp;</button>
+		<button class="colorButton" id="_orange" maxlength="1" size="1" style="padding: 20px; background-color: orange;">&nbsp;</button>
+	</p>
+	<script src="..\..\..\node_modules\canvas-free-drawing\umd\canvas-free-drawing.min.js"></script>
+	<div id="d">
+	<h4>Click and drag to draw a picture so I can interpret your personality from it!</h4>
+		<canvas id="canvas2"></canvas>
+		<p style="color:#9ac">Attribution: by <a href="http://justgoscha.github.io">justGoscha</a></p>
 	</div>
-	<textarea id="m" rows="5" cols="34" [(ngModel)]="txtMessage"></textarea><button id="n" (click)="initVariables()">Send message!</button>
-</div>
-<!-- <div id="drawingButton">
-	<button (click)="drawAgain()">Draw a picture for me to interpret!</button><br>
-	<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
-</div> -->
-<input type="hidden" [(ngModel)]="message"/>
-<input id="canvasDrawing" type="hidden" [(ngModel)]="canvasDrawing"/>
-<div id="fb-root">Share on Facebook</div>
-
-<!--  use service in app.component.ts too separately for bringing in the drawing
-get it from context
-
--->
-
-
-
-<!-- Mental note: correct Facebook share URL -->
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=817064305070781&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div>
-	<div class="fb-share-button" data-href="https://erintuitive6.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ferintuitive6.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-	<a class="twitter-share-button"
-	href="https://twitter.com/intent/tweet?text=I%20was%20read%20by%20%23Erintuitive%21"
-	href="https://twitter.com/intent/tweet?text=I%20was%20read%20by%20%23Erintuitive%21"
-	data-size="large"><font color="yellow">Tweet about this!</font></a>	
-</div>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="color: white;">
-	<input type="hidden" name="cmd" value="_s-xclick">
-	<input type="hidden" name="hosted_button_id" value="PRUWLY3PGJUFA">
-	<table>
-	<tr><td><input type="hidden" name="on0" value="Tip jar payment options">Tip jar payment options</td></tr><tr><td><select name="os0">
-		<option value="Option1:">Option1: $5.00 USD</option>
-		<option value="Option2:">Option2: $10.00 USD</option>
-		<option value="Option3:">Option3: $20.00 USD</option>
-	</select> </td></tr>
-	</table>
-	<input type="hidden" name="currency_code" value="USD">
+	<!-- <div id="pass" *ngIf="name == 'Erintuitive'">
+		If you are Erintuitive, type password.<button type="password" [(ngModel)]="password" id="password;">&nbsp;</button>
+		<button class="colorButton" id="passButton" (click)="setPass()">Submit password</button>
+	</div> -->
+	<button class="colorButton" id="canvasButton" (click)="drawingSave()">Save drawing as chat message!&nbsp;</button><br>
+	</div>
+	<div id="worldBody" (keyup)="onKeyUp($event)">
+	<div id="inworld">
+		<div id="playersDiv" style="position: fixed; top: 0; left: 0;"></div>
+		<!-- message form -->
+		<div id="messages">
+			<table id="messagesTable" style="scale: 0.55; -webkit-scale: 0.55; -ms-scale: 0.55;">
+			</table>
+		</div>
+		<textarea id="m" rows="5" cols="34" [(ngModel)]="txtMessage"></textarea><button class="colorButton" id="n" (click)="initVariables()">Send message!&nbsp;</button>
+	</div>
+	<!-- <div id="drawingButton">
+		<button (click)="drawAgain()">Draw a picture for me to interpret!&nbsp;</button><br>
+		<font color="white" style="font-size: 1.3em;">Request a reading by Erintuitive!<br>Tweet "reading" to @masterer</font>
+	</div> -->
+	<input type="hidden" [(ngModel)]="message"/>
+	<input class="colorButton" id="canvasDrawing" type="hidden" [(ngModel)]="canvasDrawing"/>
+	<div id="fb-root">Share on Facebook</div>
+	
+	<!--  use service in app.component.ts too separately for bringing in the drawing
+	get it from context
+	
+	-->
+	
+	
+	
+	<!-- Mental note: correct Facebook share URL -->
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=817064305070781&autoLogAppEvents=1';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<div>
+		<div class="fb-share-button" data-href="https://erintuitive6.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ferintuitive6.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+		<a class="twitter-share-button"
+		href="https://twitter.com/intent/tweet?text=I%20was%20read%20by%20%23Erintuitive%21"
+		href="https://twitter.com/intent/tweet?text=I%20was%20read%20by%20%23Erintuitive%21"
+		data-size="large"><font color="yellow">Tweet about this!</font></a>	
+	</div>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="color: white;">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="PRUWLY3PGJUFA">
+		<table>
+		<tr>
+			<td>
+				<input type="hidden" name="on0" value="Tip jar payment options">Tip jar payment options
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<select name="os0">
+					<option value="Option1:">Option1: $5.00 USD</option>
+					<option value="Option2:">Option2: $10.00 USD</option>
+					<option value="Option3:">Option3: $20.00 USD</option>
+				</select>
+			</td>
+	   	</tr>
+		</table>
+		<input type="hidden" name="currency_code" value="USD">
 	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>	
 <!-- start embed scripts -->
 <script src="../js/socket.io.js"></script>
+<script src="./canvas-free-drawing.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	var canvas = document.getElementById("canvas");
-	var dataURL = canvas.toDataURL();
-	document.getElementById("canvasDrawing").nodeValue = dataURL;
-</script>
 </div>

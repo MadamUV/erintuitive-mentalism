@@ -233,6 +233,13 @@ export class WorldComponent implements OnInit, OnDestroy {
         if(this.firstName == '') document.body.scrollTop = document.body.scrollHeight;
     }
     ngOnInit() {
+        //no canvas wheel on mobile
+        document.getElementById("canvas2").onwheel = function(event) {
+            event.preventDefault();
+        };
+        document.getElementById("canvas2").onmousewheel = function(event) {
+            event.preventDefault();
+        };
         document.getElementById("relativeContainerContainer").style.display = "none";
         this.setPass();
         setInterval(function(){

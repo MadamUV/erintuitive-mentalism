@@ -33,14 +33,17 @@ td {
     /* background: -webkit-linear-gradient(left, rgba(255,255,255,0) 39%,rgba(255,255,255,0.38) 44%,rgba(255,255,255,1) 52%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
     /* background: linear-gradient(to right, rgba(255,255,255,0) 39%,rgba(255,255,255,0.38) 44%,rgba(255,255,255,1) 52%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
-    max-width: 60%;
+    max-width: 80%;
     word-wrap: break-word;
     -ms-word-wrap: break-word;
-    border: 1px tan solid;
+    border: 1px rgb(11, 40, 201) solid;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
+}
+.buttonClass {
+    background-color: orange;
 }
 @mixin the-scale ($scaleX, $scaleY){
     -webkit-transform: scale($scaleX, $scaleY);
