@@ -49,7 +49,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     }
     drawingSave() {
         this.bestDataURL = this.canvas.toDataURL("JPEG");
-        console.log(typeof(this.bestDataURL));
+        console.log(typeof(this.bestDataURL)); 
         console.log(this.bestDataURL);
         //document.getElementsByClassName("afk")[0].classList.add(this.afkId);
         //this.afkDiv = document.getElementsByClassName(this.afkId)[0];
@@ -393,7 +393,7 @@ export class WorldComponent implements OnInit, OnDestroy {
             document.getElementById("canvas2").style.display = "none";
         }
 
-    document.getElementById("_black").onfocus = function () {
+    /* document.getElementById("_black").onfocus = function () {
       ctx.strokeStyle = "black";
     };
     document.getElementById("_white").onfocus = function () {
@@ -464,7 +464,7 @@ export class WorldComponent implements OnInit, OnDestroy {
     };
     document.getElementById("_orange").onfocus = function () {
       ctx.strokeStyle = "orange";
-    };
+    }; */
 
     }
     ngOnDestroy() {

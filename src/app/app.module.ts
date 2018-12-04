@@ -54,6 +54,7 @@ import { WorldModule } from './world/world.module';
 import { WorldComponent } from './world/world.component';
 import { DrawingComponent } from './drawing/drawing.component';
 import { DrawingModule } from './drawing/drawing.module';
+import { DrawingNewComponent } from './drawing-new/drawing-new.component';
 //import { Injectable } from '@angular/core';
 //import { Socket } from 'ng6-socket-io';
 //import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
@@ -90,7 +91,8 @@ import { DrawingModule } from './drawing/drawing.module';
     MaleTopsComponent,
 
     WorldComponent,
-    DrawingComponent
+    DrawingComponent,
+    DrawingNewComponent
 
   ],
   imports: [
