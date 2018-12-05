@@ -41,7 +41,7 @@ export class DrawingNewComponent implements OnInit {
   // Keep track of the mouse button being pressed and draw a dot at current location
   function sketchpad_mouseDown() {
       mouseDown=1;
-      drawDot(ctx,mouseX,mouseY,1);
+      drawDot(ctx,mouseX,mouseY,12);
   }
 
   // Keep track of the mouse button being released
@@ -56,7 +56,7 @@ export class DrawingNewComponent implements OnInit {
 
       // Draw a dot if the mouse button is currently being pressed
       if (mouseDown==1) {
-          drawDot(ctx,mouseX,mouseY,4);
+          drawDot(ctx,mouseX,mouseY,12);
       }
   }
 
@@ -80,7 +80,7 @@ export class DrawingNewComponent implements OnInit {
       // Update the touch co-ordinates
       getTouchPos(e);
 
-      drawDot(ctx,touchX,touchY,4);
+      drawDot(ctx,touchX,touchY,12);
 
       // Prevents an additional mousedown event being triggered
       //event.preventDefault();
@@ -92,7 +92,7 @@ export class DrawingNewComponent implements OnInit {
       getTouchPos(e);
 
       // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-      drawDot(ctx,touchX,touchY,4); 
+      drawDot(ctx,touchX,touchY,12); 
 
       // Prevent a scrolling action as a result of this touchmove triggering.
       //event.preventDefault();
