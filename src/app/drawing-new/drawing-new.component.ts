@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class DrawingNewComponent implements OnInit {
   canvas : HTMLCanvasElement;
   bestDataURL : string;
-  erinBool : boolean = false;
-  imgSetup : string = '';
 
   constructor() { }
 
@@ -145,7 +143,7 @@ export class DrawingNewComponent implements OnInit {
 
   // Check that we have a valid context to draw on/with before adding event handlers
   if (ctx) {
-    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'black';
     // React to mouse events on the canvas, and mouseup on the entire document
     canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
     canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
