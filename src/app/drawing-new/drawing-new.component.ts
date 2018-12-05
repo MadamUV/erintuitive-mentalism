@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class DrawingNewComponent implements OnInit {
   canvas : HTMLCanvasElement;
   bestDataURL : string;
+  erinBool : boolean = false;
+  imgSetup : string = '';
 
   constructor() { }
 
@@ -39,9 +41,7 @@ export class DrawingNewComponent implements OnInit {
   // Keep track of the mouse button being pressed and draw a dot at current location
   function sketchpad_mouseDown() {
       mouseDown=1;
-      if(ctx) {
-        ctx.beginPath();
-      }
+      drawDot(ctx,mouseX,mouseY,1);
   }
 
   // Keep track of the mouse button being released
@@ -51,20 +51,12 @@ export class DrawingNewComponent implements OnInit {
 
   // Keep track of the mouse position and draw a dot if mouse button is currently pressed
   function sketchpad_mouseMove(e) { 
-      var beforeMouseX = mouseX;
-      var beforeMouseY = mouseY;
       // Update the mouse co-ordinates when moved
       getMousePos(e);
 
       // Draw a dot if the mouse button is currently being pressed
       if (mouseDown==1) {
-        
-          ctx.moveTo(beforeMouseX, beforeMouseY);
-          // to
-          ctx.lineTo(mouseX, mouseY);
-          // draw it
-          ctx.stroke();
-          //drawDot(ctx,mouseX,mouseY,4);
+          drawDot(ctx,mouseX,mouseY,4);
       }
   }
 
@@ -88,9 +80,7 @@ export class DrawingNewComponent implements OnInit {
       // Update the touch co-ordinates
       getTouchPos(e);
 
-      if(ctx) {
-        ctx.beginPath();
-      }
+      drawDot(ctx,touchX,touchY,4);
 
       // Prevents an additional mousedown event being triggered
       event.preventDefault();
@@ -99,19 +89,10 @@ export class DrawingNewComponent implements OnInit {
   // Draw something and prevent the default scrolling when touch movement is detected
   function sketchpad_touchMove(e) { 
       // Update the touch co-ordinates
-      var beforeMouseX = mouseX;
-      var beforeMouseY = mouseY;
       getTouchPos(e);
 
       // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-      //drawDot(ctx,touchX,touchY,4); 
-
-      ctx.moveTo(beforeMouseX, beforeMouseY);
-      // to
-      ctx.lineTo(mouseX, mouseY);
-      // draw it
-      ctx.stroke();
-
+      drawDot(ctx,touchX,touchY,4); 
 
       // Prevent a scrolling action as a result of this touchmove triggering.
       event.preventDefault();
@@ -128,8 +109,8 @@ export class DrawingNewComponent implements OnInit {
       if(e.touches) {
           if (e.touches.length == 1) { // Only deal with one finger
               var touch = e.touches[0]; // Get the information for finger #1
-              touchX=touch.clientX;
-              touchY=touch.clientY;
+              touchX=touch.pageX-touch.target.offsetLeft;
+              touchY=touch.pageY-touch.target.offsetTop;
           }
       }
   }
@@ -143,7 +124,7 @@ export class DrawingNewComponent implements OnInit {
 
   // Check that we have a valid context to draw on/with before adding event handlers
   if (ctx) {
-    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'black';
     // React to mouse events on the canvas, and mouseup on the entire document
     canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
     canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
@@ -153,78 +134,78 @@ export class DrawingNewComponent implements OnInit {
     canvas.addEventListener('touchstart', sketchpad_touchStart, false);
     canvas.addEventListener('touchmove', sketchpad_touchMove, false);
 
-    document.getElementById("_black").addEventListener("click", function () {
+    document.getElementById("_black").onfocus = function () {
     ctx.strokeStyle = "black";
-    });
-    document.getElementById("_white").addEventListener("click", function () {
+    };
+    document.getElementById("_white").onfocus = function () {
     ctx.strokeStyle = "white";
-    });
-    document.getElementById("_darkgray").addEventListener("click", function () {
+    };
+    document.getElementById("_darkgray").onfocus = function () {
     ctx.strokeStyle = "darkgray";
-    });
-    document.getElementById("_gray").addEventListener("click", function () {
+    };
+    document.getElementById("_gray").onfocus = function () {
     ctx.strokeStyle = "gray";
-    });
-    document.getElementById("_silver").addEventListener("click", function () {
+    };
+    document.getElementById("_silver").onfocus = function () {
     ctx.strokeStyle = "silver";
-    });
-    document.getElementById("_red").addEventListener("click", function () {
+    };
+    document.getElementById("_red").onfocus = function () {
     ctx.strokeStyle = "red";
-    });
-    document.getElementById("_green").addEventListener("click", function () {
+    };
+    document.getElementById("_green").onfocus = function () {
     ctx.strokeStyle = "green";
-    });
-    document.getElementById("_blue").addEventListener("click", function () {
+    };
+    document.getElementById("_blue").onfocus = function () {
     ctx.strokeStyle = "blue";
-    });
-    document.getElementById("_brown").addEventListener("click", function () {
+    };
+    document.getElementById("_brown").onfocus = function () {
     ctx.strokeStyle = "brown";
-    });
-    document.getElementById("_yellow").addEventListener("click", function () {
+    };
+    document.getElementById("_yellow").onfocus = function () {
     ctx.strokeStyle = "yellow";
-    });
-    document.getElementById("_cyan").addEventListener("click", function () {
+    };
+    document.getElementById("_cyan").onfocus = function () {
     ctx.strokeStyle = "cyan";
-    });
-    document.getElementById("_magenta").addEventListener("click", function () {
+    };
+    document.getElementById("_magenta").onfocus = function () {
     ctx.strokeStyle = "magenta";
-    });
-    document.getElementById("_darkred").addEventListener("click", function () {
+    };
+    document.getElementById("_darkred").onfocus = function () {
     ctx.strokeStyle = "#300";
-    });
-    document.getElementById("_purple").addEventListener("click", function () {
+    };
+    document.getElementById("_purple").onfocus = function () {
     ctx.strokeStyle = "purple";
-    });
-    document.getElementById("_gold").addEventListener("click", function () {
+    };
+    document.getElementById("_gold").onfocus = function () {
     ctx.strokeStyle = "gold";
-    });
-    document.getElementById("_indigo").addEventListener("click", function () {
+    };
+    document.getElementById("_indigo").onfocus = function () {
     ctx.strokeStyle = "indigo";
-    });
-    document.getElementById("_olive").addEventListener("click", function () {
+    };
+    document.getElementById("_olive").onfocus = function () {
     ctx.strokeStyle = "olive";
-    });
-    document.getElementById("_#674").addEventListener("click", function () {
+    };
+    document.getElementById("_#674").onfocus = function () {
     ctx.strokeStyle = "#674";
-    });
-    document.getElementById("_hotpink").addEventListener("click", function () {
-    ctx.strokeStyle = "hotpink";
-    });
-    document.getElementById("_pink").addEventListener("click", function () {
+    };
+    document.getElementById("_lightYellow").onfocus = function () {
+    ctx.strokeStyle = "lightyellow";
+    };
+    document.getElementById("_pink").onfocus = function () {
     ctx.strokeStyle = "pink";
-    });
-    document.getElementById("_lightblue").addEventListener("click", function () {
+    };
+    document.getElementById("_lightBlue").onfocus = function () {
     ctx.strokeStyle = "lightblue";
-    });
-    document.getElementById("_beige").addEventListener("click", function () {
+    };
+    document.getElementById("_beige").onfocus = function () {
     ctx.strokeStyle = "beige";
-    });
-    document.getElementById("_tan").addEventListener("click", function () {
+    };
+    document.getElementById("_tan").onfocus = function () {
     ctx.strokeStyle = "tan";
-    });
-    document.getElementById("_orange").addEventListener("click", function () {
+    };
+    document.getElementById("_orange").onfocus = function () {
     ctx.strokeStyle = "orange";
-    });
+    };
   }
 }
   saveDrawing() {
