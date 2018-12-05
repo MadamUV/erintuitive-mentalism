@@ -155,78 +155,78 @@ export class DrawingNewComponent implements OnInit {
     canvas.addEventListener('touchstart', sketchpad_touchStart, false);
     canvas.addEventListener('touchmove', sketchpad_touchMove, false);
 
-    document.getElementById("_black").onfocus = function () {
+    document.getElementById("_black").addEventListener("click", function () {
     ctx.strokeStyle = "black";
-    };
-    document.getElementById("_white").onfocus = function () {
+    });
+    document.getElementById("_white").addEventListener("click", function () {
     ctx.strokeStyle = "white";
-    };
-    document.getElementById("_darkgray").onfocus = function () {
+    });
+    document.getElementById("_darkgray").addEventListener("click", function () {
     ctx.strokeStyle = "darkgray";
-    };
-    document.getElementById("_gray").onfocus = function () {
+    });
+    document.getElementById("_gray").addEventListener("click", function () {
     ctx.strokeStyle = "gray";
-    };
-    document.getElementById("_silver").onfocus = function () {
+    });
+    document.getElementById("_silver").addEventListener("click", function () {
     ctx.strokeStyle = "silver";
-    };
-    document.getElementById("_red").onfocus = function () {
+    });
+    document.getElementById("_red").addEventListener("click", function () {
     ctx.strokeStyle = "red";
-    };
-    document.getElementById("_green").onfocus = function () {
+    });
+    document.getElementById("_green").addEventListener("click", function () {
     ctx.strokeStyle = "green";
-    };
-    document.getElementById("_blue").onfocus = function () {
+    });
+    document.getElementById("_blue").addEventListener("click", function () {
     ctx.strokeStyle = "blue";
-    };
-    document.getElementById("_brown").onfocus = function () {
+    });
+    document.getElementById("_brown").addEventListener("click", function () {
     ctx.strokeStyle = "brown";
-    };
-    document.getElementById("_yellow").onfocus = function () {
+    });
+    document.getElementById("_yellow").addEventListener("click", function () {
     ctx.strokeStyle = "yellow";
-    };
-    document.getElementById("_cyan").onfocus = function () {
+    });
+    document.getElementById("_cyan").addEventListener("click", function () {
     ctx.strokeStyle = "cyan";
-    };
-    document.getElementById("_magenta").onfocus = function () {
+    });
+    document.getElementById("_magenta").addEventListener("click", function () {
     ctx.strokeStyle = "magenta";
-    };
-    document.getElementById("_darkred").onfocus = function () {
+    });
+    document.getElementById("_darkred").addEventListener("click", function () {
     ctx.strokeStyle = "#300";
-    };
-    document.getElementById("_purple").onfocus = function () {
+    });
+    document.getElementById("_purple").addEventListener("click", function () {
     ctx.strokeStyle = "purple";
-    };
-    document.getElementById("_gold").onfocus = function () {
+    });
+    document.getElementById("_gold").addEventListener("click", function () {
     ctx.strokeStyle = "gold";
-    };
-    document.getElementById("_indigo").onfocus = function () {
+    });
+    document.getElementById("_indigo").addEventListener("click", function () {
     ctx.strokeStyle = "indigo";
-    };
-    document.getElementById("_olive").onfocus = function () {
+    });
+    document.getElementById("_olive").addEventListener("click", function () {
     ctx.strokeStyle = "olive";
-    };
-    document.getElementById("_#674").onfocus = function () {
+    });
+    document.getElementById("_#674").addEventListener("click", function () {
     ctx.strokeStyle = "#674";
-    };
-    document.getElementById("_lightYellow").onfocus = function () {
-    ctx.strokeStyle = "lightyellow";
-    };
-    document.getElementById("_pink").onfocus = function () {
+    });
+    document.getElementById("_hotpink").addEventListener("click", function () {
+    ctx.strokeStyle = "hotpink";
+    });
+    document.getElementById("_pink").addEventListener("click", function () {
     ctx.strokeStyle = "pink";
-    };
-    document.getElementById("_lightBlue").onfocus = function () {
+    });
+    document.getElementById("_lightblue").addEventListener("click", function () {
     ctx.strokeStyle = "lightblue";
-    };
-    document.getElementById("_beige").onfocus = function () {
+    });
+    document.getElementById("_beige").addEventListener("click", function () {
     ctx.strokeStyle = "beige";
-    };
-    document.getElementById("_tan").onfocus = function () {
+    });
+    document.getElementById("_tan").addEventListener("click", function () {
     ctx.strokeStyle = "tan";
-    };
-    document.getElementById("_orange").onfocus = function () {
+    });
+    document.getElementById("_orange").addEventListener("click", function () {
     ctx.strokeStyle = "orange";
-    };
+    });
   }
 }
   saveDrawing() {
