@@ -83,7 +83,7 @@ export class DrawingNewComponent implements OnInit {
       drawDot(ctx,touchX,touchY,4);
 
       // Prevents an additional mousedown event being triggered
-      event.preventDefault();
+      //event.preventDefault();
   }
 
   // Draw something and prevent the default scrolling when touch movement is detected
@@ -95,7 +95,7 @@ export class DrawingNewComponent implements OnInit {
       drawDot(ctx,touchX,touchY,4); 
 
       // Prevent a scrolling action as a result of this touchmove triggering.
-      event.preventDefault();
+      //event.preventDefault();
   }
 
   // Get the touch position relative to the top-left of the canvas
