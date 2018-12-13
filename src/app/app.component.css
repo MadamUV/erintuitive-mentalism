@@ -1,4 +1,4 @@
-#mouthstuff, #hairstuff, #eyestuff, #malePants, #femalePants, #femalePantsStickers1, #femalePantsStickers2, #femalePantsStickers3, #femalePantsStickers4, #femalePantsStickers5, #femaleSkirt, #femaleSkirtsStickers1, #femaleSkirtsStickers2, #malePantsStickers1, #malePantsStickers2, #maleSkirt, #maleSkirtsStickers1, #topButton, #femaleTops, #maleTops, #buttonName, #buttonWorld, name, #pickName, #drawing, .inactive #drawing {
+#mouthstuff, #hairstuff, #eyestuff, #malePants, #femalePants, #femalePantsStickers1, #femalePantsStickers2, #femalePantsStickers3, #femalePantsStickers4, #femalePantsStickers5, #femaleSkirt, #femaleSkirtsStickers1, #femaleSkirtsStickers2, #malePantsStickers1, #malePantsStickers2, #maleSkirt, #maleSkirtsStickers1, #topButton, #femaleTops, #maleTops, #buttonName, #buttonWorld, name, #pickName, #buttonPassword {
     display: none;
 }
 select:focus, textarea:focus, input, input:focus {

@@ -7,7 +7,7 @@ import * as io from 'socket.io-client';
 })
 export class ChatService {
 
-  private url = 'https://erintuitive-avatar-demo.herokuapp.com/'; //'http://localhost:9200';
+  private url = 'https://mood-worlds.herokuapp.com/'; //'http://localhost:9200';
   private socket;
 
     sendMessage(message) {

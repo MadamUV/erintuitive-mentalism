@@ -7,11 +7,10 @@
 </script>
 <div style="text-align:center">
   <div>
-    <app-drawing-new></app-drawing-new>
     <h3>
       Welcome to {{ title }}!
     </h3>
-    <!-- <div id="page">
+   <div id="page">
         <span id="pickAColor">
           Item color:
         </span>
@@ -42,6 +41,10 @@
                 <input name="name" id="name" [(ngModel)]="avatarName" type="text"/>
                 <button id="pickTheName" (click)="postAvatarWithName()">Pick name!</button>
               </div>
+            </div>
+            <div id="buttonPassword" style="position: fixed; left: 77%;">
+              <input name="password" id="password" [(ngModel)]="avatarPassword" type="password"/>
+              <button id="pickThePassword" (click)="postAvatarWithPassword()">Pick password!</button>
             </div>
             <div id="malePants">
               <male-pants></male-pants>
@@ -74,7 +77,7 @@
               <male-skirts-stickers-one id="maleSkirtsStickers1"></male-skirts-stickers-one>
             </div>
           </div>
-      </div> -->
+      </div>
   </div>
   <div id="worldDiv" *ngIf="worldBool">
     <world></world>

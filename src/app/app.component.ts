@@ -11,7 +11,6 @@ export class AppComponent {
   avatarPassword : string;
   mainMessage : string = "I interpret your personality from your avatar, too!";
   //bools
-  drawingBool : boolean = false;
   worldBool : boolean = false;
   startOver () {
     document.getElementById("relativeContainerContainer").innerHTML = "";
@@ -86,20 +85,12 @@ export class AppComponent {
     document.getElementById("buttonName").style.display = "block";
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
-    //post name now
-    /* if (this.avatarName == "Erintuitive") { 
-      if (this.avatarPassword == "173281"){
-        document.getElementById("buttonName").style.display = "none";
-        document.getElementById("page").style.display = "none";
-        this.worldBool = true;
-        relativeContainer.innerHTML = `<div id="rightBlinkless"><div class="sprite" style="webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45);">${relativeContainer.innerHTML}</div></div>`;
-      }
-    } else { */
-      document.getElementById("relativeContainerContainer").innerHTML = `<div id="rightBlinkless" style="text-align: left;"><div class="sprite" style="webkit-transform: scale(0.6); -ms-transform: scale(0.6); transform: scale(0.6);">` + document.getElementById("relativeContainerContainer").innerHTML + `</div></div>`;
-      //document.getElementById("drawing").style.display = "block";
-      document.getElementById("page").style.display = "none";
-    //}
-      this.worldBool = true;
+    document.getElementById("relativeContainerContainer").innerHTML = `<div id="rightBlinkless" style="text-align: left;"><div class="sprite" style="webkit-transform: scale(0.6); -ms-transform: scale(0.6); transform: scale(0.6);">` + document.getElementById("relativeContainerContainer").innerHTML + `</div></div>`;
+  }
+  postAvatarWithPassword() {
+    document.getElementById("buttonPassword").style.display = "block";
+    document.getElementById("page").style.display = "none";
+    this.worldBool = true;
   }
   pickIt () {
     document.getElementById("relativeContainer").innerHTML += document.getElementById("name").getAttribute("value");

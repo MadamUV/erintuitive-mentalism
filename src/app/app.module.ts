@@ -52,9 +52,6 @@ import { MaleTopsComponent } from './male-tops/male-tops.component';
 import { FormsModule } from '@angular/forms';
 import { WorldModule } from './world/world.module';
 import { WorldComponent } from './world/world.component';
-import { DrawingComponent } from './drawing/drawing.component';
-import { DrawingModule } from './drawing/drawing.module';
-import { DrawingNewComponent } from './drawing-new/drawing-new.component';
 //import { Injectable } from '@angular/core';
 //import { Socket } from 'ng6-socket-io';
 //import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
@@ -90,9 +87,7 @@ import { DrawingNewComponent } from './drawing-new/drawing-new.component';
     FemaleTopsComponent,
     MaleTopsComponent,
 
-    WorldComponent,
-    DrawingComponent,
-    DrawingNewComponent
+    WorldComponent
 
   ],
   imports: [
@@ -126,8 +121,7 @@ import { DrawingNewComponent } from './drawing-new/drawing-new.component';
     FormsModule,
 
     //SocketIoModule.forRoot(config)
-    WorldModule,
-    DrawingModule,
+    WorldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

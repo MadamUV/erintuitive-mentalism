@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 //import { LocalStorageService } from 'ngx-localstorage';
 import { ChatService } from '../chat-service';
-import { DrawingComponent } from '../drawing/drawing.component';
 import { WorldModule } from './world.module';
 import { getPreviousOrParentNode, text } from '../../../node_modules/@angular/core/src/render3/instructions';
 
 @Component ({
     selector: 'world',
     templateUrl: './world.html',
-    styleUrls: ['../app.component.css', './world.scss', '../drawing/drawing.css'],
+    styleUrls: ['../app.component.css', './world.scss'],
     providers: [ChatService]
 }) 
 export class WorldComponent implements OnInit, OnDestroy {
