@@ -10,11 +10,12 @@
     <h3>
       Welcome to {{ title }}!
     </h3>
+    <!-- 
     <div id="login">
       Already a user?<br>
       <input id="usernameLogin" type="text" name="usernameLogin"/>
       <input id="passwordLogin" type="password" name="passwordLogin"/>
-    </div>
+    </div> -->
     <div id="page">
         <span id="pickAColor">
           Item color:
@@ -47,10 +48,10 @@
                 <button id="pickTheName" (click)="postAvatarWithName()">Pick name!</button>
               </div>
             </div>
-            <div id="buttonPassword" style="position: fixed; left: 77%;">
+            <!-- <div id="buttonPassword" style="position: fixed; left: 77%;">
               <input name="password" id="password" [(ngModel)]="avatarPassword" type="password"/>
               <button id="pickThePassword" (click)="postAvatarWithPassword()">Pick password!</button>
-            </div>
+            </div> -->
             <div id="malePants">
               <male-pants></male-pants>
             </div>

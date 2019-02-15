@@ -86,10 +86,10 @@ export class AppComponent {
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
     document.getElementById("relativeContainerContainer").innerHTML = `<div id="rightBlinkless" style="text-align: left;"><div class="sprite" style="webkit-transform: scale(0.6); -ms-transform: scale(0.6); transform: scale(0.6);">` + document.getElementById("relativeContainerContainer").innerHTML + `</div></div>`;
-  }
-  postAvatarWithPassword() {
-    document.getElementById("buttonPassword").style.display = "block";
-    document.getElementById("page").style.display = "none";
+  //}
+  //postAvatarWithPassword() {
+    //document.getElementById("buttonPassword").style.display = "block";
+    //document.getElementById("page").style.display = "none";
     this.worldBool = true;
   }
   pickIt () {
