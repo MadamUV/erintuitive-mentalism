@@ -82,6 +82,10 @@ export class AppComponent {
     document.getElementById("pickName").style.display = "block";
     document.getElementById("buttonName").style.display = "block";
   }
+  removeUndies () {
+    var elem = document.querySelector("#relativeContainer .theUndies");
+    if( elem != null ) { elem.parentNode.removeChild(elem); }
+  }
   postAvatarWithName() {
     document.getElementById("maleTops").style.display = "none";
     document.getElementById("femaleTops").style.display = "none";
@@ -92,6 +96,7 @@ export class AppComponent {
     //document.getElementById("page").style.display = "none";
     document.getElementById("pickName").style.display = "none";
     document.getElementById("buttonName").style.display = "none";
+    this.removeUndies();
     this.worldBool = true;
   }
   pickIt () {
